@@ -1,0 +1,21 @@
+.container{    
+    position: absolute;
+    right: 10%;
+    top: 20px;    
+}
+  #menu ul li { 
+    display: inline; 
+    margin: 20px;    
+}
+
+#menu ul li :hover {
+    background-color: rgb(255, 255, 255);
+    color: #FFB905;
+    font-size: 30px;
+    transition: all 0.5s;    
+    border-bottom:5px solid #FFB905;
+    -webkit-transform: scale(1.5);
+    transform: scale(1.7);
+  } 
+
+  

@@ -1,0 +1,34 @@
+
+#page-login{
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(329.54deg, #FFB905 0%, #d6a528 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.card-login{
+    display: flex;
+    width: 30%;
+    height: 40%;
+    background-color: #fff;   
+    border: none;
+    border-radius: 6px;
+    z-index: 2;
+}
+
+.header{  
+    text-align: center;
+    justify-content: center;
+    width: 100%;  
+    height: 150px;
+    color: #FFB905;
+}
+
+.header-text {
+    color: #FFB905;
+    font-weight: bold;
+    margin: 10;
+}
