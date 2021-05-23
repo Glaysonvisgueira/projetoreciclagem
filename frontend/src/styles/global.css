@@ -1,12 +1,19 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+    * {
+      margin: 0;
+      padding: 0;
+      outline: 0;
+      box-sizing: border-box;
+    }
+
+  html, body, #root{
+    height: 100%;
   }
-    
-  body,
-  input,
-  button,
-  textarea {
-    font: 600 18px Nunito, sans-serif;
+
+  body {
+    font: 400 14px Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background: linear-gradient(329.54deg, #FFB905 0%, #d6a528 100%);
   }
+
+  

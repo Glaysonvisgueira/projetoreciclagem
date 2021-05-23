@@ -44,8 +44,7 @@ const DepositoSchema = new mongoose.Schema({
         data_admissao: {type: Date }, 
         data_nascimento: {type: Date},
         historico_empresa: {type: String, uppercase:true },
-        foto_url: {type: String},
-        foto_url: {type: String},
+        foto_url: {type: String},        
         contatos: {
             corporativo: {type: String},
             proprio: {type: String},
