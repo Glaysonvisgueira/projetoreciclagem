@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Homepage from './pages/Homepage';
 import Login from './pages/Login';
 import Depositos from './pages/Depositos';
+import DepositoDetalhes from './pages/DepositoDetalhes';
 
 function Routes(){
     return(
@@ -11,6 +12,7 @@ function Routes(){
             <Switch>
                 <Route path="/" exact component={Homepage} /> 
                 <Route path="/depositos" exact component={Depositos} /> 
+                <Route path="/depositos/:sigla_dep" exact component={DepositoDetalhes} /> 
                 <Route path="/login" exact component={Login} />                  
             </Switch>
         </BrowserRouter>
