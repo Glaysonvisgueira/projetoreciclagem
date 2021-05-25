@@ -24,7 +24,7 @@
 
 #menu ul li :hover {
     transition: all 0.1s;    
-    border-bottom:5px solid #000000;
+    border-bottom:5px solid #fff;
     -webkit-transform: scale(1.5);
     transform: scale(1.7);
     color:#fff;
@@ -35,6 +35,13 @@
   text-decoration: none !important;
   color: #000;
   font-weight: bold;
+  }
+
+  .link-text :hover{
+    font-size: 30px;
+    transition: all 0.5s;
+    -webkit-filter: blur(5px);
+    filter: blur(5px);
   }
 
   
