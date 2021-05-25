@@ -86,7 +86,7 @@ form input {
 }
 
 .link-login{
-    font-size: 10px;
+    font-size: 14px;
     margin-bottom: 10px;
     
 }
@@ -108,7 +108,7 @@ form input {
   position: absolute;
   bottom: 20px;
   left: 20px;
-  font-size: 8px;
+  font-size: 14px;
   color: #dcdce6;
 }
 
@@ -117,3 +117,10 @@ h3{
   font-weight: bold;
   margin: 10px;
 }
+
+.login-container{
+  font: 400 14px Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background: linear-gradient(329.54deg, #FFB905 0%, #d6a528 100%);
+}
+

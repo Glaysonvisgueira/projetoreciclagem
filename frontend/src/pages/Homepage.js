@@ -2,9 +2,11 @@ import React from 'react';
 
 import "../styles/pages/Homepage.css";
 
+import Navbar from "../components/Navbar"
+
 function Homepage() {
   return (
-      <h1>Bem vindo a página inicial!</h1>       
+      <Navbar />
   );
 }
 

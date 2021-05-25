@@ -1,21 +1,40 @@
-.container{    
-    position: absolute;
-    right: 10%;
-    top: 20px;    
+.container-navbar{    
+   display: flex;
+   width: 100%;
+   height: 60px;
+   background-color: #FFB905;
+   align-items: center;
+        
 }
+
+#menu ul {
+  margin-top: 10px;
+  list-style-type: none;
+  
+}
+
+
   #menu ul li { 
-    display: inline; 
-    margin: 20px;    
+    display: inline;    
+    margin: 20px;   
+    font-size: 20px; 
+    cursor: pointer;
+    
 }
 
 #menu ul li :hover {
-    background-color: rgb(255, 255, 255);
-    color: #FFB905;
-    font-size: 30px;
-    transition: all 0.5s;    
-    border-bottom:5px solid #FFB905;
+    transition: all 0.1s;    
+    border-bottom:5px solid #000000;
     -webkit-transform: scale(1.5);
     transform: scale(1.7);
+    color:#fff;
   } 
+
+
+ .link-text{
+  text-decoration: none !important;
+  color: #000;
+  font-weight: bold;
+  }
 
   

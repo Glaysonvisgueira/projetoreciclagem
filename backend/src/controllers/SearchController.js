@@ -7,6 +7,11 @@ module.exports = {
         const deposito = await Deposito.findOne({
             sigla_dep: sigla_deposito            
         });
+
+        if(!deposito){
+            return response.json({"message":"Depósito não encontrado."})
+        }
+
         return response.json(deposito);
     }, 
 }
