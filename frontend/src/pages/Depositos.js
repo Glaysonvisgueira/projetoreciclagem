@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 import api from '../services/api.js'
 
@@ -12,8 +12,6 @@ export default function Depositos() {
 
     const [depositos, setDepositos] = useState([]);
 
-    
-
     useEffect(() => {
         async function loadDepositos(){      
             const response = await api.get('/depositos')
@@ -22,6 +20,9 @@ export default function Depositos() {
         loadDepositos();  
         //console.log(depositos)      
       }, []);
+
+      async function handleClickDeposito(sigla_dep){localStorage.setItem('@projetoreciclagem:sigla_deposito', sigla_dep);
+      }
 
     
       
@@ -35,7 +36,9 @@ export default function Depositos() {
                             <Link to={{
                                 pathname: `/depositos/${deposito.sigla_dep.toLowerCase()}`, 
                                 state: { "sigla_dep": deposito.sigla_dep }
-                                }} className="link-dep">
+                                }} className="link-dep"
+                                        onClick={() => {handleClickDeposito(deposito.sigla_dep)}}
+                                >
                                     <div className="card-deposito">
                                         <span className="text-deposito">{deposito.sigla_dep}</span>
                                     </div>
