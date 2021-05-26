@@ -21,7 +21,8 @@ export default function Depositos() {
         //console.log(depositos)      
       }, []);
 
-      async function handleClickDeposito(sigla_dep){localStorage.setItem('@projetoreciclagem:sigla_deposito', sigla_dep);
+      async function handleClickDeposito(sigla_dep){
+              localStorage.setItem('@projetoreciclagem:sigla_deposito', sigla_dep);
       }
 
     

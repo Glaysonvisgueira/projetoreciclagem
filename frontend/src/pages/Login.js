@@ -1,5 +1,4 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { FiArrowRight } from "react-icons/fi";
 
 import "../styles/pages/Login.css";
