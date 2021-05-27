@@ -1,25 +1,17 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom'
 
-import "../styles/components/Navbar.css";
+import styles from "../styles/components/Navbar.module.css";
 
 function Navbar() {
-
-  const [isActive, setActive] = useState(false);
-
-  function handleActiveOption(){
-
-  }
-
-  
   return (
-      <div className="container-navbar">
-        <div id="menu">
+      <div className={styles.containerNavbar}>
+        <div id={styles.menu}>
           <ul>
-            <li><Link to="/" className="link-text">Home</Link></li>
-            <li><Link to="/depositos" className="link-text">Depósitos</Link></li>
-            <li><Link to="/" className="link-text">Contatos</Link></li>
-            <li><Link to="/login" className="link-text">Sobre</Link></li>
+            <li><Link to="/" className={styles.linkText}>Home</Link></li>
+            <li><Link to="/depositos" className={styles.linkText}>Depósitos</Link></li>
+            <li><Link to="/" className={styles.linkText}>Contatos</Link></li>
+            <li><Link to="/login" className={styles.linkText}>Sobre</Link></li>
           </ul>
         </div>
       </div>       

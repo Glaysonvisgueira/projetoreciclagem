@@ -1,34 +1,28 @@
 
 
-.container{
+.containerPage{
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 100%;  
+    height: 100%;
+    margin-top: -5%;  
 }
 
-.container-depositos{    
-    display: flex;    
-    padding: 35px;
-    width: 80%;
-    height: 70%;
+.containerDepositos{    
+    display: flex; 
     justify-content: center;
-    align-items: center;
-    border-radius: 20px;
-    flex-direction: row;
-    border-style: solid;
-    border-color: #FFB905;
-    border: 2;
+    align-items: flex-end;
+    
 }
 
 .wrapper{    
     display: grid;
-    grid-template-columns: 100px 100px 100px 100px 100px 100px;
+    grid-template-columns: 100px 100px 100px 100px 100px 100px 100px 100px;
     gap: 1.5em;    
 }
 
-.card-deposito{
+.cardDeposito{
     display: flex;
     width: 100px;
     height: 100px;
@@ -43,14 +37,14 @@
     border: 1;
 }
 
-.text-deposito{
+.textDeposito{
     font-size: 30px;
     font-family: 'Roboto' , sans-serif;
     font-weight: 900;
     color: #FFB905;
 }
 
-.card-deposito:hover{
+.cardDeposito:hover{
     border-style: solid;
     border: 1;
     border-color: #FFB905;
@@ -61,7 +55,7 @@
 }
 
 
-.link-dep{
+.linkDep{
     text-decoration: none !important;
 }
 

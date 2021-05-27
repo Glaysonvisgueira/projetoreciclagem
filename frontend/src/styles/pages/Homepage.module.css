@@ -5,36 +5,51 @@
     justify-content: center;
     width: 100%;
     height: 100%;
-    margin-top: -4%;   
+    margin-top: -4%;
+   
 }
 
-.projeto-text{
+.landing{
+    display: flex;   
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.textLanding{
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+}
+
+
+.projetoText{
     font-size: 75px;
     font-family: 'Roboto' , sans-serif;
     font-weight: 100;
 }
 
-.reciclagem-text{
+.reciclagemText{
     font-size: 85px;
     font-family: 'Roboto' , sans-serif;
     font-weight: 900;
     color: #FFB905;
 }
 
-.landingImg{
+.spanTextReciclagem{
+    color: #FFB905;
+    font-weight: bold;
+}
+
+.landingImgView{
     width: 90vh;
     height: 60vh;
     margin-left: 75px;
 }  
 
-.landing{
-    display: flex;   
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
 
-.button-saiba-mais{
+
+.buttonSaibaMais{
     color: #fff;
     background-color: #FFB905;
     border: 0;
@@ -47,16 +62,16 @@
     cursor: pointer;
 }
 
-.button-saiba-mais:hover{    
+.buttonSaibaMais:hover{    
     background-color: #dda108;    
 }
 
-.button-about:hover{    
+.buttonAbout:hover{    
     background-color: #FFB905;    
     color: #fff;
 }
 
-.button-about{
+.buttonAbout{
     color: #FFB905;
     background-color: #fff;
     border: 1;
@@ -72,23 +87,16 @@
     
 }
 
-.buttons-container{
+.buttonsContainer{
     display: flex;
     justify-content: space-between;
 }
 
-.span-text-reciclagem{
-    color: #FFB905;
-    font-weight: bold;
-}
 
-.span-text{
+
+.spanText{
     margin-top: 10px;
     font-size: 18px;
     color:#858585;
 }
 
-.text-landing{
-    display: flex;
-    flex-direction: column;
-}

@@ -1,10 +1,11 @@
-import React, { useRef, useEffect, useState} from 'react';
+import React from 'react';
 import { FiArrowLeft, FiUsers } from "react-icons/fi";
 import { FaWarehouse, FaNetworkWired, FaMapMarkerAlt, FaLock, FaTools, FaCamera, FaCode, FaCheck, FaWindowClose } from "react-icons/fa";
 /* import api from '../services/api.js' */
+import {MapContainer, TileLayer, Marker, Popup} from "react-leaflet"
 import { useHistory } from "react-router-dom";
 
-import "../styles/pages/DepositoDetalhes.css";
+import styles from "../styles/pages/DepositoDetalhes.module.css";
 
 import gerenteImg from '../assets/img/depositos/oei/funcionarios/gerente_OEI_400x400.jpg'
 import chefeDepositoImg from '../assets/img/depositos/oei/funcionarios/chefe_de_deposito_OEI_400x400.jpg'
@@ -36,49 +37,79 @@ function DepositoDetalhes() {
   return (
     <>
         <Navbar />
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
               
-        <div className="container-page">
+        <div className={styles.containerPage}>
           
-          <div className="container-header">
-              <button type="button" className="back-button" onClick={history.goBack}>
+          <div className={styles.containerHeader}>
+              <button type="button" className={styles.backButton} onClick={history.goBack}>
                 <FiArrowLeft size={44} color="#000" />
               </button>
-                  <h1 className="dep-name">OEI</h1>
+                  <h1 className={styles.depName}>OEI</h1>
             </div>
-          <hr className="hr-border" />
+         
           
-          <div className="container-subtitulo">
-          <h2 className="subtitulo"><FaWarehouse size={40} color="#FFB905" className="icon-style" /><span style={{"margin-left": "20px"}}>Depósito</span></h2>
+          <div className={styles.containerSubTitulo}>
+          <h2 className={styles.subTitulo}><FaWarehouse size={40} color="#FFB905" className={styles.iconStyle} /><span style={{"margin-left": "20px"}}>Depósito</span></h2>
           </div>  
-          <hr className="hr-border" />
+          <hr className={styles.hrBorder} />
 
-          <div className="container-info-dep">            
+          <div className={styles.containerInfoDep}>            
             
-                    <span className="span-info">Sigla depósito: <span className="span-info-response">OEI</span></span>
-                    <span className="span-info">Sigla loja mãe: <span className="span-info-response">OEI</span></span>
-                    <span className="span-info">Postos que abastece: <span className="span-info-response">SMP</span></span>
-                    <span className="span-info">Representantes que abastece: <span className="span-info-response">SMP</span></span>
-                     
-            
+                    <span className={styles.spanInfo}>Sigla depósito: <span className={styles.spanInfoResponse}>OEI</span></span>
+                    <span className={styles.spanInfo}>Sigla loja mãe: <span className={styles.spanInfoResponse}>OEI</span></span>
+                    <span className={styles.spanInfo}>Anexo a loja? <span className={styles.spanInfoResponse}>SMP</span></span>
+                    <span className={styles.spanInfo}>Fecha para almoço? <span className={styles.spanInfoResponse}>SMP</span></span> 
+                    <span className={styles.spanInfo}>Cliente retira? <span className={styles.spanInfoResponse}>SMP</span></span>
+                    <span className={styles.spanInfo}>Área de CRP? <span className={styles.spanInfoResponse}>SMP</span></span>
+                    <span className={styles.spanInfo}>Área de logística reversa? <span className={styles.spanInfoResponse}>SMP</span></span>
+                    <span className={styles.spanInfo}>Área de TAT? <span className={styles.spanInfoResponse}>SMP</span></span>
+                    <span className={styles.spanInfo}>Postos que abastece: <span className={styles.spanInfoResponse}>SMP</span></span>
+                    <span className={styles.spanInfo}>Representantes que abastece: <span className={styles.spanInfoResponse}>SMP</span></span>
            
         </div>
 
-          <div className="container-subtitulo">
-          <h2 className="subtitulo"><FaCode size={40} color="#FFB905" className="icon-style" /><span style={{"margin-left": "20px"}}>Sistemas implantados</span></h2>
+          <div className={styles.containerSubTitulo}>
+          <h2 className={styles.subTitulo}><FaCode size={40} color="#FFB905" className={styles.iconStyle} /><span style={{"margin-left": "20px"}}>Sistemas implantados</span></h2>
           </div>  
-          <hr className="hr-border" />
+          <hr className={styles.hrBorder} />
 
-          <div className="container-subtitulo">
-          <h2 className="subtitulo"><FaCamera size={40} color="#FFB905" className="icon-style" /><span style={{"margin-left": "20px"}}>Imagens</span></h2>
+          <table className={styles.tabela}>
+            <thead>
+                <tr>
+                    <th >Venda Remota</th>
+                    <th>Control Mobile</th>
+                    <th>WMS</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><FaCheck size={30} color="#02bd02" /></td>
+                    <td><FaWindowClose size={30} color="#e01010" /></td>
+                    <td><FaWindowClose size={30} color="#e01010" /></td>
+                    
+                </tr>
+                
+            </tbody>
+        </table>
+
+          <div className={styles.containerSubTitulo}>
+          <h2 className={styles.subTitulo}><FaCamera size={40} color="#FFB905" className={styles.iconStyle} /><span style={{"margin-left": "20px"}}>Imagens</span></h2>
           </div>  
-          <hr className="hr-border" />
+          <hr className={styles.hrBorder} />
 
-          <div className="container-subtitulo">
-          <h2 className="subtitulo"><FaLock size={40} color="#FFB905" className="icon-style" /><span style={{"margin-left": "20px"}}>Itens de segurança</span></h2>
+          <div className={styles.containerSubTitulo}>
+          <h2 className={styles.subTitulo}><FaLock size={40} color="#FFB905" className={styles.iconStyle} /><span style={{"margin-left": "20px"}}>Itens de segurança</span></h2>
         </div>
-        <hr className="hr-border" />
+        <hr className={styles.hrBorder} />
 
-        <table className="tabela">
+        <table className={styles.tabela}>
             <thead>
                 <tr>
                     <th >CFTV</th>
@@ -102,75 +133,137 @@ function DepositoDetalhes() {
             </tbody>
         </table>
 
-        <div className="container-subtitulo">
-          <h2 className="subtitulo"><FaTools size={40} color="#FFB905" className="icon-style" /><span style={{"margin-left": "20px"}}>Ferramentas e equipamentos</span></h2>
+        <div className={styles.containerSubTitulo}>
+          <h2 className={styles.subTitulo}><FaTools size={40} color="#FFB905" className={styles.iconStyle} /><span style={{"margin-left": "20px"}}>Ferramentas e equipamentos</span></h2>
           </div>  
-          <hr className="hr-border" />
+          <hr className={styles.hrBorder} />
 
+          <table className={styles.tabela}>
+            <thead>
+                <tr>
+                    <th>Porta Pallet</th>
+                    <th>Pallet</th>
+                    <th>Rack de movimentação</th>
+                    <th>Carrinho plataforma</th>
+                    <th>Balança digital</th>
+                    <th>Balança</th>
+                    <th>Esteira</th>
+                    <th>Empilhadeira a gás</th>
+                    <th>Empilhadeira elétrica</th>
+                    <th>Transpaleteira manual</th>
+                    <th>Transpaleteira elétrica</th>
+                    <th>Escada de plataforma</th>
+                    <th>Carrinho de armazenagem</th>
+                    <th>Caixa azul</th>
+                    <th>Movimentador de vidro</th>
+                    <th>Armazenador de vidro</th>
+                    <th>Gaiola de portáteis</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><FaCheck size={30} color="#02bd02" /></td>
+                    <td><FaWindowClose size={30} color="#e01010" /></td>
+                    <td><FaWindowClose size={30} color="#e01010" /></td>
+                    <td><FaCheck size={30} color="#02bd02" /></td>
+                    <td><FaWindowClose size={30} color="#e01010" /></td>
+                    <td><FaWindowClose size={30} color="#e01010" /></td>
+                    <td><FaCheck size={30} color="#02bd02" /></td>
+                    <td><FaWindowClose size={30} color="#e01010" /></td>
+                    <td><FaWindowClose size={30} color="#e01010" /></td>
+                    <td><FaCheck size={30} color="#02bd02" /></td>
+                    <td><FaWindowClose size={30} color="#e01010" /></td>
+                    <td><FaWindowClose size={30} color="#e01010" /></td>
+                    <td><FaCheck size={30} color="#02bd02" /></td>
+                    <td><FaWindowClose size={30} color="#e01010" /></td>
+                    <td><FaWindowClose size={30} color="#e01010" /></td>
+                    <td><FaCheck size={30} color="#02bd02" /></td>
+                    <td><FaWindowClose size={30} color="#e01010" /></td>                    
+                </tr>
+                
+            </tbody>
+        </table>
+ 
         
         
 
-        <div className="container-subtitulo">
-          <h2 className="subtitulo"><FaMapMarkerAlt size={40} color="#FFB905" className="icon-style" /><span style={{"margin-left": "20px"}}>Localização geográfica</span></h2>
+        <div className={styles.containerSubTitulo}>
+          <h2 className={styles.subTitulo}><FaMapMarkerAlt size={40} color="#FFB905" className={styles.iconStyle} /><span style={{"margin-left": "20px"}}>Localização</span></h2>
         </div>
-        <hr className="hr-border" />
-
-        <div className="container-subtitulo">
-          <h2 className="subtitulo"><FiUsers size={40} color="#FFB905" className="icon-style" /><span style={{"margin-left": "20px"}}>Equipe</span></h2>
+        <hr className={styles.hrBorder} />
+        
+        <MapContainer 
+          center={[-7.0131848, -42.1332168]}
+          zoom={13}
+          style={{width: '100%', height: '500px', 'margin-top': '15px'}}
+          scrollWheelZoom={false}
+          >
+            <TileLayer 
+              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+              url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            <Marker position={[-7.0131848, -42.1332168]}>
+            <Popup>
+              <span>Aqui está o depósito de Oeiras!</span>
+            </Popup>
+        </Marker>
+          </MapContainer>
+        <div className={styles.containerSubTitulo}>
+          <h2 className={styles.subTitulo}><FiUsers size={40} color="#FFB905" className={styles.iconStyle} /><span style={{"margin-left": "20px"}}>Equipe</span></h2>
         </div>
-        <hr className="hr-border" />
+        <hr className={styles.hrBorder} />
 
         
-        <div className="container-gerente">
-            <img src={gerenteImg} className="img-400x400" alt="Gerente" />
-            <div className="container-info">
-                    <span className="span-info">Nome completo: <span className="span-info-response">VALDERI RAIMUNDO FERREIRA</span></span>
-                    <span className="span-info">Nome de guerra: <span className="span-info-response">VALDERI</span></span>
-                    <span className="span-info">Número geral: <span className="span-info-response">43780-8</span></span>
-                    <span className="span-info">Data admissão: <span className="span-info-response">01/03/2003</span></span>
-                    <span className="span-info">Data de nascimento: <span className="span-info-response">13/03/1978</span></span>
-                    <span className="span-info">Contatos: <span className="span-info-response">89 99415-0017</span></span>
-                    <span className="span-info">Histórico na empresa: <span className="span-info-response">Iniciou na empresa como montador <br />e após este período virou líder de equipe.</span></span>
+        <div className={styles.containerGerente}>
+            <img src={gerenteImg} className={styles.img400x400} alt="Gerente" />
+            <div className={styles.containerInfo}>
+                    <span className={styles.spanInfo}>Nome completo: <span className={styles.spanInfoResponse}>VALDERI RAIMUNDO FERREIRA</span></span>
+                    <span className={styles.spanInfo}>Nome de guerra: <span className={styles.spanInfoResponse}>VALDERI</span></span>
+                    <span className={styles.spanInfo}>Número geral: <span className={styles.spanInfoResponse}>43780-8</span></span>
+                    <span className={styles.spanInfo}>Data admissão: <span className={styles.spanInfoResponse}>01/03/2003</span></span>
+                    <span className={styles.spanInfo}>Data de nascimento: <span className={styles.spanInfoResponse}>13/03/1978</span></span>
+                    <span className={styles.spanInfo}>Contatos: <span className={styles.spanInfoResponse}>89 99415-0017</span></span>
+                    <span className={styles.spanInfo}>Histórico na empresa: <span className={styles.spanInfoResponse}>Iniciou na empresa como montador <br />e após este período virou líder de equipe.</span></span>
             </div>
-            <h2 className="texto-funcao">GERENTE</h2>
+            <h2 className={styles.textoFuncao}>GERENTE</h2>
         </div>
-        <div className="container-chefe-dep">
-            <img src={chefeDepositoImg} className="img-400x400" alt="chefe do depósito" />
-            <div className="container-info">
-                    <span className="span-info">Nome completo: <span className="span-info-response">VALDERI RAIMUNDO FERREIRA</span></span>
-                    <span className="span-info">Nome de guerra: <span className="span-info-response">VALDERI</span></span>
-                    <span className="span-info">Número geral: <span className="span-info-response">43780-8</span></span>
-                    <span className="span-info">Data admissão: <span className="span-info-response">01/03/2003</span></span>
-                    <span className="span-info">Data de nascimento: <span className="span-info-response">13/03/1978</span></span>
-                    <span className="span-info">Contatos: <span className="span-info-response">89 99415-0017</span></span>
-                    <span className="span-info">Histórico na empresa: <span className="span-info-response">Iniciou na empresa como montador <br />e após este período virou líder de equipe.</span></span>
+        <div className={styles.containerChefeDep}>
+            <img src={chefeDepositoImg} className={styles.img400x400} alt="chefe do depósito" />
+            <div className={styles.containerInfo}>
+                    <span className={styles.spanInfo}>Nome completo: <span className={styles.spanInfoResponse}>VALDERI RAIMUNDO FERREIRA</span></span>
+                    <span className={styles.spanInfo}>Nome de guerra: <span className={styles.spanInfoResponse}>VALDERI</span></span>
+                    <span className={styles.spanInfo}>Número geral: <span className={styles.spanInfoResponse}>43780-8</span></span>
+                    <span className={styles.spanInfo}>Data admissão: <span className={styles.spanInfoResponse}>01/03/2003</span></span>
+                    <span className={styles.spanInfo}>Data de nascimento: <span className={styles.spanInfoResponse}>13/03/1978</span></span>
+                    <span className={styles.spanInfo}>Contatos: <span className={styles.spanInfoResponse}>89 99415-0017</span></span>
+                    <span className={styles.spanInfo}>Histórico na empresa: <span className={styles.spanInfoResponse}>Iniciou na empresa como montador <br />e após este período virou líder de equipe.</span></span>
             </div>
-            <h2 className="texto-funcao">CHEFE DE DEPÓSITO</h2>
+            <h2 className={styles.textoFuncao}>CHEFE DE DEPÓSITO</h2>
         </div>
 
-        <div className="container-func-num2">
-            <img src={funcNum2Img} className="img-400x400" alt="Funcionário número 2" />
-            <div className="container-info">
-                    <span className="span-info">Nome completo: <span className="span-info-response">VALDEMIR ALVES FEITOSA</span></span>
-                    <span className="span-info">Nome de guerra: <span className="span-info-response">VALDEMIR</span></span>
-                    <span className="span-info">Número geral: <span className="span-info-response">36657-9</span></span>
-                    <span className="span-info">Data admissão: <span className="span-info-response">13/11/2020</span></span>
-                    <span className="span-info">Data de nascimento: <span className="span-info-response">13/03/1978</span></span>
-                    <span className="span-info">Contatos: <span className="span-info-response">89 99405-7962</span></span>
-                    <span className="span-info">Histórico na empresa: <span className="span-info-response">Iniciou na empresa como montador <br />e após este período virou líder de equipe.</span></span>
+        <div className={styles.containerFuncNum2}>
+            <img src={funcNum2Img} className={styles.img400x400} alt="Funcionário número 2" />
+            <div className={styles.containerInfo}>
+                    <span className={styles.spanInfo}>Nome completo: <span className={styles.spanInfoResponse}>VALDEMIR ALVES FEITOSA</span></span>
+                    <span className={styles.spanInfo}>Nome de guerra: <span className={styles.spanInfoResponse}>VALDEMIR</span></span>
+                    <span className={styles.spanInfo}>Número geral: <span className={styles.spanInfoResponse}>36657-9</span></span>
+                    <span className={styles.spanInfo}>Data admissão: <span className={styles.spanInfoResponse}>13/11/2020</span></span>
+                    <span className={styles.spanInfo}>Data de nascimento: <span className={styles.spanInfoResponse}>13/03/1978</span></span>
+                    <span className={styles.spanInfo}>Contatos: <span className={styles.spanInfoResponse}>89 99405-7962</span></span>
+                    <span className={styles.spanInfo}>Histórico na empresa: <span className={styles.spanInfoResponse}>Iniciou na empresa como montador <br />e após este período virou líder de equipe.</span></span>
             </div>
-            <h2 className="texto-funcao">FUNCIONÁRIO NÚM. 2</h2>
+            <h2 className={styles.textoFuncao}>FUNCIONÁRIO NÚM. 2</h2>
         </div>
 
-        <div className="container-subtitulo">
-          <h2 className="subtitulo"><FaNetworkWired size={40} color="#FFB905" className="icon-style" /><span style={{"margin-left": "20px"}}>Organograma do depósito</span></h2>
+        <div className={styles.containerSubTitulo}>
+          <h2 className={styles.subTitulo}><FaNetworkWired size={40} color="#FFB905" className={styles.iconStyle} /><span style={{"margin-left": "20px"}}>Organograma do depósito</span></h2>
         </div>
-        <hr className="hr-border" />
+        <hr className={styles.hrBorder} />
 
-        <img src={organogramaImg} className="organograma-estilo" alt="organograma do depósito" />
+        <img src={organogramaImg} className={styles.organogramaEstilo} alt="organograma do depósito" />
 
         
-       
 
 
         
