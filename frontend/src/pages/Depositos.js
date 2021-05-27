@@ -6,16 +6,19 @@ import api from '../services/api.js'
 import styles from "../styles/pages/Depositos.module.css";
 
 import Navbar from "../components/Navbar"
+import Loading from "../components/Loading"
 
 
 export default function Depositos() {
 
     const [depositos, setDepositos] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         async function loadDepositos(){      
             const response = await api.get('/depositos')
-            setDepositos(response.data);  
+            setDepositos(response.data); 
+            setLoading(false); 
         };        
         loadDepositos();  
         //console.log(depositos)      
@@ -25,7 +28,14 @@ export default function Depositos() {
               localStorage.setItem('@projetoreciclagem:sigla_deposito', sigla_dep);
       }
 
-    
+    if(loading){
+        return (
+            <>
+                <Navbar />
+                <Loading />
+            </>
+        )
+    }
       
     return (
         <>
