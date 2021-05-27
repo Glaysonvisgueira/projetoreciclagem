@@ -1,9 +1,45 @@
 
 .containerPage{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex;   
     width: 100%;
     height: 100%;
-    
+    flex-direction: column;
 }
+
+.containerPageRow{
+    display: flex;   
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+}
+
+.asideContainer{
+    width: 300px;
+    background-color: #FFB905;
+    padding: 20px;  
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+.asideContainer h2 {
+    font-size: 40px;
+    font-family: 'Roboto' , sans-serif;
+    font-weight: 900;    
+    margin-top: 64px;
+  }
+  
+  
+  .asideContainer footer {
+    display: flex;
+    flex-direction: column;  
+    line-height: 24px;
+  }
+  
+  .asideContainer footer strong {
+    font-family: 'Roboto' , sans-serif;
+    font-weight: 900;
+  }
+  
+
+  

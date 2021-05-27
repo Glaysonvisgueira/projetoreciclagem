@@ -2,6 +2,7 @@ import React from 'react';
 import {MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
 
 import Navbar from "../components/Navbar"
+import Footer from "../components/Footer"
 
 import styles from '../styles/pages/MapaDepositos.module.css'
 
@@ -133,28 +134,46 @@ function MapaDepositos() {
 
     return (
         <>
-        <Navbar />
+        
+          
         <div className={styles.containerPage}>
-            <MapContainer 
-            center={[-6.8965231, -42.1914786]}
-            zoom={6}
-            style={{width: '100%', height: '100%'}}
-            scrollWheelZoom={true}
-            >
-                <TileLayer 
-                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
-                {positionsMarkers.map(deposito =>
-                                <Marker position={[deposito.latitude, deposito.longitude]}>
-                                <Popup>                                    
-                                    <span>Aqui está o depósito de {deposito.deposito}!</span>
-                                </Popup>
-                                
-                            </Marker>
+          <Navbar />
+              <div className={styles.containerPageRow}>
+              
+               {/*  <aside className={styles.asideContainer}>
+                    <header>
+                      
+
+                      <h2>Localização dos depósitos</h2>
+                      <p>Clique em um dos pontos</p>
+                    </header>
+
+                    <footer>
+                      <strong>TESTE</strong>
+                      <span>teste</span>
+                    </footer>
+                  </aside> */}
+                      <MapContainer 
+                        center={[-6.8965231, -42.1914786]}
+                        zoom={6}
+                        style={{width: '100%', height: '100%'}}
+                        scrollWheelZoom={true}
+                      >
+                      <TileLayer 
+                      attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                      url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                      />
+                                {positionsMarkers.map(deposito =>
+                                      <Marker position={[deposito.latitude, deposito.longitude]}>
+                                        <Popup>                                    
+                                            <span>Aqui está o depósito de {deposito.deposito}!</span>
+                                        </Popup>
+                                      </Marker>
                                 )}
 
-            </MapContainer>
+                  </MapContainer>
+              </div>
+              <Footer />
         </div>
     </>
   );

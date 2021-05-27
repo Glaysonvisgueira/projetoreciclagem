@@ -23,12 +23,12 @@ function Loading() {
 
   return (
       <div className={styles.containerLoading}>
-        <Lottie 
-              options={defaultOptions}
-              height={200}
-              width={200}
-              isStopped={animationState.isStopped}
-              isPaused={animationState.isPaused}/>
+          <Lottie 
+                options={defaultOptions}
+                height={100}
+                width={300}
+                isStopped={animationState.isStopped}
+                isPaused={animationState.isPaused}/>
       </div>       
   );
 }

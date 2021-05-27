@@ -3,14 +3,16 @@ import React from 'react';
 import styles from "../styles/pages/Homepage.module.css";
 
 import Navbar from "../components/Navbar"
+import Footer from "../components/Footer"
 
 import landingImg from "../assets/landingImg.png";
 
 function Homepage() {
   return (
       <>
-        <Navbar />
+        
         <div className={styles.container}>
+        <Navbar />
           <div className={styles.landing}>
             <div className={styles.textLanding}>
               <h1 className={styles.projetoText}>Projeto</h1>
@@ -27,8 +29,11 @@ function Homepage() {
             <div>
             <img src={landingImg} className={styles.landingImgView} alt="logística de distribuição" />
           </div>          
-          </div>          
+          </div>  
+          <Footer />  
         </div>
+           
+       
       </>
   );
 }

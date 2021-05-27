@@ -7,6 +7,7 @@ import styles from "../styles/pages/Depositos.module.css";
 
 import Navbar from "../components/Navbar"
 import Loading from "../components/Loading"
+import Footer from "../components/Footer"
 
 
 export default function Depositos() {
@@ -33,14 +34,15 @@ export default function Depositos() {
             <>
                 <Navbar />
                 <Loading />
+                <Footer />
             </>
         )
     }
       
     return (
         <>
-            <Navbar />
             <div className={styles.containerPage}>
+                <Navbar />
                     <div className={styles.containerDepositos}>
                        <div className={styles.wrapper}>
                            {depositos.map(deposito =>
@@ -58,6 +60,7 @@ export default function Depositos() {
                            
                        </div>
                  </div>
+                <Footer />
             </div>
         </>       
     );

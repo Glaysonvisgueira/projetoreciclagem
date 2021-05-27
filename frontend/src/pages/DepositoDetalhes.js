@@ -10,6 +10,17 @@ import styles from "../styles/pages/DepositoDetalhes.module.css";
 import gerenteImg from '../assets/img/depositos/oei/funcionarios/gerente_OEI_400x400.jpg'
 import chefeDepositoImg from '../assets/img/depositos/oei/funcionarios/chefe_de_deposito_OEI_400x400.jpg'
 import funcNum2Img from '../assets/img/depositos/oei/funcionarios/funcionario_num2_OEI_400x400.jpg'
+
+import adaoImg from '../assets/img/depositos/oei/funcionarios/adao.jpg'
+import ailtonImg from '../assets/img/depositos/oei/funcionarios/ailton.jpg'
+import ednoImg from '../assets/img/depositos/oei/funcionarios/edno.jpg'
+import felipeImg from '../assets/img/depositos/oei/funcionarios/felipe.jpg'
+import gildemarImg from '../assets/img/depositos/oei/funcionarios/gildemar.jpg'
+import jorgeImg from '../assets/img/depositos/oei/funcionarios/jorge.jpg'
+import marcioImg from '../assets/img/depositos/oei/funcionarios/marcio.jpg'
+import mauroImg from '../assets/img/depositos/oei/funcionarios/mauro.jpg'
+import zemariaImg from '../assets/img/depositos/oei/funcionarios/zemaria.jpg'
+
 import organogramaImg from '../assets/img/depositos/oei/organograma/organograma_oei.PNG'
 
 
@@ -249,6 +260,20 @@ function DepositoDetalhes() {
                     <span className={styles.spanInfo}>Histórico na empresa: <span className={styles.spanInfoResponse}>Iniciou na empresa como montador <br />e após este período virou líder de equipe.</span></span>
             </div>
             <h2 className={styles.textoFuncao}>FUNCIONÁRIO NÚM. 2</h2>
+        </div>
+
+        <div className={styles.containerFuncionarios}>
+        
+              <img src={adaoImg} className={styles.funcionariosImg} />
+              <img src={ailtonImg} className={styles.funcionariosImg}/>
+              <img src={ednoImg} className={styles.funcionariosImg}/>
+              <img src={felipeImg} className={styles.funcionariosImg}/>
+              <img src={gildemarImg} className={styles.funcionariosImg}/>
+              <img src={jorgeImg} className={styles.funcionariosImg}/>
+              <img src={marcioImg} className={styles.funcionariosImg}/>
+              <img src={mauroImg} className={styles.funcionariosImg}/>
+              <img src={zemariaImg} className={styles.funcionariosImg}/>
+              
         </div>
 
         <div className={styles.containerSubTitulo}>
