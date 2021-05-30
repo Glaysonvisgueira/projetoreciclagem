@@ -262,6 +262,7 @@ function DepositoDetalhes() {
             <h2 className={styles.textoFuncao}>FUNCIONÁRIO NÚM. 2</h2>
         </div>
 
+        <div className={styles.containerChefes}>
         <div className={styles.containerChefeDep2}>
           <div className={styles.asideChefedep}>
               <img src={funcNum2Img} className={styles.imgNew} alt="Funcionário número 2" />
@@ -271,8 +272,28 @@ function DepositoDetalhes() {
           <hr className={styles.hrNew} />
                 <div className={styles.containerInfo2}>
                         <div className={styles.containerTextInfo2}>
-                          <span className={styles.spanInfo}>Nome completo: </span>
-                          <span className={styles.spanInfoResponse}>VALDEMIR ALVES FEITOSA</span>
+                          <span >Nome completo: </span>
+                          <span >VALDEMIR ALVES FEITOSA</span>                          
+                        </div>
+                        <div className={styles.containerTextInfo2}>
+                          <span >Nome completo: </span>
+                          <span >VALDEMIR ALVES FEITOSA</span>                          
+                        </div>
+                        <div className={styles.containerTextInfo2}>
+                          <span >Nome completo: </span>
+                          <span >VALDEMIR ALVES FEITOSA</span>                          
+                        </div>
+                        <div className={styles.containerTextInfo2}>
+                          <span >Nome completo: </span>
+                          <span >VALDEMIR ALVES FEITOSA</span>                          
+                        </div>
+                        <div className={styles.containerTextInfo2}>
+                          <span >Nome completo: </span>
+                          <span >VALDEMIR ALVES FEITOSA</span>                          
+                        </div>
+                        <div className={styles.containerTextInfo2}>
+                          <span >Nome completo: </span>
+                          <span >VALDEMIR ALVES FEITOSA</span>                          
                         </div>
                         
                         
@@ -281,6 +302,89 @@ function DepositoDetalhes() {
           </div>
             
         </div>
+        <div className={styles.containerChefeDep2}>
+          <div className={styles.asideChefedep}>
+              <img src={funcNum2Img} className={styles.imgNew} alt="Funcionário número 2" />
+              <h2 className={styles.nameDep}>Valderi</h2>
+          </div>
+          <div className={styles.asideRight}>
+          <hr className={styles.hrNew} />
+                <div className={styles.containerInfo2}>
+                        <div className={styles.containerTextInfo2}>
+                          <span >Nome completo: </span>
+                          <span >VALDEMIR ALVES FEITOSA</span>                          
+                        </div>
+                        <div className={styles.containerTextInfo2}>
+                          <span >Nome completo: </span>
+                          <span >VALDEMIR ALVES FEITOSA</span>                          
+                        </div>
+                        <div className={styles.containerTextInfo2}>
+                          <span >Nome completo: </span>
+                          <span >VALDEMIR ALVES FEITOSA</span>                          
+                        </div>
+                        <div className={styles.containerTextInfo2}>
+                          <span >Nome completo: </span>
+                          <span >VALDEMIR ALVES FEITOSA</span>                          
+                        </div>
+                        <div className={styles.containerTextInfo2}>
+                          <span >Nome completo: </span>
+                          <span >VALDEMIR ALVES FEITOSA</span>                          
+                        </div>
+                        <div className={styles.containerTextInfo2}>
+                          <span >Nome completo: </span>
+                          <span >VALDEMIR ALVES FEITOSA</span>                          
+                        </div>
+                        
+                        
+                </div>
+
+          </div>
+            
+        </div>
+
+        <div className={styles.containerChefeDep2}>
+          <div className={styles.asideChefedep}>
+              <img src={funcNum2Img} className={styles.imgNew} alt="Funcionário número 2" />
+              <h2 className={styles.nameDep}>Valderi</h2>
+          </div>
+          <div className={styles.asideRight}>
+          <hr className={styles.hrNew} />
+                <div className={styles.containerInfo2}>
+                        <div className={styles.containerTextInfo2}>
+                          <span >Nome completo: </span>
+                          <span >VALDEMIR ALVES FEITOSA</span>                          
+                        </div>
+                        <div className={styles.containerTextInfo2}>
+                          <span >Nome completo: </span>
+                          <span >VALDEMIR ALVES FEITOSA</span>                          
+                        </div>
+                        <div className={styles.containerTextInfo2}>
+                          <span >Nome completo: </span>
+                          <span >VALDEMIR ALVES FEITOSA</span>                          
+                        </div>
+                        <div className={styles.containerTextInfo2}>
+                          <span >Nome completo: </span>
+                          <span >VALDEMIR ALVES FEITOSA</span>                          
+                        </div>
+                        <div className={styles.containerTextInfo2}>
+                          <span >Nome completo: </span>
+                          <span >VALDEMIR ALVES FEITOSA</span>                          
+                        </div>
+                        <div className={styles.containerTextInfo2}>
+                          <span >Nome completo: </span>
+                          <span >VALDEMIR ALVES FEITOSA</span>                          
+                        </div>
+                        
+                        
+                </div>
+
+          </div>
+            
+        </div>
+        
+        </div>
+
+
 
         <div className={styles.containerFuncionarios}>
         
