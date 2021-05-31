@@ -1,6 +1,22 @@
 import React from 'react';
 import { FiArrowLeft, FiUsers } from "react-icons/fi";
-import { FaWarehouse, FaNetworkWired, FaMapMarkerAlt, FaLock, FaTools, FaCamera, FaCode, FaCheck, FaWindowClose } from "react-icons/fa";
+import { FaWarehouse, 
+    FaNetworkWired, 
+    FaMapMarkerAlt, 
+    FaLock, 
+    FaTools, 
+    FaCamera, 
+    FaCode, 
+    FaCheck, 
+    FaWindowClose,
+    FaBirthdayCake,
+    FaPhoneAlt,
+    FaHistory,
+    FaIdBadge,
+    FaUser } from "react-icons/fa";
+    
+import { MdDateRange} from "react-icons/md";
+import { GrContactInfo } from "react-icons/gr";
 /* import api from '../services/api.js' */
 import {MapContainer, TileLayer, Marker, Popup} from "react-leaflet"
 import { useHistory } from "react-router-dom";
@@ -43,7 +59,7 @@ function DepositoDetalhes() {
         <div className={styles.containerPage}>
           
           <div className={styles.containerHeader}>              
-                  <h1 className={styles.depName}>Detalhes do depósito de OEI</h1>
+                  <h1 className={styles.depName}>Informações sobre o depósito: OEI</h1>
                   <button type="button" className={styles.backButton} onClick={history.goBack}>
                     <FiArrowLeft size={44} color="#000" />
                   </button>
@@ -56,7 +72,7 @@ function DepositoDetalhes() {
           <hr className={styles.hrBorder} />
 
           <div className={styles.containerInfoDep}>            
-            
+          
                     <span className={styles.spanInfo}>Sigla depósito: <span className={styles.spanInfoResponse}>OEI</span></span>
                     <span className={styles.spanInfo}>Sigla loja mãe: <span className={styles.spanInfoResponse}>OEI</span></span>
                     <span className={styles.spanInfo}>Cidade: <span className={styles.spanInfoResponse}>Oeiras</span></span>
@@ -222,39 +238,69 @@ function DepositoDetalhes() {
           <hr className={styles.hrNew} />
                 <div className={styles.containerInfo2}>
                         <div className={styles.containerTextInfo2}>
-                          <span >Nome de guerra: </span>
-                          <span >VALDEMIR ALVES FEITOSA</span>                          
+                          <FaUser size={22} color="#000" />
+                          <div className={styles.containerTextInfo2}>
+                            <span className={styles.textProfileLeft}>NOME DE GUERRA:</span>
+                            <span className={styles.textProfileRight}>VALDEMIR ALVES FEITOSA</span>   
+                          </div>                       
                         </div>
                         <div className={styles.containerTextInfo2}>
-                          <span >Nome completo: </span>
-                          <span >VALDEMIR ALVES FEITOSA</span>                          
+                          <GrContactInfo size={22} color="#000" />
+                          <div className={styles.containerTextInfo2}>
+                            <span className={styles.textProfileLeft}>NOME COMPLETO:</span>
+                            <span className={styles.textProfileRight}>VALDEMIR ALVES FEITOSA</span>   
+                          </div> 
+
+                                                  
                         </div>
                         <div className={styles.containerTextInfo2}>
-                          <span >Número geral: </span>
-                          <span >VALDEMIR ALVES FEITOSA</span>                          
+                          <FaIdBadge size={22} color="#000" />
+                          <div className={styles.containerTextInfo2}>
+                            <span className={styles.textProfileLeft}>NÚMERO GERAL:</span>
+                            <span className={styles.textProfileRight}>124123</span>   
+                          </div> 
+
+
+                                                  
                         </div>
                         <div className={styles.containerTextInfo2}>
-                          <span >Data de admissão: </span>
-                          <span >VALDEMIR ALVES FEITOSA</span>                          
+                           <MdDateRange size={22} color="#000" />
+                          <div className={styles.containerTextInfo2}>
+                            <span className={styles.textProfileLeft}>DATA DE ADMISSÃO:</span>
+                            <span className={styles.textProfileRight}>124123</span>   
+                          </div> 
+                                                  
                         </div>
                         <div className={styles.containerTextInfo2}>
-                          <span >Data de nascimento: </span>
-                          <span >VALDEMIR ALVES FEITOSA</span>                          
+                        <FaBirthdayCake size={22} color="#000" />
+                          <div className={styles.containerTextInfo2}>
+                            <span className={styles.textProfileLeft}>DATA DE NASCIMENTO:</span>
+                            <span className={styles.textProfileRight}>124123</span>   
+                          </div> 
+                                                   
                         </div>
                         <div className={styles.containerTextInfo2}>
-                          <span >Contatos: </span>
-                          <span >VALDEMIR ALVES FEITOSA</span>                          
+                            <FaPhoneAlt size={22} color="#000" />
+                            <div className={styles.containerTextInfo2}>
+                              <span className={styles.textProfileLeft}>CONTATOS:</span>
+                              <span className={styles.textProfileRight}>124123</span>   
+                             </div> 
+                                                  
                         </div>
                         <div className={styles.containerTextInfo2}>
-                          <span >Histórico na empresa: </span>
-                          <span >VALDEMIR ALVES FEITOSA</span>                          
+                             <FaHistory size={22} color="#000" />
+                             <div className={styles.containerTextInfo2}>
+                                <span className={styles.textProfileLeft}>HISTÓRICO NA EMPRESA:</span>
+                                <span className={styles.textProfileRight}>124123</span>   
+                             </div> 
+                                                  
                         </div>  
                 </div>
 
           </div>
             
         </div>
-        <div className={styles.containerChefeDep2}>
+        <div className={styles.containerChefeDep2}>           
           <div className={styles.asideChefedep}>
               <img src={gerenteImg} className={styles.imgNew} alt="Gerente" />
               <h2 className={styles.nameDep}>Gerente</h2>
@@ -263,84 +309,139 @@ function DepositoDetalhes() {
           <hr className={styles.hrNew} />
                 <div className={styles.containerInfo2}>
                         <div className={styles.containerTextInfo2}>
-                          <span >Nome completo: </span>
-                          <span >VALDEMIR ALVES FEITOSA</span>                          
+                          <FaUser size={22} color="#000" />
+                          <div className={styles.containerTextInfo2}>
+                            <span className={styles.textProfileLeft}>NOME DE GUERRA:</span>
+                            <span className={styles.textProfileRight}>VALDEMIR ALVES FEITOSA</span>   
+                          </div>                       
                         </div>
                         <div className={styles.containerTextInfo2}>
-                          <span >Nome completo: </span>
-                          <span >VALDEMIR ALVES FEITOSA</span>                          
+                          <GrContactInfo size={22} color="#000" />
+                          <div className={styles.containerTextInfo2}>
+                            <span className={styles.textProfileLeft}>NOME COMPLETO:</span>
+                            <span className={styles.textProfileRight}>VALDEMIR ALVES FEITOSA</span>   
+                          </div> 
+
+                                                  
                         </div>
                         <div className={styles.containerTextInfo2}>
-                          <span >Nome completo: </span>
-                          <span >VALDEMIR ALVES FEITOSA</span>                          
+                          <FaIdBadge size={22} color="#000" />
+                          <div className={styles.containerTextInfo2}>
+                            <span className={styles.textProfileLeft}>NÚMERO GERAL:</span>
+                            <span className={styles.textProfileRight}>124123</span>   
+                          </div> 
+
+
+                                                  
                         </div>
                         <div className={styles.containerTextInfo2}>
-                          <span >Nome completo: </span>
-                          <span >VALDEMIR ALVES FEITOSA</span>                          
+                           <MdDateRange size={22} color="#000" />
+                          <div className={styles.containerTextInfo2}>
+                            <span className={styles.textProfileLeft}>DATA DE ADMISSÃO:</span>
+                            <span className={styles.textProfileRight}>124123</span>   
+                          </div> 
+                                                  
                         </div>
                         <div className={styles.containerTextInfo2}>
-                          <span >Nome completo: </span>
-                          <span >VALDEMIR ALVES FEITOSA</span>                          
+                        <FaBirthdayCake size={22} color="#000" />
+                          <div className={styles.containerTextInfo2}>
+                            <span className={styles.textProfileLeft}>DATA DE NASCIMENTO:</span>
+                            <span className={styles.textProfileRight}>124123</span>   
+                          </div> 
+                                                   
                         </div>
                         <div className={styles.containerTextInfo2}>
-                          <span >Nome completo: </span>
-                          <span >VALDEMIR ALVES FEITOSA</span>                          
+                            <FaPhoneAlt size={22} color="#000" />
+                            <div className={styles.containerTextInfo2}>
+                              <span className={styles.textProfileLeft}>CONTATOS:</span>
+                              <span className={styles.textProfileRight}>124123</span>   
+                             </div> 
+                                                  
                         </div>
                         <div className={styles.containerTextInfo2}>
-                          <span >Histórico na empresa: </span>
-                          <span >VALDEMIR ALVES FEITOSA</span>                          
+                             <FaHistory size={22} color="#000" />
+                             <div className={styles.containerTextInfo2}>
+                                <span className={styles.textProfileLeft}>HISTÓRICO NA EMPRESA:</span>
+                                <span className={styles.textProfileRight}>124123</span>   
+                             </div> 
+                                                  
                         </div>  
-                        
-                        
                 </div>
 
           </div>
             
         </div>
-
-        <div className={styles.containerChefeDep2}>
+        <div className={styles.containerChefeDep2}>           
           <div className={styles.asideChefedep}>
-              <img src={funcNum2Img} className={styles.imgNew} alt="Funcionário número 2" />
+              <img src={funcNum2Img} className={styles.imgNew} alt="Gerente" />
               <h2 className={styles.nameDep}>Funcionário número 2</h2>
           </div>
           <div className={styles.asideRight}>
           <hr className={styles.hrNew} />
                 <div className={styles.containerInfo2}>
                         <div className={styles.containerTextInfo2}>
-                          <span >Nome completo: </span>
-                          <span >VALDEMIR ALVES FEITOSA</span>                          
+                          <FaUser size={22} color="#000" />
+                          <div className={styles.containerTextInfo2}>
+                            <span className={styles.textProfileLeft}>NOME DE GUERRA:</span>
+                            <span className={styles.textProfileRight}>VALDEMIR ALVES FEITOSA</span>   
+                          </div>                       
                         </div>
                         <div className={styles.containerTextInfo2}>
-                          <span >Nome completo: </span>
-                          <span >VALDEMIR ALVES FEITOSA</span>                          
-                        </div>
-                        <div className={styles.containerTextInfo2}>
-                          <span >Nome completo: </span>
-                          <span >VALDEMIR ALVES FEITOSA</span>                          
-                        </div>
-                        <div className={styles.containerTextInfo2}>
-                          <span >Nome completo: </span>
-                          <span >VALDEMIR ALVES FEITOSA</span>                          
-                        </div>
-                        <div className={styles.containerTextInfo2}>
-                          <span >Nome completo: </span>
-                          <span >VALDEMIR ALVES FEITOSA</span>                          
-                        </div>
-                        <div className={styles.containerTextInfo2}>
-                          <span >Nome completo: </span>
-                          <span >VALDEMIR ALVES FEITOSA</span>                          
-                        </div>
-                        <div className={styles.containerTextInfo2}>
-                          <span >Histórico na empresa: </span>
-                          <span >VALDEMIR ALVES FEITOSA</span>                          
-                        </div>  
-                        
-                        
-                </div>
+                          <GrContactInfo size={22} color="#000" />
+                          <div className={styles.containerTextInfo2}>
+                            <span className={styles.textProfileLeft}>NOME COMPLETO:</span>
+                            <span className={styles.textProfileRight}>VALDEMIR ALVES FEITOSA</span>   
+                          </div> 
 
-          </div>
-            
+                                                  
+                        </div>
+                        <div className={styles.containerTextInfo2}>
+                          <FaIdBadge size={22} color="#000" />
+                          <div className={styles.containerTextInfo2}>
+                            <span className={styles.textProfileLeft}>NÚMERO GERAL:</span>
+                            <span className={styles.textProfileRight}>124123</span>   
+                          </div> 
+
+
+                                                  
+                        </div>
+                        <div className={styles.containerTextInfo2}>
+                           <MdDateRange size={22} color="#000" />
+                          <div className={styles.containerTextInfo2}>
+                            <span className={styles.textProfileLeft}>DATA DE ADMISSÃO:</span>
+                            <span className={styles.textProfileRight}>124123</span>   
+                          </div> 
+                                                  
+                        </div>
+                        <div className={styles.containerTextInfo2}>
+                        <FaBirthdayCake size={22} color="#000" />
+                          <div className={styles.containerTextInfo2}>
+                            <span className={styles.textProfileLeft}>DATA DE NASCIMENTO:</span>
+                            <span className={styles.textProfileRight}>124123</span>   
+                          </div> 
+                                                   
+                        </div>
+                        <div className={styles.containerTextInfo2}>
+                            <FaPhoneAlt size={22} color="#000" />
+                            <div className={styles.containerTextInfo2}>
+                              <span className={styles.textProfileLeft}>CONTATOS:</span>
+                              <span className={styles.textProfileRight}>124123</span>   
+                             </div> 
+                                                  
+                        </div>
+                        <div className={styles.containerTextInfo2}>
+                             <FaHistory size={22} color="#000" />
+                             <div className={styles.containerTextInfo2}>
+                                <span className={styles.textProfileLeft}>HISTÓRICO NA EMPRESA:</span>
+                                <span className={styles.textProfileRight}>124123</span>   
+                             </div>                                                   
+                        </div>  
+                </div>
+          </div>            
         </div>
+      
+
+      
         
         </div>
 
