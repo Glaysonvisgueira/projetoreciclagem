@@ -11,16 +11,6 @@ import gerenteImg from '../assets/img/depositos/oei/funcionarios/gerente_OEI_400
 import chefeDepositoImg from '../assets/img/depositos/oei/funcionarios/chefe_de_deposito_OEI_400x400.jpg'
 import funcNum2Img from '../assets/img/depositos/oei/funcionarios/funcionario_num2_OEI_400x400.jpg'
 
-import adaoImg from '../assets/img/depositos/oei/funcionarios/adao.jpg'
-import ailtonImg from '../assets/img/depositos/oei/funcionarios/ailton.jpg'
-import ednoImg from '../assets/img/depositos/oei/funcionarios/edno.jpg'
-import felipeImg from '../assets/img/depositos/oei/funcionarios/felipe.jpg'
-import gildemarImg from '../assets/img/depositos/oei/funcionarios/gildemar.jpg'
-import jorgeImg from '../assets/img/depositos/oei/funcionarios/jorge.jpg'
-import marcioImg from '../assets/img/depositos/oei/funcionarios/marcio.jpg'
-import mauroImg from '../assets/img/depositos/oei/funcionarios/mauro.jpg'
-import zemariaImg from '../assets/img/depositos/oei/funcionarios/zemaria.jpg'
-
 import organogramaImg from '../assets/img/depositos/oei/organograma/organograma_oei.PNG'
 
 
@@ -52,16 +42,16 @@ function DepositoDetalhes() {
               
         <div className={styles.containerPage}>
           
-          <div className={styles.containerHeader}>
-              <button type="button" className={styles.backButton} onClick={history.goBack}>
-                <FiArrowLeft size={44} color="#000" />
-              </button>
-                  <h1 className={styles.depName}>OEI</h1>
+          <div className={styles.containerHeader}>              
+                  <h1 className={styles.depName}>Detalhes do depósito de OEI</h1>
+                  <button type="button" className={styles.backButton} onClick={history.goBack}>
+                    <FiArrowLeft size={44} color="#000" />
+                  </button>
             </div>
          
           
           <div className={styles.containerSubTitulo}>
-          <h2 className={styles.subTitulo}><FaWarehouse size={40} color="#FFB905" className={styles.iconStyle} /><span style={{"margin-left": "20px"}}>Depósito</span></h2>
+          <h2 className={styles.subTitulo}><FaWarehouse size={40} color="#FFB905" className={styles.iconStyle} /><span style={{"margin-left": "20px"}}>Detalhes sobre o depósito</span></h2>
           </div>  
           <hr className={styles.hrBorder} />
 
@@ -69,6 +59,8 @@ function DepositoDetalhes() {
             
                     <span className={styles.spanInfo}>Sigla depósito: <span className={styles.spanInfoResponse}>OEI</span></span>
                     <span className={styles.spanInfo}>Sigla loja mãe: <span className={styles.spanInfoResponse}>OEI</span></span>
+                    <span className={styles.spanInfo}>Cidade: <span className={styles.spanInfoResponse}>Oeiras</span></span>
+                    <span className={styles.spanInfo}>UF: <span className={styles.spanInfoResponse}>PI</span></span>
                     <span className={styles.spanInfo}>Anexo a loja? <span className={styles.spanInfoResponse}>SMP</span></span>
                     <span className={styles.spanInfo}>Fecha para almoço? <span className={styles.spanInfoResponse}>SMP</span></span> 
                     <span className={styles.spanInfo}>Cliente retira? <span className={styles.spanInfoResponse}>SMP</span></span>
@@ -216,63 +208,21 @@ function DepositoDetalhes() {
         </Marker>
           </MapContainer>
         <div className={styles.containerSubTitulo}>
-          <h2 className={styles.subTitulo}><FiUsers size={40} color="#FFB905" className={styles.iconStyle} /><span style={{"margin-left": "20px"}}>Equipe</span></h2>
+          <h2 className={styles.subTitulo}><FiUsers size={40} color="#FFB905" className={styles.iconStyle} /><span style={{"margin-left": "20px"}}>Lideranças</span></h2>
         </div>
         <hr className={styles.hrBorder} />
 
-        
-        <div className={styles.containerGerente}>
-            <img src={gerenteImg} className={styles.img400x400} alt="Gerente" />
-            <div className={styles.containerInfo}>
-                    <span className={styles.spanInfo}>Nome completo: <span className={styles.spanInfoResponse}>VALDERI RAIMUNDO FERREIRA</span></span>
-                    <span className={styles.spanInfo}>Nome de guerra: <span className={styles.spanInfoResponse}>VALDERI</span></span>
-                    <span className={styles.spanInfo}>Número geral: <span className={styles.spanInfoResponse}>43780-8</span></span>
-                    <span className={styles.spanInfo}>Data admissão: <span className={styles.spanInfoResponse}>01/03/2003</span></span>
-                    <span className={styles.spanInfo}>Data de nascimento: <span className={styles.spanInfoResponse}>13/03/1978</span></span>
-                    <span className={styles.spanInfo}>Contatos: <span className={styles.spanInfoResponse}>89 99415-0017</span></span>
-                    <span className={styles.spanInfo}>Histórico na empresa: <span className={styles.spanInfoResponse}>Iniciou na empresa como montador <br />e após este período virou líder de equipe.</span></span>
-            </div>
-            <h2 className={styles.textoFuncao}>GERENTE</h2>
-        </div>
-        <div className={styles.containerChefeDep}>
-            <img src={chefeDepositoImg} className={styles.img400x400} alt="chefe do depósito" />
-            <div className={styles.containerInfo}>
-                    <span className={styles.spanInfo}>Nome completo: <span className={styles.spanInfoResponse}>VALDERI RAIMUNDO FERREIRA</span></span>
-                    <span className={styles.spanInfo}>Nome de guerra: <span className={styles.spanInfoResponse}>VALDERI</span></span>
-                    <span className={styles.spanInfo}>Número geral: <span className={styles.spanInfoResponse}>43780-8</span></span>
-                    <span className={styles.spanInfo}>Data admissão: <span className={styles.spanInfoResponse}>01/03/2003</span></span>
-                    <span className={styles.spanInfo}>Data de nascimento: <span className={styles.spanInfoResponse}>13/03/1978</span></span>
-                    <span className={styles.spanInfo}>Contatos: <span className={styles.spanInfoResponse}>89 99415-0017</span></span>
-                    <span className={styles.spanInfo}>Histórico na empresa: <span className={styles.spanInfoResponse}>Iniciou na empresa como montador <br />e após este período virou líder de equipe.</span></span>
-            </div>
-            <h2 className={styles.textoFuncao}>CHEFE DE DEPÓSITO</h2>
-        </div>
-
-        <div className={styles.containerFuncNum2}>
-            <img src={funcNum2Img} className={styles.img400x400} alt="Funcionário número 2" />
-            <div className={styles.containerInfo}>
-                    <span className={styles.spanInfo}>Nome completo: <span className={styles.spanInfoResponse}>VALDEMIR ALVES FEITOSA</span></span>
-                    <span className={styles.spanInfo}>Nome de guerra: <span className={styles.spanInfoResponse}>VALDEMIR</span></span>
-                    <span className={styles.spanInfo}>Número geral: <span className={styles.spanInfoResponse}>36657-9</span></span>
-                    <span className={styles.spanInfo}>Data admissão: <span className={styles.spanInfoResponse}>13/11/2020</span></span>
-                    <span className={styles.spanInfo}>Data de nascimento: <span className={styles.spanInfoResponse}>13/03/1978</span></span>
-                    <span className={styles.spanInfo}>Contatos: <span className={styles.spanInfoResponse}>89 99405-7962</span></span>
-                    <span className={styles.spanInfo}>Histórico na empresa: <span className={styles.spanInfoResponse}>Iniciou na empresa como montador <br />e após este período virou líder de equipe.</span></span>
-            </div>
-            <h2 className={styles.textoFuncao}>FUNCIONÁRIO NÚM. 2</h2>
-        </div>
-
         <div className={styles.containerChefes}>
-        <div className={styles.containerChefeDep2}>
+        <div className={styles.containerChefeDep2}>           
           <div className={styles.asideChefedep}>
-              <img src={funcNum2Img} className={styles.imgNew} alt="Funcionário número 2" />
-              <h2 className={styles.nameDep}>Valderi</h2>
+              <img src={chefeDepositoImg} className={styles.imgNew} alt="Gerente" />
+              <h2 className={styles.nameDep}>Chefe de depósito</h2>
           </div>
           <div className={styles.asideRight}>
           <hr className={styles.hrNew} />
                 <div className={styles.containerInfo2}>
                         <div className={styles.containerTextInfo2}>
-                          <span >Nome completo: </span>
+                          <span >Nome de guerra: </span>
                           <span >VALDEMIR ALVES FEITOSA</span>                          
                         </div>
                         <div className={styles.containerTextInfo2}>
@@ -280,23 +230,25 @@ function DepositoDetalhes() {
                           <span >VALDEMIR ALVES FEITOSA</span>                          
                         </div>
                         <div className={styles.containerTextInfo2}>
-                          <span >Nome completo: </span>
+                          <span >Número geral: </span>
                           <span >VALDEMIR ALVES FEITOSA</span>                          
                         </div>
                         <div className={styles.containerTextInfo2}>
-                          <span >Nome completo: </span>
+                          <span >Data de admissão: </span>
                           <span >VALDEMIR ALVES FEITOSA</span>                          
                         </div>
                         <div className={styles.containerTextInfo2}>
-                          <span >Nome completo: </span>
+                          <span >Data de nascimento: </span>
                           <span >VALDEMIR ALVES FEITOSA</span>                          
                         </div>
                         <div className={styles.containerTextInfo2}>
-                          <span >Nome completo: </span>
+                          <span >Contatos: </span>
                           <span >VALDEMIR ALVES FEITOSA</span>                          
                         </div>
-                        
-                        
+                        <div className={styles.containerTextInfo2}>
+                          <span >Histórico na empresa: </span>
+                          <span >VALDEMIR ALVES FEITOSA</span>                          
+                        </div>  
                 </div>
 
           </div>
@@ -304,8 +256,8 @@ function DepositoDetalhes() {
         </div>
         <div className={styles.containerChefeDep2}>
           <div className={styles.asideChefedep}>
-              <img src={funcNum2Img} className={styles.imgNew} alt="Funcionário número 2" />
-              <h2 className={styles.nameDep}>Valderi</h2>
+              <img src={gerenteImg} className={styles.imgNew} alt="Gerente" />
+              <h2 className={styles.nameDep}>Gerente</h2>
           </div>
           <div className={styles.asideRight}>
           <hr className={styles.hrNew} />
@@ -334,6 +286,10 @@ function DepositoDetalhes() {
                           <span >Nome completo: </span>
                           <span >VALDEMIR ALVES FEITOSA</span>                          
                         </div>
+                        <div className={styles.containerTextInfo2}>
+                          <span >Histórico na empresa: </span>
+                          <span >VALDEMIR ALVES FEITOSA</span>                          
+                        </div>  
                         
                         
                 </div>
@@ -345,7 +301,7 @@ function DepositoDetalhes() {
         <div className={styles.containerChefeDep2}>
           <div className={styles.asideChefedep}>
               <img src={funcNum2Img} className={styles.imgNew} alt="Funcionário número 2" />
-              <h2 className={styles.nameDep}>Valderi</h2>
+              <h2 className={styles.nameDep}>Funcionário número 2</h2>
           </div>
           <div className={styles.asideRight}>
           <hr className={styles.hrNew} />
@@ -374,6 +330,10 @@ function DepositoDetalhes() {
                           <span >Nome completo: </span>
                           <span >VALDEMIR ALVES FEITOSA</span>                          
                         </div>
+                        <div className={styles.containerTextInfo2}>
+                          <span >Histórico na empresa: </span>
+                          <span >VALDEMIR ALVES FEITOSA</span>                          
+                        </div>  
                         
                         
                 </div>
@@ -386,19 +346,6 @@ function DepositoDetalhes() {
 
 
 
-        <div className={styles.containerFuncionarios}>
-        
-              <img src={adaoImg} className={styles.funcionariosImg} />
-              <img src={ailtonImg} className={styles.funcionariosImg}/>
-              <img src={ednoImg} className={styles.funcionariosImg}/>
-              <img src={felipeImg} className={styles.funcionariosImg}/>
-              <img src={gildemarImg} className={styles.funcionariosImg}/>
-              <img src={jorgeImg} className={styles.funcionariosImg}/>
-              <img src={marcioImg} className={styles.funcionariosImg}/>
-              <img src={mauroImg} className={styles.funcionariosImg}/>
-              <img src={zemariaImg} className={styles.funcionariosImg}/>
-              
-        </div>
 
         <div className={styles.containerSubTitulo}>
           <h2 className={styles.subTitulo}><FaNetworkWired size={40} color="#FFB905" className={styles.iconStyle} /><span style={{"margin-left": "20px"}}>Organograma do depósito</span></h2>
