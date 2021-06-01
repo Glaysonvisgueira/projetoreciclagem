@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
+import { BsGrid3X3Gap } from "react-icons/bs";
 
 import api from '../services/api.js'
 
@@ -43,6 +44,11 @@ export default function Depositos() {
         <>
             <div className={styles.containerPage}>
                 <Navbar />
+                    <div className={styles.containerSubTitulo}>
+                         <BsGrid3X3Gap size={40} color="#FFB905" className={styles.iconStyle} />
+                        <h2 className={styles.subTitulo}><span style={{"margin-left": "20px"}}>Selecione um depósito</span></h2>
+                    </div>  
+                    <hr className={styles.hrBorder} />
                     <div className={styles.containerDepositos}>
                        <div className={styles.wrapper}>
                            {depositos.map(deposito =>

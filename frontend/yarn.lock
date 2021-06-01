@@ -9136,6 +9136,11 @@ react-error-overlay@^6.0.9:
   resolved "https://registry.npmjs.org/react-error-overlay/-/react-error-overlay-6.0.9.tgz"
   integrity sha512-nQTTcUu+ATDbrSD1BZHr5kgSD4oF8OFjxun8uAaL8RwPBacGBNPf/yAuVVdx17N8XNzRDMrZ9XcKZHCjPW+9ew==
 
+react-gallery-carousel@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/react-gallery-carousel/-/react-gallery-carousel-0.2.2.tgz#4fb1dca1ee11d1cc9313bd5288e6e9267df8cb57"
+  integrity sha512-V3/hZ8Zzcepkq6Cr3xJJfrdijmWdLUsYwK0sjgH/7RQbPw04BWjaIgcZ91X9kFPHDDEgEszt1kecz7W3YVZMuA==
+
 react-icons@^4.2.0:
   version "4.2.0"
   resolved "https://registry.npmjs.org/react-icons/-/react-icons-4.2.0.tgz"

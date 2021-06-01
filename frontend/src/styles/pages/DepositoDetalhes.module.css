@@ -11,6 +11,13 @@
     
 }
 
+.containerCarousel{
+    display: flex;
+    width: 100%;
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;    
+}
 .backButton{    
     display: flex;
     width: 60px;
@@ -21,9 +28,6 @@
     border: none;    
     border-radius: 10px;   
 }
-
-
-
 
 .backButton:hover {
     background-color: #f8bf45;
@@ -39,7 +43,7 @@
     color: #FFB905;
     font-family: 'Roboto' , sans-serif;
     font-weight: 900;
-    font-size: 55px;
+    font-size: 45px;
 }
 
 .containerHeader{
@@ -113,7 +117,10 @@
 
   .spanInfoResponse{
     font-family: 'Roboto' , sans-serif;
-    font-weight: 400;
+    font-weight: bold;
+    font-size: 20px;
+    color: #FFB905;
+    margin-top: 4px;
   }
 
 
@@ -167,17 +174,66 @@
 
   .containerInfoDep{
     display: flex;
-    width: 70%;
-    background-color: #f8f6f6;
-    justify-content: center;
+    width: 90%;
+    background-color: #fff;
+    justify-content: flex-start;
     align-items: flex-start;
     padding: 15px;
     height: 350px;      
     border-radius: 14px;
-    flex-direction: column;
+    flex-direction: row;
     margin: auto;
     margin-top: 15px;
   }
+
+  .InfoData{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+  }
+
+  .containerInfoDepLeft{
+      display: flex;
+      flex-direction: column;
+      background-color: #FFF;
+      align-items: flex-start;
+      justify-content: flex-start;
+      width: 30%;
+  }
+  .containerInfoDepRight{
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.simBadge{
+    background-color: rgb(83, 184, 70);
+    color: #fff;
+    padding-right: 9px;
+    padding-left: 8px;
+    border-radius: 4px;
+    font-family: 'Roboto' , sans-serif;
+    font-weight: bold;
+    font-size: 20px;    
+    margin-top: 4px;
+}
+
+.naoBadge{
+    background-color: rgb(187, 52, 52);
+    color: #fff;
+    padding-right: 6px;
+    padding-left: 6px;
+    border-radius: 4px;
+    font-family: 'Roboto' , sans-serif;
+    font-weight: bold;
+    font-size: 20px;    
+    margin-top: 4px;
+}
 
 
   .tabela{      

@@ -16,6 +16,33 @@
     
 }
 
+.hrBorder {
+    border-bottom: 1;
+    border-style: solid;
+    width: 80%;
+    border-color: #FFB905;  
+    border-width: 1px;
+    background: #FFB905;
+    border-radius: 8px;
+    margin-top: -25px;
+
+  }
+
+  .subTitulo{
+    color: #FFB905;
+    font-family: 'Roboto' , sans-serif;
+    font-weight: 900;
+    font-size: 35px;
+  }
+
+  .containerSubTitulo{
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      width: 80%;
+    
+  }
+
 .wrapper{    
     display: grid;
     grid-template-columns: 100px 100px 100px 100px 100px 100px 100px 100px;

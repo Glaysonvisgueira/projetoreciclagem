@@ -1,4 +1,6 @@
 import React from 'react';
+import Carousel from 'react-gallery-carousel';
+
 import { FiArrowLeft, FiUsers } from "react-icons/fi";
 import { FaWarehouse, 
     FaNetworkWired, 
@@ -22,12 +24,18 @@ import {MapContainer, TileLayer, Marker, Popup} from "react-leaflet"
 import { useHistory } from "react-router-dom";
 
 import styles from "../styles/pages/DepositoDetalhes.module.css";
+import 'react-gallery-carousel/dist/index.css';
 
 import gerenteImg from '../assets/img/depositos/oei/funcionarios/gerente_OEI_400x400.jpg'
 import chefeDepositoImg from '../assets/img/depositos/oei/funcionarios/chefe_de_deposito_OEI_400x400.jpg'
 import funcNum2Img from '../assets/img/depositos/oei/funcionarios/funcionario_num2_OEI_400x400.jpg'
 
 import organogramaImg from '../assets/img/depositos/oei/organograma/organograma_oei.PNG'
+
+
+import img1 from '../assets/img/depositos/oei/1.jpg';
+import img2 from '../assets/img/depositos/oei/2.jpg';
+import img3 from '../assets/img/depositos/oei/3.jpeg';
 
 
 import Navbar from "../components/Navbar"
@@ -49,7 +57,10 @@ function DepositoDetalhes() {
     getDadosDeposito();    
   },[deposito]) 
   */
-
+  
+    const images = [1, 2, 3].map((size) => ({
+      src: `../assets/img/depositos/oei/${size}.jpg`
+    }));
 
   return (
     <>
@@ -71,159 +82,86 @@ function DepositoDetalhes() {
           </div>  
           <hr className={styles.hrBorder} />
 
-          <div className={styles.containerInfoDep}>            
-          
-                    <span className={styles.spanInfo}>Sigla depósito: <span className={styles.spanInfoResponse}>OEI</span></span>
-                    <span className={styles.spanInfo}>Sigla loja mãe: <span className={styles.spanInfoResponse}>OEI</span></span>
-                    <span className={styles.spanInfo}>Cidade: <span className={styles.spanInfoResponse}>Oeiras</span></span>
-                    <span className={styles.spanInfo}>UF: <span className={styles.spanInfoResponse}>PI</span></span>
-                    <span className={styles.spanInfo}>Anexo a loja? <span className={styles.spanInfoResponse}>SMP</span></span>
-                    <span className={styles.spanInfo}>Fecha para almoço? <span className={styles.spanInfoResponse}>SMP</span></span> 
-                    <span className={styles.spanInfo}>Cliente retira? <span className={styles.spanInfoResponse}>SMP</span></span>
-                    <span className={styles.spanInfo}>Área de CRP? <span className={styles.spanInfoResponse}>SMP</span></span>
-                    <span className={styles.spanInfo}>Área de logística reversa? <span className={styles.spanInfoResponse}>SMP</span></span>
-                    <span className={styles.spanInfo}>Área de TAT? <span className={styles.spanInfoResponse}>SMP</span></span>
-                    <span className={styles.spanInfo}>Postos que abastece: <span className={styles.spanInfoResponse}>SMP</span></span>
-                    <span className={styles.spanInfo}>Representantes que abastece: <span className={styles.spanInfoResponse}>SMP</span></span>
-           
-        </div>
+          <div className={styles.containerInfoDep}> 
+          <div className={styles.containerInfoDepLeft}>
+                <div className={styles.InfoData}>
+                   <span className={styles.spanInfo}>Sigla depósito:</span>
+                </div>  
+                <div className={styles.InfoData}>
+                <span className={styles.spanInfo}>Sigla loja mãe:</span>
+                </div>  
+                <div className={styles.InfoData}>
+                    <span className={styles.spanInfo}>Cidade:</span>
+                </div> 
+                <div className={styles.InfoData}>
+                      <span className={styles.spanInfo}>UF: </span>
+                </div>    
+                <div className={styles.InfoData}>
+                      <span className={styles.spanInfo}>Anexo a loja? </span>
+                </div>    
+                <div className={styles.InfoData}>
+                      <span className={styles.spanInfo}>Fecha para almoço? </span> 
+                </div>    
+                <div className={styles.InfoData}>
+                      <span className={styles.spanInfo}>Cliente retira? </span>
+                </div>    
+                <div className={styles.InfoData}>
+                      <span className={styles.spanInfo}>Área de CRP? </span>
+                </div>    
+                <div className={styles.InfoData}>
+                    <span className={styles.spanInfo}>Área de logística reversa? </span>
+                </div> 
+                <div className={styles.InfoData}>
+                    <span className={styles.spanInfo}>Área de TAT? </span>
+                </div>  
+                <div className={styles.InfoData}>
+                    <span className={styles.spanInfo}>Postos que abastece: </span>
+                </div>   
+                <div className={styles.InfoData}>
+                    <span className={styles.spanInfo}>Representantes que abastece: </span>
+                </div>         
+            </div> 
+            <div className={styles.containerInfoDepRight}>
+            <div className={styles.InfoData}>
+                   <span className={styles.spanInfoResponse}>OEI</span>
+                </div>  
+                <div className={styles.InfoData}>
+                  <span className={styles.spanInfoResponse}>OEI</span> 
+                </div>  
+                <div className={styles.InfoData}>
+                    <span className={styles.spanInfoResponse}>Oeiras</span>
+                </div> 
+                <div className={styles.InfoData}>
+                      <span className={styles.spanInfoResponse}>PI</span>
+                </div>    
+                <div className={styles.InfoData}>
+                      <span className={styles.simBadge}>SIM</span>
+                </div>    
+                <div className={styles.InfoData}>
+                      <span className={styles.naoBadge}>NÃO</span>
+                </div>    
+                <div className={styles.InfoData}>
+                      <span className={styles.simBadge}>SIM</span>
+                </div>    
+                <div className={styles.InfoData}>
+                      <span className={styles.naoBadge}>NÃO</span>
+                </div>    
+                <div className={styles.InfoData}>
+                    <span className={styles.naoBadge}>NÃO</span>
+                </div> 
+                <div className={styles.InfoData}>
+                    <span className={styles.naoBadge}>NÃO</span>
+                </div>  
+                <div className={styles.InfoData}>
+                    <span className={styles.spanInfoResponse}>SMP</span>
+                </div>   
+                <div className={styles.InfoData}>
+                    <span className={styles.spanInfoResponse}>SMP</span>
+                </div> 
+            </div>
+            </div>
 
-          <div className={styles.containerSubTitulo}>
-          <h2 className={styles.subTitulo}><FaCode size={40} color="#FFB905" className={styles.iconStyle} /><span style={{"margin-left": "20px"}}>Sistemas implantados</span></h2>
-          </div>  
-          <hr className={styles.hrBorder} />
-
-          <table className={styles.tabela}>
-            <thead>
-                <tr>
-                    <th >Venda Remota</th>
-                    <th>Control Mobile</th>
-                    <th>WMS</th>
-                    
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><FaCheck size={30} color="#02bd02" /></td>
-                    <td><FaWindowClose size={30} color="#e01010" /></td>
-                    <td><FaWindowClose size={30} color="#e01010" /></td>
-                    
-                </tr>
-                
-            </tbody>
-        </table>
-
-          <div className={styles.containerSubTitulo}>
-          <h2 className={styles.subTitulo}><FaCamera size={40} color="#FFB905" className={styles.iconStyle} /><span style={{"margin-left": "20px"}}>Imagens</span></h2>
-          </div>  
-          <hr className={styles.hrBorder} />
-
-          <div className={styles.containerSubTitulo}>
-          <h2 className={styles.subTitulo}><FaLock size={40} color="#FFB905" className={styles.iconStyle} /><span style={{"margin-left": "20px"}}>Itens de segurança</span></h2>
-        </div>
-        <hr className={styles.hrBorder} />
-
-        <table className={styles.tabela}>
-            <thead>
-                <tr>
-                    <th >CFTV</th>
-                    <th>Vigilante</th>
-                    <th>Cachorro</th>
-                    <th>Cerca elétrica</th>
-                    <th>Botão de pânico</th>
-                    <th>Alarme</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><FaCheck size={30} color="#02bd02" /></td>
-                    <td><FaWindowClose size={30} color="#e01010" /></td>
-                    <td><FaWindowClose size={30} color="#e01010" /></td>
-                    <td><FaCheck size={30} color="#02bd02" /></td>
-                    <td><FaWindowClose size={30} color="#e01010" /></td>
-                    <td><FaWindowClose size={30} color="#e01010" /></td>
-                </tr>
-                
-            </tbody>
-        </table>
-
-        <div className={styles.containerSubTitulo}>
-          <h2 className={styles.subTitulo}><FaTools size={40} color="#FFB905" className={styles.iconStyle} /><span style={{"margin-left": "20px"}}>Ferramentas e equipamentos</span></h2>
-          </div>  
-          <hr className={styles.hrBorder} />
-
-          <table className={styles.tabela}>
-            <thead>
-                <tr>
-                    <th>Porta Pallet</th>
-                    <th>Pallet</th>
-                    <th>Rack de movimentação</th>
-                    <th>Carrinho plataforma</th>
-                    <th>Balança digital</th>
-                    <th>Balança</th>
-                    <th>Esteira</th>
-                    <th>Empilhadeira a gás</th>
-                    <th>Empilhadeira elétrica</th>
-                    <th>Transpaleteira manual</th>
-                    <th>Transpaleteira elétrica</th>
-                    <th>Escada de plataforma</th>
-                    <th>Carrinho de armazenagem</th>
-                    <th>Caixa azul</th>
-                    <th>Movimentador de vidro</th>
-                    <th>Armazenador de vidro</th>
-                    <th>Gaiola de portáteis</th>
-                    
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><FaCheck size={30} color="#02bd02" /></td>
-                    <td><FaWindowClose size={30} color="#e01010" /></td>
-                    <td><FaWindowClose size={30} color="#e01010" /></td>
-                    <td><FaCheck size={30} color="#02bd02" /></td>
-                    <td><FaWindowClose size={30} color="#e01010" /></td>
-                    <td><FaWindowClose size={30} color="#e01010" /></td>
-                    <td><FaCheck size={30} color="#02bd02" /></td>
-                    <td><FaWindowClose size={30} color="#e01010" /></td>
-                    <td><FaWindowClose size={30} color="#e01010" /></td>
-                    <td><FaCheck size={30} color="#02bd02" /></td>
-                    <td><FaWindowClose size={30} color="#e01010" /></td>
-                    <td><FaWindowClose size={30} color="#e01010" /></td>
-                    <td><FaCheck size={30} color="#02bd02" /></td>
-                    <td><FaWindowClose size={30} color="#e01010" /></td>
-                    <td><FaWindowClose size={30} color="#e01010" /></td>
-                    <td><FaCheck size={30} color="#02bd02" /></td>
-                    <td><FaWindowClose size={30} color="#e01010" /></td>                    
-                </tr>
-                
-            </tbody>
-        </table>
- 
-        
-        
-
-        <div className={styles.containerSubTitulo}>
-          <h2 className={styles.subTitulo}><FaMapMarkerAlt size={40} color="#FFB905" className={styles.iconStyle} /><span style={{"margin-left": "20px"}}>Localização</span></h2>
-        </div>
-        <hr className={styles.hrBorder} />
-        
-        <MapContainer 
-          center={[-7.0131848, -42.1332168]}
-          zoom={13}
-          style={{width: '100%', height: '500px', 'margin-top': '15px'}}
-          scrollWheelZoom={false}
-          >
-            <TileLayer 
-              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-              url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-            <Marker position={[-7.0131848, -42.1332168]}>
-            <Popup>
-              <span>Aqui está o depósito de Oeiras!</span>
-            </Popup>
-        </Marker>
-          </MapContainer>
-        <div className={styles.containerSubTitulo}>
+            <div className={styles.containerSubTitulo}>
           <h2 className={styles.subTitulo}><FiUsers size={40} color="#FFB905" className={styles.iconStyle} /><span style={{"margin-left": "20px"}}>Lideranças</span></h2>
         </div>
         <hr className={styles.hrBorder} />
@@ -241,7 +179,7 @@ function DepositoDetalhes() {
                           <FaUser size={22} color="#000" />
                           <div className={styles.containerTextInfo2}>
                             <span className={styles.textProfileLeft}>NOME DE GUERRA:</span>
-                            <span className={styles.textProfileRight}>VALDEMIR ALVES FEITOSA</span>   
+                            <span className={styles.textProfileRight}>VALDEMIR</span>   
                           </div>                       
                         </div>
                         <div className={styles.containerTextInfo2}>
@@ -257,7 +195,7 @@ function DepositoDetalhes() {
                           <FaIdBadge size={22} color="#000" />
                           <div className={styles.containerTextInfo2}>
                             <span className={styles.textProfileLeft}>NÚMERO GERAL:</span>
-                            <span className={styles.textProfileRight}>124123</span>   
+                            <span className={styles.textProfileRight}>99999-9</span>   
                           </div> 
 
 
@@ -267,7 +205,7 @@ function DepositoDetalhes() {
                            <MdDateRange size={22} color="#000" />
                           <div className={styles.containerTextInfo2}>
                             <span className={styles.textProfileLeft}>DATA DE ADMISSÃO:</span>
-                            <span className={styles.textProfileRight}>124123</span>   
+                            <span className={styles.textProfileRight}>01/01/2021</span>   
                           </div> 
                                                   
                         </div>
@@ -275,7 +213,7 @@ function DepositoDetalhes() {
                         <FaBirthdayCake size={22} color="#000" />
                           <div className={styles.containerTextInfo2}>
                             <span className={styles.textProfileLeft}>DATA DE NASCIMENTO:</span>
-                            <span className={styles.textProfileRight}>124123</span>   
+                            <span className={styles.textProfileRight}>01/01/2021</span>   
                           </div> 
                                                    
                         </div>
@@ -283,7 +221,7 @@ function DepositoDetalhes() {
                             <FaPhoneAlt size={22} color="#000" />
                             <div className={styles.containerTextInfo2}>
                               <span className={styles.textProfileLeft}>CONTATOS:</span>
-                              <span className={styles.textProfileRight}>124123</span>   
+                              <span className={styles.textProfileRight}>(86) 9 9999-9999</span>   
                              </div> 
                                                   
                         </div>
@@ -291,7 +229,7 @@ function DepositoDetalhes() {
                              <FaHistory size={22} color="#000" />
                              <div className={styles.containerTextInfo2}>
                                 <span className={styles.textProfileLeft}>HISTÓRICO NA EMPRESA:</span>
-                                <span className={styles.textProfileRight}>124123</span>   
+                                <span className={styles.textProfileRight}>lorem ipsum...</span>   
                              </div> 
                                                   
                         </div>  
@@ -445,6 +383,147 @@ function DepositoDetalhes() {
         
         </div>
 
+
+          <div className={styles.containerSubTitulo}>
+          <h2 className={styles.subTitulo}><FaCode size={40} color="#FFB905" className={styles.iconStyle} /><span style={{"margin-left": "20px"}}>Sistemas implantados</span></h2>
+          </div>  
+          <hr className={styles.hrBorder} />
+
+          <table className={styles.tabela}>
+            <thead>
+                <tr>
+                    <th >Venda Remota</th>
+                    <th>Control Mobile</th>
+                    <th>WMS</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><FaCheck size={30} color="#02bd02" /></td>
+                    <td><FaWindowClose size={30} color="#e01010" /></td>
+                    <td><FaWindowClose size={30} color="#e01010" /></td>
+                    
+                </tr>
+                
+            </tbody>
+        </table>
+
+          <div className={styles.containerSubTitulo}>
+          <h2 className={styles.subTitulo}><FaCamera size={40} color="#FFB905" className={styles.iconStyle} /><span style={{"margin-left": "20px"}}>Imagens</span></h2>
+          </div>  
+          <hr className={styles.hrBorder} />
+          
+          <div className={styles.containerCarousel} >
+              <Carousel images={images} style={{ height: '40%', width: '40%'}}/>
+          </div>
+
+          <div className={styles.containerSubTitulo}>
+          <h2 className={styles.subTitulo}><FaLock size={40} color="#FFB905" className={styles.iconStyle} /><span style={{"margin-left": "20px"}}>Itens de segurança</span></h2>
+        </div>
+        <hr className={styles.hrBorder} />
+
+        <table className={styles.tabela}>
+            <thead>
+                <tr>
+                    <th>CFTV</th>
+                    <th>Vigilante</th>
+                    <th>Cachorro</th>
+                    <th>Cerca elétrica</th>
+                    <th>Botão de pânico</th>
+                    <th>Alarme</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><FaCheck size={30} color="#02bd02" /></td>
+                    <td><FaWindowClose size={30} color="#e01010" /></td>
+                    <td><FaWindowClose size={30} color="#e01010" /></td>
+                    <td><FaCheck size={30} color="#02bd02" /></td>
+                    <td><FaWindowClose size={30} color="#e01010" /></td>
+                    <td><FaWindowClose size={30} color="#e01010" /></td>
+                </tr>
+                
+            </tbody>
+        </table>
+
+        <div className={styles.containerSubTitulo}>
+          <h2 className={styles.subTitulo}><FaTools size={40} color="#FFB905" className={styles.iconStyle} /><span style={{"margin-left": "20px"}}>Ferramentas e equipamentos</span></h2>
+          </div>  
+          <hr className={styles.hrBorder} />
+
+          <table className={styles.tabela}>
+            <thead>
+                <tr>
+                    <th>Porta Pallet</th>
+                    <th>Pallet</th>
+                    <th>Rack de movimentação</th>
+                    <th>Carrinho plataforma</th>
+                    <th>Balança digital</th>
+                    <th>Balança</th>
+                    <th>Esteira</th>
+                    <th>Empilhadeira a gás</th>
+                    <th>Empilhadeira elétrica</th>
+                    <th>Transpaleteira manual</th>
+                    <th>Transpaleteira elétrica</th>
+                    <th>Escada de plataforma</th>
+                    <th>Carrinho de armazenagem</th>
+                    <th>Caixa azul</th>
+                    <th>Movimentador de vidro</th>
+                    <th>Armazenador de vidro</th>
+                    <th>Gaiola de portáteis</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><FaCheck size={30} color="#02bd02" /></td>
+                    <td><FaWindowClose size={30} color="#e01010" /></td>
+                    <td><FaWindowClose size={30} color="#e01010" /></td>
+                    <td><FaCheck size={30} color="#02bd02" /></td>
+                    <td><FaWindowClose size={30} color="#e01010" /></td>
+                    <td><FaWindowClose size={30} color="#e01010" /></td>
+                    <td><FaCheck size={30} color="#02bd02" /></td>
+                    <td><FaWindowClose size={30} color="#e01010" /></td>
+                    <td><FaWindowClose size={30} color="#e01010" /></td>
+                    <td><FaCheck size={30} color="#02bd02" /></td>
+                    <td><FaWindowClose size={30} color="#e01010" /></td>
+                    <td><FaWindowClose size={30} color="#e01010" /></td>
+                    <td><FaCheck size={30} color="#02bd02" /></td>
+                    <td><FaWindowClose size={30} color="#e01010" /></td>
+                    <td><FaWindowClose size={30} color="#e01010" /></td>
+                    <td><FaCheck size={30} color="#02bd02" /></td>
+                    <td><FaWindowClose size={30} color="#e01010" /></td>                    
+                </tr>
+                
+            </tbody>
+        </table>
+ 
+        
+        
+
+        <div className={styles.containerSubTitulo}>
+          <h2 className={styles.subTitulo}><FaMapMarkerAlt size={40} color="#FFB905" className={styles.iconStyle} /><span style={{"margin-left": "20px"}}>Localização</span></h2>
+        </div>
+        <hr className={styles.hrBorder} />
+        
+        <MapContainer 
+          center={[-7.0131848, -42.1332168]}
+          zoom={13}
+          style={{width: '80%', height: '500px',  'margin': 'auto', 'margin-top': '15px'}}
+          scrollWheelZoom={false}
+          >
+            <TileLayer 
+              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+              url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            <Marker position={[-7.0131848, -42.1332168]}>
+            <Popup>
+              <span>Aqui está o depósito de Oeiras!</span>
+            </Popup>
+        </Marker>
+          </MapContainer>
+        
 
 
 
