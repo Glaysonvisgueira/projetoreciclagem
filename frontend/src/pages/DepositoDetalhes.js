@@ -33,22 +33,24 @@ import funcNum2Img from "../assets/img/depositos/oei/funcionarios/funcionario_nu
 
 import organogramaImg from "../assets/img/depositos/oei/organograma/organograma_oei.PNG";
 
-import img1 from "../assets/img/depositos/oei/1.jpg";
-import img2 from "../assets/img/depositos/oei/2.jpg";
-import img3 from "../assets/img/depositos/oei/3.jpeg";
-import img4 from "../assets/img/depositos/oei/4.jpg";
-import img5 from "../assets/img/depositos/oei/5.jpeg";
-import img6 from "../assets/img/depositos/oei/6.jpeg";
-import img7 from "../assets/img/depositos/oei/7.jpg";
+import img1 from "../assets/img/depositos/oei/funcionarios/1.jpg";
+import img2 from "../assets/img/depositos/oei/funcionarios/2.jpg";
+import img3 from "../assets/img/depositos/oei/funcionarios/3.jpeg";
+import img4 from "../assets/img/depositos/oei/funcionarios/4.jpg";
+import img5 from "../assets/img/depositos/oei/funcionarios/5.jpeg";
+import img6 from "../assets/img/depositos/oei/funcionarios/6.jpeg";
+import img7 from "../assets/img/depositos/oei/funcionarios/7.jpg";
 
 import Navbar from "../components/Navbar";
 import Loading from "../components/Loading";
 import Footer from "../components/Footer";
 
 function DepositoDetalhes() {
+
   const history = useHistory();
 
   const [deposito, setDeposito] = useState([]);
+  const [imagesDeposito, setImage] = useState([]);
 
   useEffect(() => {
     async function getDadosDeposito() {
@@ -60,7 +62,7 @@ function DepositoDetalhes() {
       setDeposito(response.data);
     }
     getDadosDeposito();
-  }, [deposito]);
+  }, []);
 
   const images = [img1, img2, img3, img4, img5, img6, img7].map((dep) => ({
     src: dep,

@@ -31,11 +31,11 @@ export default function Depositos() {
 
     if(loading){
         return (
-            <>
+            <div className={styles.loadingContainer}>
                 <Navbar />
                 <Loading />
                 <Footer />
-            </>
+            </div>
         )
     }
       

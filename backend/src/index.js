@@ -8,6 +8,7 @@ const routes = require('./routes');
 const app = express();
 const server = http.Server(app);
 
+
 //URL do cluster no mongoDB
 mongoose.connect('mongodb+srv://<user>:<password>@cluster0.r7qnp.mongodb.net/projetoreciclagem?retryWrites=true&w=majority', {
     useNewUrlParser: true,
