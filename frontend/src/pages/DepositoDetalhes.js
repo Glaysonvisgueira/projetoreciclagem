@@ -27,19 +27,19 @@ import api from "../services/api.js";
 import styles from "../styles/pages/DepositoDetalhes.module.css";
 import "react-gallery-carousel/dist/index.css";
 
-import gerenteImg from "../assets/img/depositos/oei/funcionarios/gerente_OEI_400x400.jpg";
-import chefeDepositoImg from "../assets/img/depositos/oei/funcionarios/chefe_de_deposito_OEI_400x400.jpg";
-import funcNum2Img from "../assets/img/depositos/oei/funcionarios/funcionario_num2_OEI_400x400.jpg";
+import gerenteImg from "../assets/img/depositos/oei/funcionarios/gerente400x400.jpg";
+import chefeDepositoImg from "../assets/img/depositos/oei/funcionarios/chefedeposito400x400.jpg";
+import funcNum2Img from "../assets/img/depositos/oei/funcionarios/num2_400x400.jpg";
 
-import organogramaImg from "../assets/img/depositos/oei/organograma/organograma_oei.PNG";
+import organogramaImg from "../assets/img/depositos/oei/organograma/organograma.PNG";
 
-import img1 from "../assets/img/depositos/oei/funcionarios/1.jpg";
-import img2 from "../assets/img/depositos/oei/funcionarios/2.jpg";
-import img3 from "../assets/img/depositos/oei/funcionarios/3.jpeg";
-import img4 from "../assets/img/depositos/oei/funcionarios/4.jpg";
-import img5 from "../assets/img/depositos/oei/funcionarios/5.jpeg";
-import img6 from "../assets/img/depositos/oei/funcionarios/6.jpeg";
-import img7 from "../assets/img/depositos/oei/funcionarios/7.jpg";
+import img1 from "../assets/img/depositos/oei/estrutura/1.jpg";
+import img2 from "../assets/img/depositos/oei/estrutura/2.jpg";
+import img3 from "../assets/img/depositos/oei/estrutura/3.jpeg";
+import img4 from "../assets/img/depositos/oei/estrutura/4.jpg";
+import img5 from "../assets/img/depositos/oei/estrutura/5.jpeg";
+import img6 from "../assets/img/depositos/oei/estrutura/6.jpeg";
+import img7 from "../assets/img/depositos/oei/estrutura/7.jpg";
 
 import Navbar from "../components/Navbar";
 import Loading from "../components/Loading";
@@ -62,8 +62,9 @@ function DepositoDetalhes() {
       setDeposito(response.data);
     }
     getDadosDeposito();
+    
   }, []);
-
+  
   const images = [img1, img2, img3, img4, img5, img6, img7].map((dep) => ({
     src: dep,
   }));
@@ -77,7 +78,7 @@ function DepositoDetalhes() {
       </>
     );
   }
-
+    
   return (
     <>
       <Navbar />
@@ -236,8 +237,8 @@ function DepositoDetalhes() {
         <div className={styles.containerChefes}>
           <div className={styles.containerChefeDep2}>
             <div className={styles.asideChefedep}>
-              <img
-                src={chefeDepositoImg}
+              <img                
+                src={`${deposito.gerente.foto_url}`}                
                 className={styles.imgNew}
                 alt="Gerente"
               />
