@@ -1,458 +1,573 @@
-import React from 'react';
-import Carousel from 'react-gallery-carousel';
+import React, { useState, useEffect } from "react";
+import Carousel from "react-gallery-carousel";
 
 import { FiArrowLeft, FiUsers } from "react-icons/fi";
-import { FaWarehouse, 
-    FaNetworkWired, 
-    FaMapMarkerAlt, 
-    FaLock, 
-    FaTools, 
-    FaCamera, 
-    FaCode, 
-    FaCheck, 
-    FaWindowClose,
-    FaBirthdayCake,
-    FaPhoneAlt,
-    FaHistory,
-    FaIdBadge,
-    FaUser } from "react-icons/fa";
-    
-import { MdDateRange} from "react-icons/md";
+import {
+  FaWarehouse,
+  FaNetworkWired,
+  FaMapMarkerAlt,
+  FaLock,
+  FaTools,
+  FaCamera,
+  FaCode,
+  FaCheck,
+  FaWindowClose,
+  FaBirthdayCake,
+  FaPhoneAlt,
+  FaHistory,
+  FaIdBadge,
+  FaUser,
+} from "react-icons/fa";
+import { MdDateRange } from "react-icons/md";
 import { GrContactInfo } from "react-icons/gr";
-/* import api from '../services/api.js' */
-import {MapContainer, TileLayer, Marker, Popup} from "react-leaflet"
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { useHistory } from "react-router-dom";
+import api from "../services/api.js";
 
 import styles from "../styles/pages/DepositoDetalhes.module.css";
-import 'react-gallery-carousel/dist/index.css';
+import "react-gallery-carousel/dist/index.css";
 
-import gerenteImg from '../assets/img/depositos/oei/funcionarios/gerente_OEI_400x400.jpg'
-import chefeDepositoImg from '../assets/img/depositos/oei/funcionarios/chefe_de_deposito_OEI_400x400.jpg'
-import funcNum2Img from '../assets/img/depositos/oei/funcionarios/funcionario_num2_OEI_400x400.jpg'
+import gerenteImg from "../assets/img/depositos/oei/funcionarios/gerente_OEI_400x400.jpg";
+import chefeDepositoImg from "../assets/img/depositos/oei/funcionarios/chefe_de_deposito_OEI_400x400.jpg";
+import funcNum2Img from "../assets/img/depositos/oei/funcionarios/funcionario_num2_OEI_400x400.jpg";
 
-import organogramaImg from '../assets/img/depositos/oei/organograma/organograma_oei.PNG'
+import organogramaImg from "../assets/img/depositos/oei/organograma/organograma_oei.PNG";
 
+import img1 from "../assets/img/depositos/oei/1.jpg";
+import img2 from "../assets/img/depositos/oei/2.jpg";
+import img3 from "../assets/img/depositos/oei/3.jpeg";
+import img4 from "../assets/img/depositos/oei/4.jpg";
+import img5 from "../assets/img/depositos/oei/5.jpeg";
+import img6 from "../assets/img/depositos/oei/6.jpeg";
+import img7 from "../assets/img/depositos/oei/7.jpg";
 
-import img1 from '../assets/img/depositos/oei/1.jpg';
-import img2 from '../assets/img/depositos/oei/2.jpg';
-import img3 from '../assets/img/depositos/oei/3.jpeg';
-
-
-import Navbar from "../components/Navbar"
+import Navbar from "../components/Navbar";
+import Loading from "../components/Loading";
+import Footer from "../components/Footer";
 
 function DepositoDetalhes() {
-
   const history = useHistory();
 
-  /* const [deposito, setDeposito] = useState([]);
-  
-   const sigla_deposito = localStorage.getItem('@projetoreciclagem:sigla_deposito');  
+  const [deposito, setDeposito] = useState([]);
 
-   useEffect(() => { 
-    async function getDadosDeposito(){     
-      const response = await api.get(`/depositos/${sigla_deposito}`)
-        setDeposito(response.data);
-        console.log(deposito)         
-    }   
-    getDadosDeposito();    
-  },[deposito]) 
-  */
-  
-    const images = [1, 2, 3].map((size) => ({
-      src: `../assets/img/depositos/oei/${size}.jpg`
-    }));
+  useEffect(() => {
+    async function getDadosDeposito() {
+      const sigla_deposito = await localStorage.getItem(
+        "@projetoreciclagem:sigla_deposito"
+      );
+      console.log(sigla_deposito);
+      const response = await api.get(`/depositos/${sigla_deposito}`);
+      setDeposito(response.data);
+    }
+    getDadosDeposito();
+  }, [deposito]);
+
+  const images = [img1, img2, img3, img4, img5, img6, img7].map((dep) => ({
+    src: dep,
+  }));
+
+  if (!deposito.dados_geograficos) {
+    return (
+      <>
+        <Navbar />
+        <Loading />
+        <Footer />
+      </>
+    );
+  }
 
   return (
     <>
-        <Navbar />
-        
-              
-        <div className={styles.containerPage}>
-          
-          <div className={styles.containerHeader}>              
-                  <h1 className={styles.depName}>Informações sobre o depósito: OEI</h1>
-                  <button type="button" className={styles.backButton} onClick={history.goBack}>
-                    <FiArrowLeft size={44} color="#000" />
-                  </button>
-            </div>
-         
-          
-          <div className={styles.containerSubTitulo}>
-          <h2 className={styles.subTitulo}><FaWarehouse size={40} color="#FFB905" className={styles.iconStyle} /><span style={{"margin-left": "20px"}}>Detalhes sobre o depósito</span></h2>
-          </div>  
-          <hr className={styles.hrBorder} />
+      <Navbar />
 
-          <div className={styles.containerInfoDep}> 
+      <div className={styles.containerPage}>
+        <div className={styles.containerHeader}>
+          <h1 className={styles.depName}>
+            Informações sobre o depósito: {deposito.sigla_dep}
+          </h1>
+          <button
+            type="button"
+            className={styles.backButton}
+            onClick={history.goBack}
+          >
+            <FiArrowLeft size={44} color="#000" />
+          </button>
+        </div>
+
+        <div className={styles.containerSubTitulo}>
+          <h2 className={styles.subTitulo}>
+            <FaWarehouse
+              size={40}
+              color="#FFB905"
+              className={styles.iconStyle}
+            />
+            <span style={{ "margin-left": "20px" }}>
+              Detalhes sobre o depósito
+            </span>
+          </h2>
+        </div>
+        <hr className={styles.hrBorder} />
+
+        <div className={styles.containerInfoDep}>
           <div className={styles.containerInfoDepLeft}>
-                <div className={styles.InfoData}>
-                   <span className={styles.spanInfo}>Sigla depósito:</span>
-                </div>  
-                <div className={styles.InfoData}>
-                <span className={styles.spanInfo}>Sigla loja mãe:</span>
-                </div>  
-                <div className={styles.InfoData}>
-                    <span className={styles.spanInfo}>Cidade:</span>
-                </div> 
-                <div className={styles.InfoData}>
-                      <span className={styles.spanInfo}>UF: </span>
-                </div>    
-                <div className={styles.InfoData}>
-                      <span className={styles.spanInfo}>Anexo a loja? </span>
-                </div>    
-                <div className={styles.InfoData}>
-                      <span className={styles.spanInfo}>Fecha para almoço? </span> 
-                </div>    
-                <div className={styles.InfoData}>
-                      <span className={styles.spanInfo}>Cliente retira? </span>
-                </div>    
-                <div className={styles.InfoData}>
-                      <span className={styles.spanInfo}>Área de CRP? </span>
-                </div>    
-                <div className={styles.InfoData}>
-                    <span className={styles.spanInfo}>Área de logística reversa? </span>
-                </div> 
-                <div className={styles.InfoData}>
-                    <span className={styles.spanInfo}>Área de TAT? </span>
-                </div>  
-                <div className={styles.InfoData}>
-                    <span className={styles.spanInfo}>Postos que abastece: </span>
-                </div>   
-                <div className={styles.InfoData}>
-                    <span className={styles.spanInfo}>Representantes que abastece: </span>
-                </div>         
-            </div> 
-            <div className={styles.containerInfoDepRight}>
             <div className={styles.InfoData}>
-                   <span className={styles.spanInfoResponse}>OEI</span>
-                </div>  
-                <div className={styles.InfoData}>
-                  <span className={styles.spanInfoResponse}>OEI</span> 
-                </div>  
-                <div className={styles.InfoData}>
-                    <span className={styles.spanInfoResponse}>Oeiras</span>
-                </div> 
-                <div className={styles.InfoData}>
-                      <span className={styles.spanInfoResponse}>PI</span>
-                </div>    
-                <div className={styles.InfoData}>
-                      <span className={styles.simBadge}>SIM</span>
-                </div>    
-                <div className={styles.InfoData}>
-                      <span className={styles.naoBadge}>NÃO</span>
-                </div>    
-                <div className={styles.InfoData}>
-                      <span className={styles.simBadge}>SIM</span>
-                </div>    
-                <div className={styles.InfoData}>
-                      <span className={styles.naoBadge}>NÃO</span>
-                </div>    
-                <div className={styles.InfoData}>
-                    <span className={styles.naoBadge}>NÃO</span>
-                </div> 
-                <div className={styles.InfoData}>
-                    <span className={styles.naoBadge}>NÃO</span>
-                </div>  
-                <div className={styles.InfoData}>
-                    <span className={styles.spanInfoResponse}>SMP</span>
-                </div>   
-                <div className={styles.InfoData}>
-                    <span className={styles.spanInfoResponse}>SMP</span>
-                </div> 
+              <span className={styles.spanInfo}>Sigla depósito:</span>
             </div>
+            <div className={styles.InfoData}>
+              <span className={styles.spanInfo}>Sigla loja mãe:</span>
             </div>
+            <div className={styles.InfoData}>
+              <span className={styles.spanInfo}>Cidade:</span>
+            </div>
+            <div className={styles.InfoData}>
+              <span className={styles.spanInfo}>UF: </span>
+            </div>
+            <div className={styles.InfoData}>
+              <span className={styles.spanInfo}>Anexo a loja? </span>
+            </div>
+            <div className={styles.InfoData}>
+              <span className={styles.spanInfo}>Fecha para almoço? </span>
+            </div>
+            <div className={styles.InfoData}>
+              <span className={styles.spanInfo}>Cliente retira? </span>
+            </div>
+            <div className={styles.InfoData}>
+              <span className={styles.spanInfo}>Área de CRP? </span>
+            </div>
+            <div className={styles.InfoData}>
+              <span className={styles.spanInfo}>
+                Área de logística reversa?
+              </span>
+            </div>
+            <div className={styles.InfoData}>
+              <span className={styles.spanInfo}>Área de TAT? </span>
+            </div>
+            <div className={styles.InfoData}>
+              <span className={styles.spanInfo}>Postos que abastece: </span>
+            </div>
+            <div className={styles.InfoData}>
+              <span className={styles.spanInfo}>
+                Representantes que abastece:
+              </span>
+            </div>
+          </div>
+          <div className={styles.containerInfoDepRight}>
+            <div className={styles.InfoData}>
+              <span className={styles.spanInfoResponse}>
+                {deposito.sigla_dep}
+              </span>
+            </div>
+            <div className={styles.InfoData}>
+              <span className={styles.spanInfoResponse}>
+                {deposito.sigla_loja_mae}
+              </span>
+            </div>
+            <div className={styles.InfoData}>
+              <span className={styles.spanInfoResponse}>
+                {deposito.dados_geograficos.cidade}
+              </span>
+            </div>
+            <div className={styles.InfoData}>
+              <span className={styles.spanInfoResponse}>
+                {deposito.dados_geograficos.uf}
+              </span>
+            </div>
+            <div className={styles.InfoData}>
+              {deposito.anexo_loja === true ? (
+                <span className={styles.simBadge}>SIM</span>
+              ) : (
+                <span className={styles.naoBadge}>NÃO</span>
+              )}
+            </div>
+            <div className={styles.InfoData}>
+                {deposito.fecha_almoco === true ? (
+                <span className={styles.simBadge}>SIM</span>
+              ) : (
+                <span className={styles.naoBadge}>NÃO</span>
+              )}
+            </div>
+            <div className={styles.InfoData}>
+            {deposito.cliente_retira === true ? (
+                <span className={styles.simBadge}>SIM</span>
+              ) : (
+                <span className={styles.naoBadge}>NÃO</span>
+              )}
+            </div>
+            <div className={styles.InfoData}>
+            {deposito.infraestrutura.area_servico.crp === true ? (
+                <span className={styles.simBadge}>SIM</span>
+              ) : (
+                <span className={styles.naoBadge}>NÃO</span>
+              )}
+            </div>
+            <div className={styles.InfoData}>
+            {deposito.infraestrutura.area_servico.logistica_reversa === true ? (
+                <span className={styles.simBadge}>SIM</span>
+              ) : (
+                <span className={styles.naoBadge}>NÃO</span>
+              )}
+            </div>
+            <div className={styles.InfoData}>
+            {deposito.infraestrutura.area_servico.tat === true ? (
+                <span className={styles.simBadge}>SIM</span>
+              ) : (
+                <span className={styles.naoBadge}>NÃO</span>
+              )}
+            </div>
+            <div className={styles.InfoData}>
+              <span className={styles.spanInfoResponse}>{deposito.pdvs.sigla_posto}</span>
+            </div>
+            <div className={styles.InfoData}>
+              <span className={styles.spanInfoResponse}>{deposito.pdvs.sigla_rep}</span>
+            </div>
+          </div>
+        </div>
 
-            <div className={styles.containerSubTitulo}>
-          <h2 className={styles.subTitulo}><FiUsers size={40} color="#FFB905" className={styles.iconStyle} /><span style={{"margin-left": "20px"}}>Lideranças</span></h2>
+        <div className={styles.containerSubTitulo}>
+          <h2 className={styles.subTitulo}>
+            <FiUsers size={40} color="#FFB905" className={styles.iconStyle} />
+            <span style={{ "margin-left": "20px" }}>Lideranças</span>
+          </h2>
         </div>
         <hr className={styles.hrBorder} />
 
         <div className={styles.containerChefes}>
-        <div className={styles.containerChefeDep2}>           
-          <div className={styles.asideChefedep}>
-              <img src={chefeDepositoImg} className={styles.imgNew} alt="Gerente" />
+          <div className={styles.containerChefeDep2}>
+            <div className={styles.asideChefedep}>
+              <img
+                src={chefeDepositoImg}
+                className={styles.imgNew}
+                alt="Gerente"
+              />
               <h2 className={styles.nameDep}>Chefe de depósito</h2>
-          </div>
-          <div className={styles.asideRight}>
-          <hr className={styles.hrNew} />
-                <div className={styles.containerInfo2}>
-                        <div className={styles.containerTextInfo2}>
-                          <FaUser size={22} color="#000" />
-                          <div className={styles.containerTextInfo2}>
-                            <span className={styles.textProfileLeft}>NOME DE GUERRA:</span>
-                            <span className={styles.textProfileRight}>VALDEMIR</span>   
-                          </div>                       
-                        </div>
-                        <div className={styles.containerTextInfo2}>
-                          <GrContactInfo size={22} color="#000" />
-                          <div className={styles.containerTextInfo2}>
-                            <span className={styles.textProfileLeft}>NOME COMPLETO:</span>
-                            <span className={styles.textProfileRight}>VALDEMIR ALVES FEITOSA</span>   
-                          </div> 
-
-                                                  
-                        </div>
-                        <div className={styles.containerTextInfo2}>
-                          <FaIdBadge size={22} color="#000" />
-                          <div className={styles.containerTextInfo2}>
-                            <span className={styles.textProfileLeft}>NÚMERO GERAL:</span>
-                            <span className={styles.textProfileRight}>99999-9</span>   
-                          </div> 
-
-
-                                                  
-                        </div>
-                        <div className={styles.containerTextInfo2}>
-                           <MdDateRange size={22} color="#000" />
-                          <div className={styles.containerTextInfo2}>
-                            <span className={styles.textProfileLeft}>DATA DE ADMISSÃO:</span>
-                            <span className={styles.textProfileRight}>01/01/2021</span>   
-                          </div> 
-                                                  
-                        </div>
-                        <div className={styles.containerTextInfo2}>
-                        <FaBirthdayCake size={22} color="#000" />
-                          <div className={styles.containerTextInfo2}>
-                            <span className={styles.textProfileLeft}>DATA DE NASCIMENTO:</span>
-                            <span className={styles.textProfileRight}>01/01/2021</span>   
-                          </div> 
-                                                   
-                        </div>
-                        <div className={styles.containerTextInfo2}>
-                            <FaPhoneAlt size={22} color="#000" />
-                            <div className={styles.containerTextInfo2}>
-                              <span className={styles.textProfileLeft}>CONTATOS:</span>
-                              <span className={styles.textProfileRight}>(86) 9 9999-9999</span>   
-                             </div> 
-                                                  
-                        </div>
-                        <div className={styles.containerTextInfo2}>
-                             <FaHistory size={22} color="#000" />
-                             <div className={styles.containerTextInfo2}>
-                                <span className={styles.textProfileLeft}>HISTÓRICO NA EMPRESA:</span>
-                                <span className={styles.textProfileRight}>lorem ipsum...</span>   
-                             </div> 
-                                                  
-                        </div>  
+            </div>
+            <div className={styles.asideRight}>
+              <hr className={styles.hrNew} />
+              <div className={styles.containerInfo2}>
+                <div className={styles.containerTextInfo2}>
+                  <FaUser size={22} color="#000" />
+                  <div className={styles.containerTextInfo2}>
+                    <span className={styles.textProfileLeft}>
+                      NOME DE GUERRA:
+                    </span>
+                    <span className={styles.textProfileRight}>VALDEMIR</span>
+                  </div>
                 </div>
-
+                <div className={styles.containerTextInfo2}>
+                  <GrContactInfo size={22} color="#000" />
+                  <div className={styles.containerTextInfo2}>
+                    <span className={styles.textProfileLeft}>
+                      NOME COMPLETO:
+                    </span>
+                    <span className={styles.textProfileRight}>
+                      VALDEMIR ALVES FEITOSA
+                    </span>
+                  </div>
+                </div>
+                <div className={styles.containerTextInfo2}>
+                  <FaIdBadge size={22} color="#000" />
+                  <div className={styles.containerTextInfo2}>
+                    <span className={styles.textProfileLeft}>
+                      NÚMERO GERAL:
+                    </span>
+                    <span className={styles.textProfileRight}>99999-9</span>
+                  </div>
+                </div>
+                <div className={styles.containerTextInfo2}>
+                  <MdDateRange size={22} color="#000" />
+                  <div className={styles.containerTextInfo2}>
+                    <span className={styles.textProfileLeft}>
+                      DATA DE ADMISSÃO:
+                    </span>
+                    <span className={styles.textProfileRight}>01/01/2021</span>
+                  </div>
+                </div>
+                <div className={styles.containerTextInfo2}>
+                  <FaBirthdayCake size={22} color="#000" />
+                  <div className={styles.containerTextInfo2}>
+                    <span className={styles.textProfileLeft}>
+                      DATA DE NASCIMENTO:
+                    </span>
+                    <span className={styles.textProfileRight}>01/01/2021</span>
+                  </div>
+                </div>
+                <div className={styles.containerTextInfo2}>
+                  <FaPhoneAlt size={22} color="#000" />
+                  <div className={styles.containerTextInfo2}>
+                    <span className={styles.textProfileLeft}>CONTATOS:</span>
+                    <span className={styles.textProfileRight}>
+                      (86) 9 9999-9999
+                    </span>
+                  </div>
+                </div>
+                <div className={styles.containerTextInfo2}>
+                  <FaHistory size={22} color="#000" />
+                  <div className={styles.containerTextInfo2}>
+                    <span className={styles.textProfileLeft}>
+                      HISTÓRICO NA EMPRESA:
+                    </span>
+                    <span className={styles.textProfileRight}>
+                      lorem ipsum...
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-            
-        </div>
-        <div className={styles.containerChefeDep2}>           
-          <div className={styles.asideChefedep}>
+          <div className={styles.containerChefeDep2}>
+            <div className={styles.asideChefedep}>
               <img src={gerenteImg} className={styles.imgNew} alt="Gerente" />
               <h2 className={styles.nameDep}>Gerente</h2>
-          </div>
-          <div className={styles.asideRight}>
-          <hr className={styles.hrNew} />
-                <div className={styles.containerInfo2}>
-                        <div className={styles.containerTextInfo2}>
-                          <FaUser size={22} color="#000" />
-                          <div className={styles.containerTextInfo2}>
-                            <span className={styles.textProfileLeft}>NOME DE GUERRA:</span>
-                            <span className={styles.textProfileRight}>VALDEMIR ALVES FEITOSA</span>   
-                          </div>                       
-                        </div>
-                        <div className={styles.containerTextInfo2}>
-                          <GrContactInfo size={22} color="#000" />
-                          <div className={styles.containerTextInfo2}>
-                            <span className={styles.textProfileLeft}>NOME COMPLETO:</span>
-                            <span className={styles.textProfileRight}>VALDEMIR ALVES FEITOSA</span>   
-                          </div> 
-
-                                                  
-                        </div>
-                        <div className={styles.containerTextInfo2}>
-                          <FaIdBadge size={22} color="#000" />
-                          <div className={styles.containerTextInfo2}>
-                            <span className={styles.textProfileLeft}>NÚMERO GERAL:</span>
-                            <span className={styles.textProfileRight}>124123</span>   
-                          </div> 
-
-
-                                                  
-                        </div>
-                        <div className={styles.containerTextInfo2}>
-                           <MdDateRange size={22} color="#000" />
-                          <div className={styles.containerTextInfo2}>
-                            <span className={styles.textProfileLeft}>DATA DE ADMISSÃO:</span>
-                            <span className={styles.textProfileRight}>124123</span>   
-                          </div> 
-                                                  
-                        </div>
-                        <div className={styles.containerTextInfo2}>
-                        <FaBirthdayCake size={22} color="#000" />
-                          <div className={styles.containerTextInfo2}>
-                            <span className={styles.textProfileLeft}>DATA DE NASCIMENTO:</span>
-                            <span className={styles.textProfileRight}>124123</span>   
-                          </div> 
-                                                   
-                        </div>
-                        <div className={styles.containerTextInfo2}>
-                            <FaPhoneAlt size={22} color="#000" />
-                            <div className={styles.containerTextInfo2}>
-                              <span className={styles.textProfileLeft}>CONTATOS:</span>
-                              <span className={styles.textProfileRight}>124123</span>   
-                             </div> 
-                                                  
-                        </div>
-                        <div className={styles.containerTextInfo2}>
-                             <FaHistory size={22} color="#000" />
-                             <div className={styles.containerTextInfo2}>
-                                <span className={styles.textProfileLeft}>HISTÓRICO NA EMPRESA:</span>
-                                <span className={styles.textProfileRight}>124123</span>   
-                             </div> 
-                                                  
-                        </div>  
+            </div>
+            <div className={styles.asideRight}>
+              <hr className={styles.hrNew} />
+              <div className={styles.containerInfo2}>
+                <div className={styles.containerTextInfo2}>
+                  <FaUser size={22} color="#000" />
+                  <div className={styles.containerTextInfo2}>
+                    <span className={styles.textProfileLeft}>
+                      NOME DE GUERRA:
+                    </span>
+                    <span className={styles.textProfileRight}>
+                      VALDEMIR ALVES FEITOSA
+                    </span>
+                  </div>
                 </div>
-
+                <div className={styles.containerTextInfo2}>
+                  <GrContactInfo size={22} color="#000" />
+                  <div className={styles.containerTextInfo2}>
+                    <span className={styles.textProfileLeft}>
+                      NOME COMPLETO:
+                    </span>
+                    <span className={styles.textProfileRight}>
+                      VALDEMIR ALVES FEITOSA
+                    </span>
+                  </div>
+                </div>
+                <div className={styles.containerTextInfo2}>
+                  <FaIdBadge size={22} color="#000" />
+                  <div className={styles.containerTextInfo2}>
+                    <span className={styles.textProfileLeft}>
+                      NÚMERO GERAL:
+                    </span>
+                    <span className={styles.textProfileRight}>124123</span>
+                  </div>
+                </div>
+                <div className={styles.containerTextInfo2}>
+                  <MdDateRange size={22} color="#000" />
+                  <div className={styles.containerTextInfo2}>
+                    <span className={styles.textProfileLeft}>
+                      DATA DE ADMISSÃO:
+                    </span>
+                    <span className={styles.textProfileRight}>124123</span>
+                  </div>
+                </div>
+                <div className={styles.containerTextInfo2}>
+                  <FaBirthdayCake size={22} color="#000" />
+                  <div className={styles.containerTextInfo2}>
+                    <span className={styles.textProfileLeft}>
+                      DATA DE NASCIMENTO:
+                    </span>
+                    <span className={styles.textProfileRight}>124123</span>
+                  </div>
+                </div>
+                <div className={styles.containerTextInfo2}>
+                  <FaPhoneAlt size={22} color="#000" />
+                  <div className={styles.containerTextInfo2}>
+                    <span className={styles.textProfileLeft}>CONTATOS:</span>
+                    <span className={styles.textProfileRight}>124123</span>
+                  </div>
+                </div>
+                <div className={styles.containerTextInfo2}>
+                  <FaHistory size={22} color="#000" />
+                  <div className={styles.containerTextInfo2}>
+                    <span className={styles.textProfileLeft}>
+                      HISTÓRICO NA EMPRESA:
+                    </span>
+                    <span className={styles.textProfileRight}>124123</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-            
-        </div>
-        <div className={styles.containerChefeDep2}>           
-          <div className={styles.asideChefedep}>
+          <div className={styles.containerChefeDep2}>
+            <div className={styles.asideChefedep}>
               <img src={funcNum2Img} className={styles.imgNew} alt="Gerente" />
               <h2 className={styles.nameDep}>Funcionário número 2</h2>
-          </div>
-          <div className={styles.asideRight}>
-          <hr className={styles.hrNew} />
-                <div className={styles.containerInfo2}>
-                        <div className={styles.containerTextInfo2}>
-                          <FaUser size={22} color="#000" />
-                          <div className={styles.containerTextInfo2}>
-                            <span className={styles.textProfileLeft}>NOME DE GUERRA:</span>
-                            <span className={styles.textProfileRight}>VALDEMIR ALVES FEITOSA</span>   
-                          </div>                       
-                        </div>
-                        <div className={styles.containerTextInfo2}>
-                          <GrContactInfo size={22} color="#000" />
-                          <div className={styles.containerTextInfo2}>
-                            <span className={styles.textProfileLeft}>NOME COMPLETO:</span>
-                            <span className={styles.textProfileRight}>VALDEMIR ALVES FEITOSA</span>   
-                          </div> 
-
-                                                  
-                        </div>
-                        <div className={styles.containerTextInfo2}>
-                          <FaIdBadge size={22} color="#000" />
-                          <div className={styles.containerTextInfo2}>
-                            <span className={styles.textProfileLeft}>NÚMERO GERAL:</span>
-                            <span className={styles.textProfileRight}>124123</span>   
-                          </div> 
-
-
-                                                  
-                        </div>
-                        <div className={styles.containerTextInfo2}>
-                           <MdDateRange size={22} color="#000" />
-                          <div className={styles.containerTextInfo2}>
-                            <span className={styles.textProfileLeft}>DATA DE ADMISSÃO:</span>
-                            <span className={styles.textProfileRight}>124123</span>   
-                          </div> 
-                                                  
-                        </div>
-                        <div className={styles.containerTextInfo2}>
-                        <FaBirthdayCake size={22} color="#000" />
-                          <div className={styles.containerTextInfo2}>
-                            <span className={styles.textProfileLeft}>DATA DE NASCIMENTO:</span>
-                            <span className={styles.textProfileRight}>124123</span>   
-                          </div> 
-                                                   
-                        </div>
-                        <div className={styles.containerTextInfo2}>
-                            <FaPhoneAlt size={22} color="#000" />
-                            <div className={styles.containerTextInfo2}>
-                              <span className={styles.textProfileLeft}>CONTATOS:</span>
-                              <span className={styles.textProfileRight}>124123</span>   
-                             </div> 
-                                                  
-                        </div>
-                        <div className={styles.containerTextInfo2}>
-                             <FaHistory size={22} color="#000" />
-                             <div className={styles.containerTextInfo2}>
-                                <span className={styles.textProfileLeft}>HISTÓRICO NA EMPRESA:</span>
-                                <span className={styles.textProfileRight}>124123</span>   
-                             </div>                                                   
-                        </div>  
+            </div>
+            <div className={styles.asideRight}>
+              <hr className={styles.hrNew} />
+              <div className={styles.containerInfo2}>
+                <div className={styles.containerTextInfo2}>
+                  <FaUser size={22} color="#000" />
+                  <div className={styles.containerTextInfo2}>
+                    <span className={styles.textProfileLeft}>
+                      NOME DE GUERRA:
+                    </span>
+                    <span className={styles.textProfileRight}>
+                      VALDEMIR ALVES FEITOSA
+                    </span>
+                  </div>
                 </div>
-          </div>            
-        </div>
-      
-
-      
-        
-        </div>
-
-
-          <div className={styles.containerSubTitulo}>
-          <h2 className={styles.subTitulo}><FaCode size={40} color="#FFB905" className={styles.iconStyle} /><span style={{"margin-left": "20px"}}>Sistemas implantados</span></h2>
-          </div>  
-          <hr className={styles.hrBorder} />
-
-          <table className={styles.tabela}>
-            <thead>
-                <tr>
-                    <th >Venda Remota</th>
-                    <th>Control Mobile</th>
-                    <th>WMS</th>
-                    
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><FaCheck size={30} color="#02bd02" /></td>
-                    <td><FaWindowClose size={30} color="#e01010" /></td>
-                    <td><FaWindowClose size={30} color="#e01010" /></td>
-                    
-                </tr>
-                
-            </tbody>
-        </table>
-
-          <div className={styles.containerSubTitulo}>
-          <h2 className={styles.subTitulo}><FaCamera size={40} color="#FFB905" className={styles.iconStyle} /><span style={{"margin-left": "20px"}}>Imagens</span></h2>
-          </div>  
-          <hr className={styles.hrBorder} />
-          
-          <div className={styles.containerCarousel} >
-              <Carousel images={images} style={{ height: '40%', width: '40%'}}/>
+                <div className={styles.containerTextInfo2}>
+                  <GrContactInfo size={22} color="#000" />
+                  <div className={styles.containerTextInfo2}>
+                    <span className={styles.textProfileLeft}>
+                      NOME COMPLETO:
+                    </span>
+                    <span className={styles.textProfileRight}>
+                      VALDEMIR ALVES FEITOSA
+                    </span>
+                  </div>
+                </div>
+                <div className={styles.containerTextInfo2}>
+                  <FaIdBadge size={22} color="#000" />
+                  <div className={styles.containerTextInfo2}>
+                    <span className={styles.textProfileLeft}>
+                      NÚMERO GERAL:
+                    </span>
+                    <span className={styles.textProfileRight}>124123</span>
+                  </div>
+                </div>
+                <div className={styles.containerTextInfo2}>
+                  <MdDateRange size={22} color="#000" />
+                  <div className={styles.containerTextInfo2}>
+                    <span className={styles.textProfileLeft}>
+                      DATA DE ADMISSÃO:
+                    </span>
+                    <span className={styles.textProfileRight}>124123</span>
+                  </div>
+                </div>
+                <div className={styles.containerTextInfo2}>
+                  <FaBirthdayCake size={22} color="#000" />
+                  <div className={styles.containerTextInfo2}>
+                    <span className={styles.textProfileLeft}>
+                      DATA DE NASCIMENTO:
+                    </span>
+                    <span className={styles.textProfileRight}>124123</span>
+                  </div>
+                </div>
+                <div className={styles.containerTextInfo2}>
+                  <FaPhoneAlt size={22} color="#000" />
+                  <div className={styles.containerTextInfo2}>
+                    <span className={styles.textProfileLeft}>CONTATOS:</span>
+                    <span className={styles.textProfileRight}>124123</span>
+                  </div>
+                </div>
+                <div className={styles.containerTextInfo2}>
+                  <FaHistory size={22} color="#000" />
+                  <div className={styles.containerTextInfo2}>
+                    <span className={styles.textProfileLeft}>
+                      HISTÓRICO NA EMPRESA:
+                    </span>
+                    <span className={styles.textProfileRight}>124123</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+        </div>
 
-          <div className={styles.containerSubTitulo}>
-          <h2 className={styles.subTitulo}><FaLock size={40} color="#FFB905" className={styles.iconStyle} /><span style={{"margin-left": "20px"}}>Itens de segurança</span></h2>
+        <div className={styles.containerSubTitulo}>
+          <h2 className={styles.subTitulo}>
+            <FaCode size={40} color="#FFB905" className={styles.iconStyle} />
+            <span style={{ "margin-left": "20px" }}>Sistemas implantados</span>
+          </h2>
         </div>
         <hr className={styles.hrBorder} />
 
         <table className={styles.tabela}>
-            <thead>
-                <tr>
-                    <th>CFTV</th>
-                    <th>Vigilante</th>
-                    <th>Cachorro</th>
-                    <th>Cerca elétrica</th>
-                    <th>Botão de pânico</th>
-                    <th>Alarme</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><FaCheck size={30} color="#02bd02" /></td>
-                    <td><FaWindowClose size={30} color="#e01010" /></td>
-                    <td><FaWindowClose size={30} color="#e01010" /></td>
-                    <td><FaCheck size={30} color="#02bd02" /></td>
-                    <td><FaWindowClose size={30} color="#e01010" /></td>
-                    <td><FaWindowClose size={30} color="#e01010" /></td>
-                </tr>
-                
-            </tbody>
+          <thead>
+            <tr>
+              <th>Venda Remota</th>
+              <th>Control Mobile</th>
+              <th>WMS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <FaCheck size={30} color="#02bd02" />
+              </td>
+              <td>
+                <FaWindowClose size={30} color="#e01010" />
+              </td>
+              <td>
+                <FaWindowClose size={30} color="#e01010" />
+              </td>
+            </tr>
+          </tbody>
         </table>
 
         <div className={styles.containerSubTitulo}>
-          <h2 className={styles.subTitulo}><FaTools size={40} color="#FFB905" className={styles.iconStyle} /><span style={{"margin-left": "20px"}}>Ferramentas e equipamentos</span></h2>
-          </div>  
-          <hr className={styles.hrBorder} />
+          <h2 className={styles.subTitulo}>
+            <FaCamera size={40} color="#FFB905" className={styles.iconStyle} />
+            <span style={{ "margin-left": "20px" }}>Imagens</span>
+          </h2>
+        </div>
+        <hr className={styles.hrBorder} />
 
-          <table className={styles.tabela}>
+        <div className={styles.containerCarousel}>
+          <Carousel
+            images={images}
+            style={{ height: "85vh", width: "100vh" }}
+          />
+        </div>
+
+        <div className={styles.containerSubTitulo}>
+          <h2 className={styles.subTitulo}>
+            <FaLock size={40} color="#FFB905" className={styles.iconStyle} />
+            <span style={{ "margin-left": "20px" }}>Itens de segurança</span>
+          </h2>
+        </div>
+        <hr className={styles.hrBorder} />
+
+        <table className={styles.tabela}>
+          <thead>
+            <tr>
+              <th>CFTV</th>
+              <th>Vigilante</th>
+              <th>Cachorro</th>
+              <th>Cerca elétrica</th>
+              <th>Botão de pânico</th>
+              <th>Alarme</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <FaCheck size={30} color="#02bd02" />
+              </td>
+              <td>
+                <FaWindowClose size={30} color="#e01010" />
+              </td>
+              <td>
+                <FaWindowClose size={30} color="#e01010" />
+              </td>
+              <td>
+                <FaCheck size={30} color="#02bd02" />
+              </td>
+              <td>
+                <FaWindowClose size={30} color="#e01010" />
+              </td>
+              <td>
+                <FaWindowClose size={30} color="#e01010" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div className={styles.containerSubTitulo}>
+          <h2 className={styles.subTitulo}>
+            <FaTools size={40} color="#FFB905" className={styles.iconStyle} />
+            <span style={{ "margin-left": "20px" }}>
+              Ferramentas e equipamentos
+            </span>
+          </h2>
+        </div>
+        <hr className={styles.hrBorder} />
+
+        {/*  <table className={styles.tabela}>
             <thead>
                 <tr>
                     <th>Porta Pallet</th>
@@ -498,49 +613,63 @@ function DepositoDetalhes() {
                 
             </tbody>
         </table>
- 
-        
-        
+  */}
 
         <div className={styles.containerSubTitulo}>
-          <h2 className={styles.subTitulo}><FaMapMarkerAlt size={40} color="#FFB905" className={styles.iconStyle} /><span style={{"margin-left": "20px"}}>Localização</span></h2>
+          <h2 className={styles.subTitulo}>
+            <FaMapMarkerAlt
+              size={40}
+              color="#FFB905"
+              className={styles.iconStyle}
+            />
+            <span style={{ "margin-left": "20px" }}>Localização</span>
+          </h2>
         </div>
         <hr className={styles.hrBorder} />
-        
-        <MapContainer 
+
+        <MapContainer
           center={[-7.0131848, -42.1332168]}
           zoom={13}
-          style={{width: '80%', height: '500px',  'margin': 'auto', 'margin-top': '15px'}}
+          style={{
+            width: "80%",
+            height: "500px",
+            margin: "auto",
+            "margin-top": "15px",
+          }}
           scrollWheelZoom={false}
-          >
-            <TileLayer 
-              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-              url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-            <Marker position={[-7.0131848, -42.1332168]}>
+        >
+          <TileLayer
+            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          <Marker position={[-7.0131848, -42.1332168]}>
             <Popup>
               <span>Aqui está o depósito de Oeiras!</span>
             </Popup>
-        </Marker>
-          </MapContainer>
-        
-
-
+          </Marker>
+        </MapContainer>
 
         <div className={styles.containerSubTitulo}>
-          <h2 className={styles.subTitulo}><FaNetworkWired size={40} color="#FFB905" className={styles.iconStyle} /><span style={{"margin-left": "20px"}}>Organograma do depósito</span></h2>
+          <h2 className={styles.subTitulo}>
+            <FaNetworkWired
+              size={40}
+              color="#FFB905"
+              className={styles.iconStyle}
+            />
+            <span style={{ "margin-left": "20px" }}>
+              Organograma do depósito
+            </span>
+          </h2>
         </div>
         <hr className={styles.hrBorder} />
 
-        <img src={organogramaImg} className={styles.organogramaEstilo} alt="organograma do depósito" />
-
-        
-
-
-        
-
-        </div>
-        
+        <img
+          src={organogramaImg}
+          className={styles.organogramaEstilo}
+          alt="organograma do depósito"
+        />
+      </div>
+      <Footer />
     </>
   );
 }

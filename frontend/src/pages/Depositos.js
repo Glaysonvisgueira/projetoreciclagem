@@ -10,7 +10,6 @@ import Navbar from "../components/Navbar"
 import Loading from "../components/Loading"
 import Footer from "../components/Footer"
 
-
 export default function Depositos() {
 
     const [depositos, setDepositos] = useState([]);
