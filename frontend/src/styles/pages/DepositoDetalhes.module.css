@@ -20,6 +20,7 @@
 }
 .backButton{    
     display: flex;
+    right: 2%;
     width: 60px;
     height: 60px;
     background-color: #FFB905;
@@ -27,6 +28,8 @@
     justify-content: center;
     border: none;    
     border-radius: 10px;   
+    position: fixed;
+    z-index: 5;
 }
 
 .backButton:hover {
@@ -40,10 +43,15 @@
 }
 
 .depName{
-    color: #FFB905;
+    color: #161616;
     font-family: 'Roboto' , sans-serif;
     font-weight: 900;
     font-size: 45px;
+    background-color: #FFB905;
+    border-radius: 4px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .containerHeader{
@@ -167,8 +175,9 @@
   }
 
   .organogramaEstilo{      
-      width: 100%;
-      height: 90vh;
+      width: 95%;
+      height: 85vh;
+      margin: auto;
       margin-bottom: 30px;
   }
 
@@ -276,13 +285,16 @@
 
 .containerChefeDep2{
     display: flex;
-    width: 33%;
-    height: 60%;
+    width: 33%;  
+    height: 80vh;
     background-color: #f0f0f0;
-    border-radius: 10px;
+    border-radius: 15px;
     flex-direction: column;
     overflow: hidden;
-    margin: 10px
+    margin: 10px;   
+    position:relative;
+    overflow:hidden
+    
 }
 
 .asideChefedep{
@@ -350,9 +362,10 @@
       flex-direction: column;
       width: 85%;
       height: 100%;     
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
       margin-top: 10px;
+      
 }
 
 .containerTextInfo2{
@@ -367,7 +380,7 @@
 .containerChefes{
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     width: 100%;
 }
@@ -383,4 +396,29 @@
     color: #FFB905;
     font-weight: bold;
     font-size: 16px;
+}
+
+.statusValidacao{
+    margin-top: 10px;
+    color: rgb(70, 70, 70);
+    font-family: 'Roboto' , sans-serif;
+    font-weight: 400;
+    font-size: 25px;
+}
+
+.isValidado{
+    font-weight: 900;
+    color: rgb(38, 163, 33);
+    
+
+}
+
+.lastUpdate{
+    margin-top: 5px;
+    color: rgb(116, 116, 116);
+}
+
+.isNotValidado{
+    font-weight: 900;
+    color: rgb(146, 44, 44);
 }

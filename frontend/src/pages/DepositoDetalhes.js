@@ -28,22 +28,6 @@ import api from "../services/api.js";
 import styles from "../styles/pages/DepositoDetalhes.module.css";
 import "react-gallery-carousel/dist/index.css";
 
-/* 
-import gerenteImg from "../assets/img/depositos/oei/funcionarios/gerente400x400.jpg";
-import chefeDepositoImg from "../assets/img/depositos/oei/funcionarios/chefedeposito400x400.jpg";
-import funcNum2Img from "../assets/img/depositos/oei/funcionarios/num2_400x400.jpg"; 
-
-import organogramaImg from "../assets/img/depositos/oei/organograma/organograma.PNG";
-
-import img1 from "../assets/img/depositos/oei/estrutura/1.jpg";
-import img2 from "../assets/img/depositos/oei/estrutura/2.jpg";
-import img3 from "../assets/img/depositos/oei/estrutura/3.jpeg";
-import img4 from "../assets/img/depositos/oei/estrutura/4.jpg";
-import img5 from "../assets/img/depositos/oei/estrutura/5.jpeg";
-import img6 from "../assets/img/depositos/oei/estrutura/6.jpeg";
-import img7 from "../assets/img/depositos/oei/estrutura/7.jpg"; 
- */
-
 import Navbar from "../components/Navbar";
 import Loading from "../components/Loading";
 import Footer from "../components/Footer";
@@ -51,8 +35,7 @@ import Footer from "../components/Footer";
 function DepositoDetalhes() {
   const history = useHistory();
 
-  const [deposito, setDeposito] = useState([]);
-  const [imagesDeposito, setImage] = useState([]);
+  const [deposito, setDeposito] = useState([]);  
 
   useEffect(() => {
     async function getDadosDeposito() {
@@ -62,14 +45,12 @@ function DepositoDetalhes() {
       console.log(sigla_deposito);
       const response = await api.get(`/depositos/${sigla_deposito}`);
       setDeposito(response.data);
+      
     }
     getDadosDeposito();
   }, []);
-
-  /* const images = [img1, img2, img3, img4, img5, img6, img7].map((dep) => ({
-    src: dep,
-  }));
- */
+  
+ 
   if (!deposito.dados_geograficos) {
     return (
       <>
@@ -79,7 +60,12 @@ function DepositoDetalhes() {
       </>
     );
   }
-
+    
+      //Percorrer todas as imagens que estão dentro do array para exibir no Carousel.
+      const images = deposito.infraestrutura.fotos_deposito.interno.map((dep) => ({
+        src: dep,
+      })); 
+     
   return (
     <>
       <Navbar />
@@ -87,7 +73,7 @@ function DepositoDetalhes() {
       <div className={styles.containerPage}>
         <div className={styles.containerHeader}>
           <h1 className={styles.depName}>
-            Informações sobre o depósito: {deposito.sigla_dep}
+            {deposito.sigla_dep} - {deposito.dados_geograficos.cidade}
           </h1>
           <button
             type="button"
@@ -245,6 +231,7 @@ function DepositoDetalhes() {
             <div className={styles.asideChefedep}>
               <img
                 src={`${deposito.chefe_dep.foto_url}`}
+                
                 className={styles.imgNew}
                 alt="Chefe do depósito"
               />
@@ -601,12 +588,12 @@ function DepositoDetalhes() {
         </div>
         <hr className={styles.hrBorder} />
 
-        {/* <div className={styles.containerCarousel}>
+         <div className={styles.containerCarousel}>
           <Carousel
             images={images}
             style={{ height: "85vh", width: "100vh" }}
           />
-        </div> */}
+        </div> 
 
         <div className={styles.containerSubTitulo}>
           <h2 className={styles.subTitulo}>
@@ -781,11 +768,28 @@ function DepositoDetalhes() {
         </div>
         <hr className={styles.hrBorder} />
 
-        {/* <img
-          src={`${deposito.orgranograma.url_organograma}`}
+        {deposito.organograma.status_organograma === 'VALIDADO' ? (
+                <span className={styles.statusValidacao}>
+             
+                STATUS: <span className={styles.isValidado}>VALIDADO</span>
+              </span>
+              ) : (
+                <span className={styles.statusValidacao}>
+             
+              STATUS: <span className={styles.isNotValidado}>AGUARDANDO</span>
+            </span>
+              )}
+             
+            <span className={styles.lastUpdate}>
+              Última atualização: {moment(deposito.organograma.ultima_atualizacao).format('L')}
+            </span>
+        <img
+          
+          src={`${deposito.organograma.url_organograma}`}
           className={styles.organogramaEstilo}
           alt="organograma do depósito"
-        /> */}
+        />
+
       </div>
       <Footer />
     </>
