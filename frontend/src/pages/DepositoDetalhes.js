@@ -22,14 +22,16 @@ import { MdDateRange } from "react-icons/md";
 import { GrContactInfo } from "react-icons/gr";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { useHistory } from "react-router-dom";
+import moment from 'moment';
 import api from "../services/api.js";
 
 import styles from "../styles/pages/DepositoDetalhes.module.css";
 import "react-gallery-carousel/dist/index.css";
 
+/* 
 import gerenteImg from "../assets/img/depositos/oei/funcionarios/gerente400x400.jpg";
 import chefeDepositoImg from "../assets/img/depositos/oei/funcionarios/chefedeposito400x400.jpg";
-import funcNum2Img from "../assets/img/depositos/oei/funcionarios/num2_400x400.jpg";
+import funcNum2Img from "../assets/img/depositos/oei/funcionarios/num2_400x400.jpg"; 
 
 import organogramaImg from "../assets/img/depositos/oei/organograma/organograma.PNG";
 
@@ -39,14 +41,14 @@ import img3 from "../assets/img/depositos/oei/estrutura/3.jpeg";
 import img4 from "../assets/img/depositos/oei/estrutura/4.jpg";
 import img5 from "../assets/img/depositos/oei/estrutura/5.jpeg";
 import img6 from "../assets/img/depositos/oei/estrutura/6.jpeg";
-import img7 from "../assets/img/depositos/oei/estrutura/7.jpg";
+import img7 from "../assets/img/depositos/oei/estrutura/7.jpg"; 
+ */
 
 import Navbar from "../components/Navbar";
 import Loading from "../components/Loading";
 import Footer from "../components/Footer";
 
 function DepositoDetalhes() {
-
   const history = useHistory();
 
   const [deposito, setDeposito] = useState([]);
@@ -62,13 +64,12 @@ function DepositoDetalhes() {
       setDeposito(response.data);
     }
     getDadosDeposito();
-    
   }, []);
-  
-  const images = [img1, img2, img3, img4, img5, img6, img7].map((dep) => ({
+
+  /* const images = [img1, img2, img3, img4, img5, img6, img7].map((dep) => ({
     src: dep,
   }));
-
+ */
   if (!deposito.dados_geograficos) {
     return (
       <>
@@ -78,7 +79,7 @@ function DepositoDetalhes() {
       </>
     );
   }
-    
+
   return (
     <>
       <Navbar />
@@ -183,45 +184,50 @@ function DepositoDetalhes() {
               )}
             </div>
             <div className={styles.InfoData}>
-                {deposito.fecha_almoco === true ? (
+              {deposito.fecha_almoco === true ? (
                 <span className={styles.simBadge}>SIM</span>
               ) : (
                 <span className={styles.naoBadge}>NÃO</span>
               )}
             </div>
             <div className={styles.InfoData}>
-            {deposito.cliente_retira === true ? (
+              {deposito.cliente_retira === true ? (
                 <span className={styles.simBadge}>SIM</span>
               ) : (
                 <span className={styles.naoBadge}>NÃO</span>
               )}
             </div>
             <div className={styles.InfoData}>
-            {deposito.infraestrutura.area_servico.crp === true ? (
+              {deposito.infraestrutura.area_servico.crp === true ? (
                 <span className={styles.simBadge}>SIM</span>
               ) : (
                 <span className={styles.naoBadge}>NÃO</span>
               )}
             </div>
             <div className={styles.InfoData}>
-            {deposito.infraestrutura.area_servico.logistica_reversa === true ? (
+              {deposito.infraestrutura.area_servico.logistica_reversa ===
+              true ? (
                 <span className={styles.simBadge}>SIM</span>
               ) : (
                 <span className={styles.naoBadge}>NÃO</span>
               )}
             </div>
             <div className={styles.InfoData}>
-            {deposito.infraestrutura.area_servico.tat === true ? (
+              {deposito.infraestrutura.area_servico.tat === true ? (
                 <span className={styles.simBadge}>SIM</span>
               ) : (
                 <span className={styles.naoBadge}>NÃO</span>
               )}
             </div>
             <div className={styles.InfoData}>
-              <span className={styles.spanInfoResponse}>{deposito.pdvs.sigla_posto}</span>
+              <span className={styles.spanInfoResponse}>
+                {deposito.pdvs.sigla_posto}
+              </span>
             </div>
             <div className={styles.InfoData}>
-              <span className={styles.spanInfoResponse}>{deposito.pdvs.sigla_rep}</span>
+              <span className={styles.spanInfoResponse}>
+                {deposito.pdvs.sigla_rep}
+              </span>
             </div>
           </div>
         </div>
@@ -237,10 +243,10 @@ function DepositoDetalhes() {
         <div className={styles.containerChefes}>
           <div className={styles.containerChefeDep2}>
             <div className={styles.asideChefedep}>
-              <img                
-                src={`${deposito.gerente.foto_url}`}                
+              <img
+                src={`${deposito.chefe_dep.foto_url}`}
                 className={styles.imgNew}
-                alt="Gerente"
+                alt="Chefe do depósito"
               />
               <h2 className={styles.nameDep}>Chefe de depósito</h2>
             </div>
@@ -253,7 +259,7 @@ function DepositoDetalhes() {
                     <span className={styles.textProfileLeft}>
                       NOME DE GUERRA:
                     </span>
-                    <span className={styles.textProfileRight}>VALDEMIR</span>
+                    <span className={styles.textProfileRight}>{deposito.chefe_dep.nome_guerra}</span>
                   </div>
                 </div>
                 <div className={styles.containerTextInfo2}>
@@ -263,7 +269,7 @@ function DepositoDetalhes() {
                       NOME COMPLETO:
                     </span>
                     <span className={styles.textProfileRight}>
-                      VALDEMIR ALVES FEITOSA
+                    {deposito.chefe_dep.nome_completo}
                     </span>
                   </div>
                 </div>
@@ -273,7 +279,9 @@ function DepositoDetalhes() {
                     <span className={styles.textProfileLeft}>
                       NÚMERO GERAL:
                     </span>
-                    <span className={styles.textProfileRight}>99999-9</span>
+                    <span className={styles.textProfileRight}>
+                      {deposito.chefe_dep.num_geral.substr(0,5)+ "-" + deposito.chefe_dep.num_geral.substr(5,6)}
+                    </span>
                   </div>
                 </div>
                 <div className={styles.containerTextInfo2}>
@@ -282,7 +290,7 @@ function DepositoDetalhes() {
                     <span className={styles.textProfileLeft}>
                       DATA DE ADMISSÃO:
                     </span>
-                    <span className={styles.textProfileRight}>01/01/2021</span>
+                    <span className={styles.textProfileRight}>{moment(deposito.chefe_dep.data_admissao).format('L')}</span>
                   </div>
                 </div>
                 <div className={styles.containerTextInfo2}>
@@ -291,7 +299,9 @@ function DepositoDetalhes() {
                     <span className={styles.textProfileLeft}>
                       DATA DE NASCIMENTO:
                     </span>
-                    <span className={styles.textProfileRight}>01/01/2021</span>
+                    <span className={styles.textProfileRight}>
+                      {moment(deposito.chefe_dep.data_nascimento).format('L')}
+                      </span>
                   </div>
                 </div>
                 <div className={styles.containerTextInfo2}>
@@ -310,7 +320,7 @@ function DepositoDetalhes() {
                       HISTÓRICO NA EMPRESA:
                     </span>
                     <span className={styles.textProfileRight}>
-                      lorem ipsum...
+                          {deposito.chefe_dep.historico_empresa}
                     </span>
                   </div>
                 </div>
@@ -319,7 +329,11 @@ function DepositoDetalhes() {
           </div>
           <div className={styles.containerChefeDep2}>
             <div className={styles.asideChefedep}>
-              <img src={gerenteImg} className={styles.imgNew} alt="Gerente" />
+              <img 
+              src={`${deposito.gerente.foto_url}`} 
+              className={styles.imgNew} 
+              alt="Gerente"
+               />
               <h2 className={styles.nameDep}>Gerente</h2>
             </div>
             <div className={styles.asideRight}>
@@ -332,7 +346,7 @@ function DepositoDetalhes() {
                       NOME DE GUERRA:
                     </span>
                     <span className={styles.textProfileRight}>
-                      VALDEMIR ALVES FEITOSA
+                      {deposito.gerente.nome_guerra}
                     </span>
                   </div>
                 </div>
@@ -343,7 +357,7 @@ function DepositoDetalhes() {
                       NOME COMPLETO:
                     </span>
                     <span className={styles.textProfileRight}>
-                      VALDEMIR ALVES FEITOSA
+                       {deposito.gerente.nome_completo}
                     </span>
                   </div>
                 </div>
@@ -353,49 +367,105 @@ function DepositoDetalhes() {
                     <span className={styles.textProfileLeft}>
                       NÚMERO GERAL:
                     </span>
-                    <span className={styles.textProfileRight}>124123</span>
-                  </div>
-                </div>
-                <div className={styles.containerTextInfo2}>
-                  <MdDateRange size={22} color="#000" />
-                  <div className={styles.containerTextInfo2}>
-                    <span className={styles.textProfileLeft}>
-                      DATA DE ADMISSÃO:
+                    <span className={styles.textProfileRight}>
+                    {deposito.gerente.num_geral.substr(0,5)+ "-" + deposito.gerente.num_geral.substr(5,6)}
                     </span>
-                    <span className={styles.textProfileRight}>124123</span>
                   </div>
                 </div>
-                <div className={styles.containerTextInfo2}>
-                  <FaBirthdayCake size={22} color="#000" />
-                  <div className={styles.containerTextInfo2}>
-                    <span className={styles.textProfileLeft}>
-                      DATA DE NASCIMENTO:
-                    </span>
-                    <span className={styles.textProfileRight}>124123</span>
-                  </div>
-                </div>
-                <div className={styles.containerTextInfo2}>
-                  <FaPhoneAlt size={22} color="#000" />
-                  <div className={styles.containerTextInfo2}>
-                    <span className={styles.textProfileLeft}>CONTATOS:</span>
-                    <span className={styles.textProfileRight}>124123</span>
-                  </div>
-                </div>
-                <div className={styles.containerTextInfo2}>
-                  <FaHistory size={22} color="#000" />
-                  <div className={styles.containerTextInfo2}>
-                    <span className={styles.textProfileLeft}>
-                      HISTÓRICO NA EMPRESA:
-                    </span>
-                    <span className={styles.textProfileRight}>124123</span>
-                  </div>
-                </div>
+                
               </div>
             </div>
           </div>
-          <div className={styles.containerChefeDep2}>
+
+          {deposito.funcionario_num2 === null ? (
+                <div className={styles.containerChefeDep2}>
+                <div className={styles.asideChefedep}>
+                  <img 
+                  src={'/interrogacao.jpg'} 
+                  className={styles.imgNew} 
+                  alt="Funcionário não definido" 
+                  />
+                  <h2 className={styles.nameDep}>Não definido</h2>
+                </div>
+                <div className={styles.asideRight}>
+                  <hr className={styles.hrNew} />
+                  <div className={styles.containerInfo2}>
+                    <div className={styles.containerTextInfo2}>
+                      <FaUser size={22} color="#000" />
+                      <div className={styles.containerTextInfo2}>
+                        <span className={styles.textProfileLeft}>
+                          NOME DE GUERRA:
+                        </span>
+                        <span className={styles.textProfileRight}>
+                          -
+                        </span>
+                      </div>
+                    </div>
+                    <div className={styles.containerTextInfo2}>
+                      <GrContactInfo size={22} color="#000" />
+                      <div className={styles.containerTextInfo2}>
+                        <span className={styles.textProfileLeft}>
+                          NOME COMPLETO:
+                        </span>
+                        <span className={styles.textProfileRight}>
+                          -
+                        </span>
+                      </div>
+                    </div>
+                    <div className={styles.containerTextInfo2}>
+                      <FaIdBadge size={22} color="#000" />
+                      <div className={styles.containerTextInfo2}>
+                        <span className={styles.textProfileLeft}>
+                          NÚMERO GERAL:
+                        </span>
+                        <span className={styles.textProfileRight}>-</span>
+                      </div>
+                    </div>
+                    <div className={styles.containerTextInfo2}>
+                      <MdDateRange size={22} color="#000" />
+                      <div className={styles.containerTextInfo2}>
+                        <span className={styles.textProfileLeft}>
+                          DATA DE ADMISSÃO:
+                        </span>
+                        <span className={styles.textProfileRight}>-</span>
+                      </div>
+                    </div>
+                    <div className={styles.containerTextInfo2}>
+                      <FaBirthdayCake size={22} color="#000" />
+                      <div className={styles.containerTextInfo2}>
+                        <span className={styles.textProfileLeft}>
+                          DATA DE NASCIMENTO:
+                        </span>
+                        <span className={styles.textProfileRight}>-</span>
+                      </div>
+                    </div>
+                    <div className={styles.containerTextInfo2}>
+                      <FaPhoneAlt size={22} color="#000" />
+                      <div className={styles.containerTextInfo2}>
+                        <span className={styles.textProfileLeft}>CONTATOS:</span>
+                        <span className={styles.textProfileRight}>-</span>
+                      </div>
+                    </div>
+                    <div className={styles.containerTextInfo2}>
+                      <FaHistory size={22} color="#000" />
+                      <div className={styles.containerTextInfo2}>
+                        <span className={styles.textProfileLeft}>
+                          HISTÓRICO NA EMPRESA:
+                        </span>
+                        <span className={styles.textProfileRight}>-</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              ) : (
+                <div className={styles.containerChefeDep2}>
             <div className={styles.asideChefedep}>
-              <img src={funcNum2Img} className={styles.imgNew} alt="Gerente" />
+              <img 
+              src={`${deposito.funcionario_num2.foto_url}`} 
+              className={styles.imgNew} 
+              alt="Funcionário número 2" 
+              />
               <h2 className={styles.nameDep}>Funcionário número 2</h2>
             </div>
             <div className={styles.asideRight}>
@@ -408,7 +478,7 @@ function DepositoDetalhes() {
                       NOME DE GUERRA:
                     </span>
                     <span className={styles.textProfileRight}>
-                      VALDEMIR ALVES FEITOSA
+                      {deposito.funcionario_num2.nome_guerra}
                     </span>
                   </div>
                 </div>
@@ -419,7 +489,7 @@ function DepositoDetalhes() {
                       NOME COMPLETO:
                     </span>
                     <span className={styles.textProfileRight}>
-                      VALDEMIR ALVES FEITOSA
+                    {deposito.funcionario_num2.nome_completo}
                     </span>
                   </div>
                 </div>
@@ -429,7 +499,9 @@ function DepositoDetalhes() {
                     <span className={styles.textProfileLeft}>
                       NÚMERO GERAL:
                     </span>
-                    <span className={styles.textProfileRight}>124123</span>
+                    <span className={styles.textProfileRight}>
+                      {deposito.funcionario_num2.num_geral.substr(0,5)+ "-" + deposito.funcionario_num2.num_geral.substr(5,6)}
+                    </span>
                   </div>
                 </div>
                 <div className={styles.containerTextInfo2}>
@@ -438,7 +510,9 @@ function DepositoDetalhes() {
                     <span className={styles.textProfileLeft}>
                       DATA DE ADMISSÃO:
                     </span>
-                    <span className={styles.textProfileRight}>124123</span>
+                    <span className={styles.textProfileRight}>
+                      {moment(deposito.funcionario_num2.admissao).format('L')}
+                    </span>
                   </div>
                 </div>
                 <div className={styles.containerTextInfo2}>
@@ -447,7 +521,9 @@ function DepositoDetalhes() {
                     <span className={styles.textProfileLeft}>
                       DATA DE NASCIMENTO:
                     </span>
-                    <span className={styles.textProfileRight}>124123</span>
+                    <span className={styles.textProfileRight}>
+                      {moment(deposito.funcionario_num2.data_nascimento).format('L')}
+                    </span>
                   </div>
                 </div>
                 <div className={styles.containerTextInfo2}>
@@ -469,6 +545,8 @@ function DepositoDetalhes() {
               </div>
             </div>
           </div>
+              )}
+          
         </div>
 
         <div className={styles.containerSubTitulo}>
@@ -490,13 +568,26 @@ function DepositoDetalhes() {
           <tbody>
             <tr>
               <td>
+              {deposito.sistemas.venda_remota === true ? (
                 <FaCheck size={30} color="#02bd02" />
+              ) : (
+                <FaWindowClose size={30} color="#e01010" />
+              )}
+                
               </td>
               <td>
+              {deposito.sistemas.control_mobile === true ? (
+                <FaCheck size={30} color="#02bd02" />
+              ) : (
                 <FaWindowClose size={30} color="#e01010" />
+              )}
               </td>
               <td>
+              {deposito.sistemas.wms === true ? (
+                <FaCheck size={30} color="#02bd02" />
+              ) : (
                 <FaWindowClose size={30} color="#e01010" />
+              )}
               </td>
             </tr>
           </tbody>
@@ -510,12 +601,12 @@ function DepositoDetalhes() {
         </div>
         <hr className={styles.hrBorder} />
 
-        <div className={styles.containerCarousel}>
+        {/* <div className={styles.containerCarousel}>
           <Carousel
             images={images}
             style={{ height: "85vh", width: "100vh" }}
           />
-        </div>
+        </div> */}
 
         <div className={styles.containerSubTitulo}>
           <h2 className={styles.subTitulo}>
@@ -539,22 +630,46 @@ function DepositoDetalhes() {
           <tbody>
             <tr>
               <td>
-                <FaCheck size={30} color="#02bd02" />
+                  {deposito.infraestrutura.metodos_seguranca.cftv === true ? (
+                    <FaCheck size={30} color="#02bd02" />
+                  ) : (
+                    <FaWindowClose size={30} color="#e01010" />
+                  )}
               </td>
               <td>
-                <FaWindowClose size={30} color="#e01010" />
+              {deposito.infraestrutura.metodos_seguranca.vigilante === true ? (
+                    <FaCheck size={30} color="#02bd02" />
+                  ) : (
+                    <FaWindowClose size={30} color="#e01010" />
+                  )}
               </td>
               <td>
-                <FaWindowClose size={30} color="#e01010" />
+              {deposito.infraestrutura.metodos_seguranca.seg_canina === true ? (
+                    <FaCheck size={30} color="#02bd02" />
+                  ) : (
+                    <FaWindowClose size={30} color="#e01010" />
+                  )}
               </td>
               <td>
-                <FaCheck size={30} color="#02bd02" />
+              {deposito.infraestrutura.metodos_seguranca.cerca_eletrica === true ? (
+                    <FaCheck size={30} color="#02bd02" />
+                  ) : (
+                    <FaWindowClose size={30} color="#e01010" />
+                  )}
               </td>
               <td>
-                <FaWindowClose size={30} color="#e01010" />
+              {deposito.infraestrutura.metodos_seguranca.botao_panico === true ? (
+                    <FaCheck size={30} color="#02bd02" />
+                  ) : (
+                    <FaWindowClose size={30} color="#e01010" />
+                  )}
               </td>
               <td>
-                <FaWindowClose size={30} color="#e01010" />
+              {deposito.infraestrutura.metodos_seguranca.alarme === true ? (
+                    <FaCheck size={30} color="#02bd02" />
+                  ) : (
+                    <FaWindowClose size={30} color="#e01010" />
+                  )}
               </td>
             </tr>
           </tbody>
@@ -631,7 +746,7 @@ function DepositoDetalhes() {
         <hr className={styles.hrBorder} />
 
         <MapContainer
-          center={[-7.0131848, -42.1332168]}
+          center={[`${deposito.dados_geograficos.location.latitude}`, `${deposito.dados_geograficos.location.longitude}`]}
           zoom={13}
           style={{
             width: "80%",
@@ -645,7 +760,7 @@ function DepositoDetalhes() {
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          <Marker position={[-7.0131848, -42.1332168]}>
+          <Marker position={[`${deposito.dados_geograficos.location.latitude}`, `${deposito.dados_geograficos.location.longitude}`]}>
             <Popup>
               <span>Aqui está o depósito de Oeiras!</span>
             </Popup>
@@ -666,11 +781,11 @@ function DepositoDetalhes() {
         </div>
         <hr className={styles.hrBorder} />
 
-        <img
-          src={organogramaImg}
+        {/* <img
+          src={`${deposito.orgranograma.url_organograma}`}
           className={styles.organogramaEstilo}
           alt="organograma do depósito"
-        />
+        /> */}
       </div>
       <Footer />
     </>
