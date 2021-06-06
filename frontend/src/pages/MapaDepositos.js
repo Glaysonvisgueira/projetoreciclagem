@@ -140,7 +140,7 @@ function MapaDepositos() {
           <Navbar />
               <div className={styles.containerPageRow}>
               
-               {/*  <aside className={styles.asideContainer}>
+               <aside className={styles.asideContainer}>
                     <header>
                       
 
@@ -152,7 +152,7 @@ function MapaDepositos() {
                       <strong>TESTE</strong>
                       <span>teste</span>
                     </footer>
-                  </aside> */}
+                  </aside>
                       <MapContainer 
                         center={[-6.8965231, -42.1914786]}
                         zoom={6}

@@ -300,17 +300,7 @@ function DepositoDetalhes() {
                     </span>
                   </div>
                 </div>
-                <div className={styles.containerTextInfo2}>
-                  <FaHistory size={22} color="#000" />
-                  <div className={styles.containerTextInfo2}>
-                    <span className={styles.textProfileLeft}>
-                      HISTÓRICO NA EMPRESA:
-                    </span>
-                    <span className={styles.textProfileRight}>
-                          {deposito.chefe_dep.historico_empresa}
-                    </span>
-                  </div>
-                </div>
+                
               </div>
             </div>
           </div>
@@ -433,15 +423,7 @@ function DepositoDetalhes() {
                         <span className={styles.textProfileRight}>-</span>
                       </div>
                     </div>
-                    <div className={styles.containerTextInfo2}>
-                      <FaHistory size={22} color="#000" />
-                      <div className={styles.containerTextInfo2}>
-                        <span className={styles.textProfileLeft}>
-                          HISTÓRICO NA EMPRESA:
-                        </span>
-                        <span className={styles.textProfileRight}>-</span>
-                      </div>
-                    </div>
+                    
                   </div>
                 </div>
               </div>
@@ -520,15 +502,7 @@ function DepositoDetalhes() {
                     <span className={styles.textProfileRight}>124123</span>
                   </div>
                 </div>
-                <div className={styles.containerTextInfo2}>
-                  <FaHistory size={22} color="#000" />
-                  <div className={styles.containerTextInfo2}>
-                    <span className={styles.textProfileLeft}>
-                      HISTÓRICO NA EMPRESA:
-                    </span>
-                    <span className={styles.textProfileRight}>124123</span>
-                  </div>
-                </div>
+               
               </div>
             </div>
           </div>

@@ -6,7 +6,7 @@ function Footer() {
 
   return (
       <div className={styles.containerFooter}>
-            <p className={styles.textoFooter}>Versão 1.0 - Setor de padronização de depósitos</p>
+            <p className={styles.textoFooter}>Versão 0.01a - Setor de padronização de depósitos</p>
       </div>       
   );
 }

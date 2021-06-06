@@ -47,7 +47,7 @@
     font-family: 'Roboto' , sans-serif;
     font-weight: 900;
     font-size: 45px;
-    background-color: #FFB905;
+    
     border-radius: 4px;
     padding: 5px;
     padding-left: 10px;
@@ -179,6 +179,7 @@
       height: 85vh;
       margin: auto;
       margin-bottom: 30px;
+      margin-top: 30px;
   }
 
   .containerInfoDep{
@@ -286,8 +287,8 @@
 .containerChefeDep2{
     display: flex;
     width: 33%;  
-    height: 80vh;
-    background-color: #f0f0f0;
+    height: 73vh;
+    background-color: #ffffff;
     border-radius: 15px;
     flex-direction: column;
     overflow: hidden;
@@ -396,6 +397,8 @@
     color: #FFB905;
     font-weight: bold;
     font-size: 16px;
+    text-align: right;
+    max-width: 70%;
 }
 
 .statusValidacao{

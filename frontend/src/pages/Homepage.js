@@ -21,7 +21,7 @@ function Homepage() {
                 coletadas durante as fases do Projeto <span className={styles.spanTextReciclagem}>Reciclagem</span>.</span>
               <div className={styles.buttonsContainer}>
                 <button className={styles.buttonSaibaMais} type="button">Saiba mais</button>
-                <button className={styles.buttonAbout} type="button">Sobre a equipe</button>
+                {/* <button className={styles.buttonAbout} type="button">Sobre a equipe</button> */}
             
               </div>
               

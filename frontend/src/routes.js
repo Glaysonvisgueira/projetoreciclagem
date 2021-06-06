@@ -7,6 +7,7 @@ import Depositos from './pages/Depositos';
 import DepositoDetalhes from './pages/DepositoDetalhes';
 import MapaDepositos from './pages/MapaDepositos';
 import EquipeProjeto from './pages/EquipeProjeto';
+import SobreProjeto from './pages/SobreProjeto';
 
 function Routes(){
     return(
@@ -17,6 +18,7 @@ function Routes(){
                 <Route path="/depositos/:sigla_dep" exact component={DepositoDetalhes} /> 
                 <Route path="/mapa-depositos" exact component={MapaDepositos} />    
                 <Route path="/contatos-equipe" exact component={EquipeProjeto} /> 
+                <Route path="/sobre" exact component={SobreProjeto} />
                 <Route path="/login" exact component={Login} />                    
             </Switch>
         </BrowserRouter>
