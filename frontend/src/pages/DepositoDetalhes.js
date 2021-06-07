@@ -205,14 +205,18 @@ function DepositoDetalhes() {
                 <span className={styles.naoBadge}>NÃO</span>
               )}
             </div>
-            <div className={styles.InfoData}>
+            <div className={styles.InfoData}>                
               <span className={styles.spanInfoResponse}>
-                {deposito.pdvs.sigla_posto}
+                {deposito.pdvs.sigla_posto.map(posto =>
+                    <span className={styles.siglaAbastecido}>{posto}</span>
+                  )}
               </span>
             </div>
             <div className={styles.InfoData}>
-              <span className={styles.spanInfoResponse}>
-                {deposito.pdvs.sigla_rep}
+              <span className={styles.spanInfoResponse}>                
+              {deposito.pdvs.sigla_rep.map(rep =>
+                    <span className={styles.siglaAbastecido}>{rep}</span>
+                  )}
               </span>
             </div>
           </div>
