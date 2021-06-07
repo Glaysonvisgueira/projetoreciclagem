@@ -663,11 +663,296 @@ function DepositoDetalhes() {
           <h2 className={styles.subTitulo}>
             <FaTools size={40} color="#FFB905" className={styles.iconStyle} />
             <span style={{ "margin-left": "20px" }}>
-              Ferramentas e equipamentos
+                Ferramentas e equipamentos
             </span>
           </h2>
         </div>
         <hr className={styles.hrBorder} />
+            <div className={styles.containerEquipamentos}>
+                    <div className={styles.gridEquipamentos}>
+
+                    {deposito.infraestrutura.equipamentos.porta_pallet === true ? (
+                            <div className={styles.cardEquipamento}>
+                              <FaCheck size={60} color="#02bd02" style={{ "margin-left": "20px" }}/>
+                              <div className={styles.itemEquipamento}>
+                                <p>PORTA PALLET</p>
+                              </div>
+                             </div>
+                          ) : (
+                            <div className={styles.cardEquipamento}>
+                              <FaWindowClose size={60} color="#e01010" style={{ "margin-left": "20px" }}/>
+                              <div className={styles.itemEquipamento}>
+                                <p>PORTA PALLET</p>
+                              </div>
+                          </div>
+                          )}
+
+                            {deposito.infraestrutura.equipamentos.pallet === true ? (
+                            <div className={styles.cardEquipamento}>
+                              <FaCheck size={60} color="#02bd02" style={{ "margin-left": "20px" }}/>
+                              <div className={styles.itemEquipamento}>
+                                <p>PALLET</p>
+                              </div>
+                             </div>
+                          ) : (
+                            <div className={styles.cardEquipamento}>
+                              <FaWindowClose size={60} color="#e01010" style={{ "margin-left": "20px" }}/>
+                              <div className={styles.itemEquipamento}>
+                                <p>PALLET</p>
+                              </div>
+                          </div>
+                          )}
+                          
+                          
+                          {deposito.infraestrutura.equipamentos.rack_movimentacao === true ? (
+                            <div className={styles.cardEquipamento}>
+                              <FaCheck size={60} color="#02bd02" style={{ "margin-left": "20px" }}/>
+                              <div className={styles.itemEquipamento}>
+                                <p>RACK DE MOVIMENTAÇÃO</p>
+                              </div>
+                             </div>
+                          ) : (
+                            <div className={styles.cardEquipamento}>
+                              <FaWindowClose size={60} color="#e01010" style={{ "margin-left": "20px" }}/>
+                              <div className={styles.itemEquipamento}>
+                                <p>RACK DE MOVIMENTAÇÃO</p>
+                              </div>
+                          </div>
+                          )}
+
+                          {deposito.infraestrutura.equipamentos.carrinho_plataforma === true ? (
+                            <div className={styles.cardEquipamento}>
+                              <FaCheck size={60} color="#02bd02" style={{ "margin-left": "20px" }}/>
+                              <div className={styles.itemEquipamento}>
+                                <p>CARRINHO DE PLATAFORMA</p>
+                              </div>
+                             </div>
+                          ) : (
+                            <div className={styles.cardEquipamento}>
+                              <FaWindowClose size={60} color="#e01010" style={{ "margin-left": "20px" }}/>
+                              <div className={styles.itemEquipamento}>
+                                <p>CARRINHO DE PLATAFORMA</p>
+                              </div>
+                          </div>
+                          )}
+
+                            {deposito.infraestrutura.equipamentos.balanca_digital === true ? (
+                            <div className={styles.cardEquipamento}>
+                              <FaCheck size={60} color="#02bd02" style={{ "margin-left": "20px" }}/>
+                              <div className={styles.itemEquipamento}>
+                                <p>BALANÇA DIGITAL</p>
+                              </div>
+                             </div>
+                          ) : (
+                            <div className={styles.cardEquipamento}>
+                              <FaWindowClose size={60} color="#e01010" style={{ "margin-left": "20px" }}/>
+                              <div className={styles.itemEquipamento}>
+                                <p>BALANÇA DIGITAL</p>
+                              </div>
+                          </div>
+                          )}
+
+                          {deposito.infraestrutura.equipamentos.balanca === true ? (
+                            <div className={styles.cardEquipamento}>
+                              <FaCheck size={60} color="#02bd02" style={{ "margin-left": "20px" }}/>
+                              <div className={styles.itemEquipamento}>
+                                <p>BALANÇA</p>
+                              </div>
+                             </div>
+                          ) : (
+                            <div className={styles.cardEquipamento}>
+                              <FaWindowClose size={60} color="#e01010" style={{ "margin-left": "20px" }}/>
+                              <div className={styles.itemEquipamento}>
+                                <p>BALANÇA</p>
+                              </div>
+                          </div>
+                          )}
+
+                          {deposito.infraestrutura.equipamentos.esteira_flexivel === true ? (
+                            <div className={styles.cardEquipamento}>
+                              <FaCheck size={60} color="#02bd02" style={{ "margin-left": "20px" }}/>
+                              <div className={styles.itemEquipamento}>
+                                <p>ESTEIRA FLEXÍVEL</p>
+                              </div>
+                             </div>
+                          ) : (
+                            <div className={styles.cardEquipamento}>
+                              <FaWindowClose size={60} color="#e01010" style={{ "margin-left": "20px" }}/>
+                              <div className={styles.itemEquipamento}>
+                                <p>ESTEIRA FLEXÍVEL</p>
+                              </div>
+                          </div>
+                          )}
+
+                          {deposito.infraestrutura.equipamentos.empilhadeira_gas === true ? (
+                            <div className={styles.cardEquipamento}>
+                              <FaCheck size={60} color="#02bd02" style={{ "margin-left": "20px" }}/>
+                              <div className={styles.itemEquipamento}>
+                                <p>EMPILHADEIRA A GÁS</p>
+                              </div>
+                             </div>
+                          ) : (
+                            <div className={styles.cardEquipamento}>
+                              <FaWindowClose size={60} color="#e01010" style={{ "margin-left": "20px" }}/>
+                              <div className={styles.itemEquipamento}>
+                                <p>EMPILHADEIRA A GÁS</p>
+                              </div>
+                          </div>
+                          )}
+
+                          {deposito.infraestrutura.equipamentos.empilhadeira_eletrica === true ? (
+                            <div className={styles.cardEquipamento}>
+                              <FaCheck size={60} color="#02bd02" style={{ "margin-left": "20px" }}/>
+                              <div className={styles.itemEquipamento}>
+                                <p>EMPILHADEIRA A ELÉTRICA</p>
+                              </div>
+                             </div>
+                          ) : (
+                            <div className={styles.cardEquipamento}>
+                              <FaWindowClose size={60} color="#e01010" style={{ "margin-left": "20px" }}/>
+                              <div className={styles.itemEquipamento}>
+                                <p>EMPILHADEIRA A ELÉTRICA</p>
+                              </div>
+                          </div>
+                          )}
+
+                            {deposito.infraestrutura.equipamentos.transpaleteira_manual === true ? (
+                            <div className={styles.cardEquipamento}>
+                              <FaCheck size={60} color="#02bd02" style={{ "margin-left": "20px" }}/>
+                              <div className={styles.itemEquipamento}>
+                                <p>TRANSPALETEIRA MANUAL</p>
+                              </div>
+                             </div>
+                          ) : (
+                            <div className={styles.cardEquipamento}>
+                              <FaWindowClose size={60} color="#e01010" style={{ "margin-left": "20px" }}/>
+                              <div className={styles.itemEquipamento}>
+                                <p>TRANSPALETEIRA MANUAL</p>
+                              </div>
+                          </div>
+                          )}
+
+                          {deposito.infraestrutura.equipamentos.transpaleteira_eletrica === true ? (
+                            <div className={styles.cardEquipamento}>
+                              <FaCheck size={60} color="#02bd02" style={{ "margin-left": "20px" }}/>
+                              <div className={styles.itemEquipamento}>
+                                <p>TRANSPALETEIRA ELÉTRICA</p>
+                              </div>
+                             </div>
+                          ) : (
+                            <div className={styles.cardEquipamento}>
+                              <FaWindowClose size={60} color="#e01010" style={{ "margin-left": "20px" }}/>
+                              <div className={styles.itemEquipamento}>
+                                <p>TRANSPALETEIRA ELÉTRICA</p>
+                              </div>
+                          </div>
+                          )}
+
+                            {deposito.infraestrutura.equipamentos.escada_plataforma === true ? (
+                            <div className={styles.cardEquipamento}>
+                              <FaCheck size={60} color="#02bd02" style={{ "margin-left": "20px" }}/>
+                              <div className={styles.itemEquipamento}>
+                                <p>ESCADA DE PLATAFORMA</p>
+                              </div>
+                             </div>
+                          ) : (
+                            <div className={styles.cardEquipamento}>
+                              <FaWindowClose size={60} color="#e01010" style={{ "margin-left": "20px" }}/>
+                              <div className={styles.itemEquipamento}>
+                                <p>ESCADA DE PLATAFORMA</p>
+                              </div>
+                          </div>
+                          )}
+
+                          {deposito.infraestrutura.equipamentos.carrinho_armazenagem === true ? (
+                            <div className={styles.cardEquipamento}>
+                              <FaCheck size={60} color="#02bd02" style={{ "margin-left": "20px" }}/>
+                              <div className={styles.itemEquipamento}>
+                                <p>CARRINHO DE ARMAZENAGEM</p>
+                              </div>
+                             </div>
+                          ) : (
+                            <div className={styles.cardEquipamento}>
+                              <FaWindowClose size={60} color="#e01010" style={{ "margin-left": "20px" }}/>
+                              <div className={styles.itemEquipamento}>
+                                <p>CARRINHO DE ARMAZENAGEM</p>
+                              </div>
+                          </div>
+                          )}
+
+                          {deposito.infraestrutura.equipamentos.caixa_azul === true ? (
+                            <div className={styles.cardEquipamento}>
+                              <FaCheck size={60} color="#02bd02" style={{ "margin-left": "20px" }}/>
+                              <div className={styles.itemEquipamento}>
+                                <p>CAIXA AZUL</p>
+                              </div>
+                             </div>
+                          ) : (
+                            <div className={styles.cardEquipamento}>
+                              <FaWindowClose size={60} color="#e01010" style={{ "margin-left": "20px" }}/>
+                              <div className={styles.itemEquipamento}>
+                                <p>CAIXA AZUL</p>
+                              </div>
+                          </div>
+                          )}
+
+                          {deposito.infraestrutura.equipamentos.movimentador_vidro === true ? (
+                            <div className={styles.cardEquipamento}>
+                              <FaCheck size={60} color="#02bd02" style={{ "margin-left": "20px" }}/>
+                              <div className={styles.itemEquipamento}>
+                                <p>MOVIMENTADOR DE TAMPO/VIDRO</p>
+                              </div>
+                             </div>
+                          ) : (
+                            <div className={styles.cardEquipamento}>
+                              <FaWindowClose size={60} color="#e01010" style={{ "margin-left": "20px" }}/>
+                              <div className={styles.itemEquipamento}>
+                                <p>MOVIMENTADOR DE TAMPO/VIDRO</p>
+                              </div>
+                          </div>
+                          )}
+
+                        {deposito.infraestrutura.equipamentos.armazenador_vidro === true ? (
+                            <div className={styles.cardEquipamento}>
+                              <FaCheck size={60} color="#02bd02" style={{ "margin-left": "20px" }}/>
+                              <div className={styles.itemEquipamento}>
+                                <p>ARMAZENADOR DE TAMPO/VIDRO</p>
+                              </div>
+                             </div>
+                          ) : (
+                            <div className={styles.cardEquipamento}>
+                              <FaWindowClose size={60} color="#e01010" style={{ "margin-left": "20px" }}/>
+                              <div className={styles.itemEquipamento}>
+                                <p>ARMAZENADOR DE TAMPO/VIDRO</p>
+                              </div>
+                          </div>
+                          )}
+
+                        {deposito.infraestrutura.equipamentos.gaiola_portateis === true ? (
+                            <div className={styles.cardEquipamento}>
+                              <FaCheck size={60} color="#02bd02" style={{ "margin-left": "20px" }}/>
+                              <div className={styles.itemEquipamento}>
+                                <p>GAIOLA DE PORTÁTEIS</p>
+                              </div>
+                             </div>
+                          ) : (
+                            <div className={styles.cardEquipamento}>
+                              <FaWindowClose size={60} color="#e01010" style={{ "margin-left": "20px" }}/>
+                              <div className={styles.itemEquipamento}>
+                                <p>GAIOLA DE PORTÁTEIS</p>
+                              </div>
+                          </div>
+                          )}
+
+
+
+                         
+
+                         
+                       
+                         
+                    </div>
+            </div>
 
         {/*  <table className={styles.tabela}>
             <thead>

@@ -46,8 +46,7 @@
     color: #363636;
     font-family: 'Roboto' , sans-serif;
     font-weight: 900;
-    font-size: 45px;
-    
+    font-size: 45px;    
     border-radius: 4px;
     padding: 5px;
     padding-left: 10px;
@@ -438,4 +437,45 @@
     font-size: 20px;    
     margin-top: 4px;
     margin-right: 3px;
+}
+
+.containerEquipamentos{
+    display: flex;
+    border-radius: 14px;
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    
+    margin-top: 15px;
+    padding: 15px;
+}
+
+.gridEquipamentos{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+.cardEquipamento{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 500px;
+    height: 60px;
+    border-radius: 8px;
+    background-color: #fff;    
+}
+
+.itemEquipamento{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    margin-right: 30px;
+    font-size: 18px;
+    font-weight: 900;
+    color:rgb(73, 73, 73);
 }
