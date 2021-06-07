@@ -73,7 +73,7 @@ function DepositoDetalhes() {
       <div className={styles.containerPage}>
         <div className={styles.containerHeader}>
           <h1 className={styles.depName}>
-            {deposito.sigla_dep} - {deposito.dados_geograficos.cidade}
+            {deposito.sigla_dep} - {deposito.dados_geograficos.cidade} | PERFIL: {deposito.perfil}
           </h1>
           <button
             type="button"
@@ -266,8 +266,8 @@ function DepositoDetalhes() {
                     <span className={styles.textProfileLeft}>
                       NÚMERO GERAL:
                     </span>
-                    <span className={styles.textProfileRight}>
-                      {deposito.chefe_dep.num_geral.substr(0,5)+ "-" + deposito.chefe_dep.num_geral.substr(5,6)}
+                    <span className={styles.textProfileRight}>                      
+                      {deposito.chefe_dep.num_geral}
                     </span>
                   </div>
                 </div>
@@ -294,10 +294,20 @@ function DepositoDetalhes() {
                 <div className={styles.containerTextInfo2}>
                   <FaPhoneAlt size={22} color="#000" />
                   <div className={styles.containerTextInfo2}>
-                    <span className={styles.textProfileLeft}>CONTATOS:</span>
-                    <span className={styles.textProfileRight}>
-                      (86) 9 9999-9999
+                    <span className={styles.textProfileLeft}>CONTATO:</span>
+
+                    {deposito.chefe_dep.contatos.corporativo !== null ? (
+                        <span className={styles.textProfileRight}>                                
+                                {"("+ deposito.chefe_dep.contatos.corporativo.substr(0,2)+ ") " +  deposito.chefe_dep.contatos.corporativo.substr(2,1) + " " + deposito.chefe_dep.contatos.corporativo.substr(3,4) + "-" + deposito.chefe_dep.contatos.corporativo.substr(4,4)}
+                        </span>
+                      ) : (
+                        <span className={styles.textProfileRight}>
+                             -
                     </span>
+                      )}
+                   {/*  <span className={styles.textProfileRight}>
+                      (86) 9 9999-9999
+                    </span> */}
                   </div>
                 </div>
                 
@@ -345,7 +355,7 @@ function DepositoDetalhes() {
                       NÚMERO GERAL:
                     </span>
                     <span className={styles.textProfileRight}>
-                    {deposito.gerente.num_geral.substr(0,5)+ "-" + deposito.gerente.num_geral.substr(5,6)}
+                      {deposito.gerente.num_geral.substr(0,5)+ "-" + deposito.gerente.num_geral.substr(5,6)}
                     </span>
                   </div>
                 </div>
@@ -419,7 +429,7 @@ function DepositoDetalhes() {
                     <div className={styles.containerTextInfo2}>
                       <FaPhoneAlt size={22} color="#000" />
                       <div className={styles.containerTextInfo2}>
-                        <span className={styles.textProfileLeft}>CONTATOS:</span>
+                        <span className={styles.textProfileLeft}>CONTATO:</span>
                         <span className={styles.textProfileRight}>-</span>
                       </div>
                     </div>
@@ -498,8 +508,17 @@ function DepositoDetalhes() {
                 <div className={styles.containerTextInfo2}>
                   <FaPhoneAlt size={22} color="#000" />
                   <div className={styles.containerTextInfo2}>
-                    <span className={styles.textProfileLeft}>CONTATOS:</span>
-                    <span className={styles.textProfileRight}>124123</span>
+                    <span className={styles.textProfileLeft}>CONTATO:</span>
+                    {deposito.funcionario_num2.contatos.corporativo !== null ? (
+                        <span className={styles.textProfileRight}>                                
+                                {"("+ deposito.funcionario_num2.contatos.corporativo.substr(0,2)+ ") " +  deposito.funcionario_num2.contatos.corporativo.substr(2,1) + " " + deposito.funcionario_num2.contatos.corporativo.substr(3,4) + "-" + deposito.funcionario_num2.contatos.corporativo.substr(4,4)}
+                        </span>
+                      ) : (
+                        <span className={styles.textProfileRight}>
+                             -
+                    </span>
+                      )}
+                   
                   </div>
                 </div>
                
