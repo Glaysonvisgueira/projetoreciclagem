@@ -359,7 +359,7 @@ function DepositoDetalhes() {
                       NÚMERO GERAL:
                     </span>
                     <span className={styles.textProfileRight}>
-                      {deposito.gerente.num_geral.substr(0,5)+ "-" + deposito.gerente.num_geral.substr(5,6)}
+                      {deposito.gerente.num_geral}
                     </span>
                   </div>
                 </div>
@@ -483,7 +483,7 @@ function DepositoDetalhes() {
                       NÚMERO GERAL:
                     </span>
                     <span className={styles.textProfileRight}>
-                      {deposito.funcionario_num2.num_geral.substr(0,5)+ "-" + deposito.funcionario_num2.num_geral.substr(5,6)}
+                      {deposito.funcionario_num2.num_geral}
                     </span>
                   </div>
                 </div>
