@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 import styles from "../styles/pages/Homepage.module.css";
 
@@ -20,9 +21,10 @@ function Homepage() {
               <span className={styles.spanText}>Este website agrupa e gerencia as informações 
                 coletadas durante as fases do Projeto <span className={styles.spanTextReciclagem}>Reciclagem</span>.</span>
               <div className={styles.buttonsContainer}>
-                <button className={styles.buttonSaibaMais} type="button">Saiba mais</button>
+               
+                <Link to="/depositos"  className={styles.buttonSaibaMais} type="button">Saiba mais</Link>
                 {/* <button className={styles.buttonAbout} type="button">Sobre a equipe</button> */}
-            
+
               </div>
               
             </div>

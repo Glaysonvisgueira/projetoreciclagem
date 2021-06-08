@@ -32,23 +32,13 @@ function MapaDepositos() {
 
       if(loading){
         return (
-            <div className={styles.loadingContainer}>
+            <>
                 <Navbar />
                 <Loading />
                 <Footer />
-            </div>
+            </>
         )
     } 
-    
-    /* if (!deposito.dados_geograficos) {
-      return (
-        <>
-          <Navbar />
-          <Loading />
-          <Footer />
-        </>
-      );
-    } */
 
     async function filtrarDepositos(uf){
         const novosMarkers = await depositos.filter((item) => item.dados_geograficos.uf === uf);

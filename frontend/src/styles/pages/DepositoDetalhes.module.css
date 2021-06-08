@@ -6,7 +6,7 @@
     align-items: flex-start;
     justify-content: center;
     flex-direction: column;
-    width: 90%;  
+    width: 85%;  
     margin: auto;
     
 }
@@ -20,7 +20,7 @@
 }
 .backButton{    
     display: flex;
-    right: 2%;
+    right: 30px;
     width: 60px;
     height: 60px;
     background-color: #FFB905;
@@ -28,7 +28,7 @@
     justify-content: center;
     border: none;    
     border-radius: 10px;   
-    position: fixed;
+    position: absolute;
     z-index: 5;
 }
 
@@ -47,10 +47,7 @@
     font-family: 'Roboto' , sans-serif;
     font-weight: 900;
     font-size: 45px;    
-    border-radius: 4px;
-    padding: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
+    text-align: center;
 }
 
 .containerHeader{
@@ -169,6 +166,7 @@
     
   }
 
+
   .iconStyle{
       margin: 0;
   }
@@ -179,11 +177,14 @@
       margin: auto;
       margin-bottom: 30px;
       margin-top: 30px;
+      border-radius: 14px;
+      padding: 10px;
+      background-color: #fff;
   }
 
   .containerInfoDep{
     display: flex;
-    width: 90%;
+    width: 100%;
     background-color: #fff;
     justify-content: flex-start;
     align-items: flex-start;
@@ -427,7 +428,7 @@
 
 
 .siglaAbastecido{
-    background-color: rgb(182, 182, 182);
+    background-color: rgb(38, 38, 38);
     color: #fff;
     padding-right: 6px;
     padding-left: 6px;
@@ -468,6 +469,7 @@
     border-radius: 8px;
     background-color: #fff;    
 }
+
 
 .itemEquipamento{
     display: flex;

@@ -46,9 +46,11 @@
     margin-left: 75px;
 }  
 
-
-
 .buttonSaibaMais{
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    align-items: center;
     color: #fff;
     background-color: #FFB905;
     border: 0;
@@ -63,6 +65,10 @@
 
 .buttonSaibaMais:hover{    
     background-color: #dda108;    
+}
+
+.buttonSaibaMais:active{    
+    background-color: #9e7306;    
 }
 
 .buttonAbout:hover{    

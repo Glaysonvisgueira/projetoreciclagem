@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { GoGear } from "react-icons/go";
 
 import styles from "../styles/components/Navbar.module.css";
@@ -45,7 +45,7 @@ function Navbar() {
                 className={styles.optionIcon}
                 activeClassName="activeRoute"
                 activeStyle={{ 'color': '#fff', 'font-weight': 'bold' }}>
-                  <GoGear size={35} color="rgb(39, 39, 39)" />
+                <GoGear size={35} color="rgb(39, 39, 39)" />
             </NavLink>
               
             </div>

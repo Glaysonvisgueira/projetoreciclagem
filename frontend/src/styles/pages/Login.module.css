@@ -1,4 +1,18 @@
 
+
+.containerPage{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;  
+  margin: auto;
+  
+}
+
+
+
 .loginContainer{ 
     width: 100%;
     height: 100%;
@@ -114,19 +128,6 @@ form input {
 }
 
 
-  .loginContainer form input:focus {   
-    border: 2px solid #FFB905;
-    border-radius: 4px;
-}
-
-
-.versaoTexto{
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  font-size: 14px;
-  color: #dcdce6;
-}
 
 h3{
   color: #FFB905;
@@ -134,11 +135,6 @@ h3{
   margin: 10px;
 }
 
-.loginContainer{
-  font: 400 14px Roboto, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  background: linear-gradient(329.54deg, #fdc025 0%, #8a6404 100%);
-}
 
 
 

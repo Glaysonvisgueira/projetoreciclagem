@@ -3,8 +3,6 @@ import { FaWhatsapp } from "react-icons/fa";
 import { SiMicrosoftoutlook } from "react-icons/si";
 import { RiTeamLine } from "react-icons/ri";
 
-import { Link } from "react-router-dom";
-
 import styles from "../styles/pages/EquipeProjeto.module.css";
 
 import Navbar from "../components/Navbar";

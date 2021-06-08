@@ -25,7 +25,7 @@ function Loading() {
       <div className={styles.containerLoading}>
           <Lottie 
                 options={defaultOptions}
-                height={100}
+                height={200}
                 width={300}
                 isStopped={animationState.isStopped}
                 isPaused={animationState.isPaused}/>

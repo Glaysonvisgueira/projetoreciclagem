@@ -14,7 +14,6 @@ import {
   FaWindowClose,
   FaBirthdayCake,
   FaPhoneAlt,
-  FaHistory,
   FaIdBadge,
   FaUser,
 } from "react-icons/fa";
@@ -22,7 +21,7 @@ import { MdDateRange } from "react-icons/md";
 import { GrContactInfo } from "react-icons/gr";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { useHistory } from "react-router-dom";
-import moment from 'moment';
+import moment from "moment";
 import api from "../services/api.js";
 
 import styles from "../styles/pages/DepositoDetalhes.module.css";
@@ -35,7 +34,7 @@ import Footer from "../components/Footer";
 function DepositoDetalhes() {
   const history = useHistory();
 
-  const [deposito, setDeposito] = useState([]);  
+  const [deposito, setDeposito] = useState([]);
 
   useEffect(() => {
     async function getDadosDeposito() {
@@ -45,27 +44,27 @@ function DepositoDetalhes() {
       console.log(sigla_deposito);
       const response = await api.get(`/depositos/${sigla_deposito}`);
       setDeposito(response.data);
-      
     }
     getDadosDeposito();
   }, []);
-  
- 
+
   if (!deposito.dados_geograficos) {
     return (
       <>
-        <Navbar />
-        <Loading />
-        <Footer />
+         <>
+                <Navbar />
+                <Loading />
+                <Footer />
+            </>
       </>
     );
   }
-    
-      //Percorrer todas as imagens que estão dentro do array para exibir no Carousel.
-      const images = deposito.infraestrutura.fotos_deposito.interno.map((dep) => ({
-        src: dep,
-      })); 
-     
+
+  //Percorrer todas as imagens que estão dentro do array para exibir no Carousel.
+  const images = deposito.infraestrutura.fotos_deposito.interno.map((dep) => ({
+    src: dep,
+  }));
+
   return (
     <>
       <Navbar />
@@ -73,7 +72,8 @@ function DepositoDetalhes() {
       <div className={styles.containerPage}>
         <div className={styles.containerHeader}>
           <h1 className={styles.depName}>
-            {deposito.sigla_dep} - {deposito.dados_geograficos.cidade} | PERFIL: {deposito.perfil}
+            {deposito.sigla_dep} - {deposito.dados_geograficos.cidade} | PERFIL:{" "}
+            {deposito.perfil}
           </h1>
           <button
             type="button"
@@ -205,18 +205,18 @@ function DepositoDetalhes() {
                 <span className={styles.naoBadge}>NÃO</span>
               )}
             </div>
-            <div className={styles.InfoData}>                
+            <div className={styles.InfoData}>
               <span className={styles.spanInfoResponse}>
-                {deposito.pdvs.sigla_posto.map(posto =>
-                    <span className={styles.siglaAbastecido}>{posto}</span>
-                  )}
+                {deposito.pdvs.sigla_posto.map((posto) => (
+                  <span className={styles.siglaAbastecido}>{posto}</span>
+                ))}
               </span>
             </div>
             <div className={styles.InfoData}>
-              <span className={styles.spanInfoResponse}>                
-              {deposito.pdvs.sigla_rep.map(rep =>
-                    <span className={styles.siglaAbastecido}>{rep}</span>
-                  )}
+              <span className={styles.spanInfoResponse}>
+                {deposito.pdvs.sigla_rep.map((rep) => (
+                  <span className={styles.siglaAbastecido}>{rep}</span>
+                ))}
               </span>
             </div>
           </div>
@@ -235,7 +235,6 @@ function DepositoDetalhes() {
             <div className={styles.asideChefedep}>
               <img
                 src={`${deposito.chefe_dep.foto_url}`}
-                
                 className={styles.imgNew}
                 alt="Chefe do depósito"
               />
@@ -250,7 +249,9 @@ function DepositoDetalhes() {
                     <span className={styles.textProfileLeft}>
                       NOME DE GUERRA:
                     </span>
-                    <span className={styles.textProfileRight}>{deposito.chefe_dep.nome_guerra}</span>
+                    <span className={styles.textProfileRight}>
+                      {deposito.chefe_dep.nome_guerra}
+                    </span>
                   </div>
                 </div>
                 <div className={styles.containerTextInfo2}>
@@ -260,7 +261,7 @@ function DepositoDetalhes() {
                       NOME COMPLETO:
                     </span>
                     <span className={styles.textProfileRight}>
-                    {deposito.chefe_dep.nome_completo}
+                      {deposito.chefe_dep.nome_completo}
                     </span>
                   </div>
                 </div>
@@ -270,7 +271,7 @@ function DepositoDetalhes() {
                     <span className={styles.textProfileLeft}>
                       NÚMERO GERAL:
                     </span>
-                    <span className={styles.textProfileRight}>                      
+                    <span className={styles.textProfileRight}>
                       {deposito.chefe_dep.num_geral}
                     </span>
                   </div>
@@ -281,7 +282,9 @@ function DepositoDetalhes() {
                     <span className={styles.textProfileLeft}>
                       DATA DE ADMISSÃO:
                     </span>
-                    <span className={styles.textProfileRight}>{moment(deposito.chefe_dep.data_admissao).format('L')}</span>
+                    <span className={styles.textProfileRight}>
+                      {moment(deposito.chefe_dep.data_admissao).format("L")}
+                    </span>
                   </div>
                 </div>
                 <div className={styles.containerTextInfo2}>
@@ -291,8 +294,8 @@ function DepositoDetalhes() {
                       DATA DE NASCIMENTO:
                     </span>
                     <span className={styles.textProfileRight}>
-                      {moment(deposito.chefe_dep.data_nascimento).format('L')}
-                      </span>
+                      {moment(deposito.chefe_dep.data_nascimento).format("L")}
+                    </span>
                   </div>
                 </div>
                 <div className={styles.containerTextInfo2}>
@@ -301,30 +304,34 @@ function DepositoDetalhes() {
                     <span className={styles.textProfileLeft}>CONTATO:</span>
 
                     {deposito.chefe_dep.contatos.corporativo !== null ? (
-                        <span className={styles.textProfileRight}>                                
-                                {"("+ deposito.chefe_dep.contatos.corporativo.substr(0,2)+ ") " +  deposito.chefe_dep.contatos.corporativo.substr(2,1) + " " + deposito.chefe_dep.contatos.corporativo.substr(3,4) + "-" + deposito.chefe_dep.contatos.corporativo.substr(4,4)}
-                        </span>
-                      ) : (
-                        <span className={styles.textProfileRight}>
-                             -
-                    </span>
-                      )}
-                   {/*  <span className={styles.textProfileRight}>
+                      <span className={styles.textProfileRight}>
+                        {"(" +
+                          deposito.chefe_dep.contatos.corporativo.substr(0, 2) +
+                          ") " +
+                          deposito.chefe_dep.contatos.corporativo.substr(2, 1) +
+                          " " +
+                          deposito.chefe_dep.contatos.corporativo.substr(3, 4) +
+                          "-" +
+                          deposito.chefe_dep.contatos.corporativo.substr(4, 4)}
+                      </span>
+                    ) : (
+                      <span className={styles.textProfileRight}>-</span>
+                    )}
+                    {/*  <span className={styles.textProfileRight}>
                       (86) 9 9999-9999
                     </span> */}
                   </div>
                 </div>
-                
               </div>
             </div>
           </div>
           <div className={styles.containerChefeDep2}>
             <div className={styles.asideChefedep}>
-              <img 
-              src={`${deposito.gerente.foto_url}`} 
-              className={styles.imgNew} 
-              alt="Gerente"
-               />
+              <img
+                src={`${deposito.gerente.foto_url}`}
+                className={styles.imgNew}
+                alt="Gerente"
+              />
               <h2 className={styles.nameDep}>Gerente</h2>
             </div>
             <div className={styles.asideRight}>
@@ -348,7 +355,7 @@ function DepositoDetalhes() {
                       NOME COMPLETO:
                     </span>
                     <span className={styles.textProfileRight}>
-                       {deposito.gerente.nome_completo}
+                      {deposito.gerente.nome_completo}
                     </span>
                   </div>
                 </div>
@@ -363,174 +370,185 @@ function DepositoDetalhes() {
                     </span>
                   </div>
                 </div>
-                
               </div>
             </div>
           </div>
 
           {deposito.funcionario_num2 === null ? (
-                <div className={styles.containerChefeDep2}>
-                <div className={styles.asideChefedep}>
-                  <img 
-                  src={'/interrogacao.jpg'} 
-                  className={styles.imgNew} 
-                  alt="Funcionário não definido" 
-                  />
-                  <h2 className={styles.nameDep}>Não definido</h2>
-                </div>
-                <div className={styles.asideRight}>
-                  <hr className={styles.hrNew} />
-                  <div className={styles.containerInfo2}>
+            <div className={styles.containerChefeDep2}>
+              <div className={styles.asideChefedep}>
+                <img
+                  src={"/interrogacao.jpg"}
+                  className={styles.imgNew}
+                  alt="Funcionário não definido"
+                />
+                <h2 className={styles.nameDep}>Não definido</h2>
+              </div>
+              <div className={styles.asideRight}>
+                <hr className={styles.hrNew} />
+                <div className={styles.containerInfo2}>
+                  <div className={styles.containerTextInfo2}>
+                    <FaUser size={22} color="#000" />
                     <div className={styles.containerTextInfo2}>
-                      <FaUser size={22} color="#000" />
-                      <div className={styles.containerTextInfo2}>
-                        <span className={styles.textProfileLeft}>
-                          NOME DE GUERRA:
-                        </span>
-                        <span className={styles.textProfileRight}>
-                          -
-                        </span>
-                      </div>
+                      <span className={styles.textProfileLeft}>
+                        NOME DE GUERRA:
+                      </span>
+                      <span className={styles.textProfileRight}>-</span>
                     </div>
+                  </div>
+                  <div className={styles.containerTextInfo2}>
+                    <GrContactInfo size={22} color="#000" />
                     <div className={styles.containerTextInfo2}>
-                      <GrContactInfo size={22} color="#000" />
-                      <div className={styles.containerTextInfo2}>
-                        <span className={styles.textProfileLeft}>
-                          NOME COMPLETO:
-                        </span>
-                        <span className={styles.textProfileRight}>
-                          -
-                        </span>
-                      </div>
+                      <span className={styles.textProfileLeft}>
+                        NOME COMPLETO:
+                      </span>
+                      <span className={styles.textProfileRight}>-</span>
                     </div>
+                  </div>
+                  <div className={styles.containerTextInfo2}>
+                    <FaIdBadge size={22} color="#000" />
                     <div className={styles.containerTextInfo2}>
-                      <FaIdBadge size={22} color="#000" />
-                      <div className={styles.containerTextInfo2}>
-                        <span className={styles.textProfileLeft}>
-                          NÚMERO GERAL:
-                        </span>
-                        <span className={styles.textProfileRight}>-</span>
-                      </div>
+                      <span className={styles.textProfileLeft}>
+                        NÚMERO GERAL:
+                      </span>
+                      <span className={styles.textProfileRight}>-</span>
                     </div>
+                  </div>
+                  <div className={styles.containerTextInfo2}>
+                    <MdDateRange size={22} color="#000" />
                     <div className={styles.containerTextInfo2}>
-                      <MdDateRange size={22} color="#000" />
-                      <div className={styles.containerTextInfo2}>
-                        <span className={styles.textProfileLeft}>
-                          DATA DE ADMISSÃO:
-                        </span>
-                        <span className={styles.textProfileRight}>-</span>
-                      </div>
+                      <span className={styles.textProfileLeft}>
+                        DATA DE ADMISSÃO:
+                      </span>
+                      <span className={styles.textProfileRight}>-</span>
                     </div>
+                  </div>
+                  <div className={styles.containerTextInfo2}>
+                    <FaBirthdayCake size={22} color="#000" />
                     <div className={styles.containerTextInfo2}>
-                      <FaBirthdayCake size={22} color="#000" />
-                      <div className={styles.containerTextInfo2}>
-                        <span className={styles.textProfileLeft}>
-                          DATA DE NASCIMENTO:
-                        </span>
-                        <span className={styles.textProfileRight}>-</span>
-                      </div>
+                      <span className={styles.textProfileLeft}>
+                        DATA DE NASCIMENTO:
+                      </span>
+                      <span className={styles.textProfileRight}>-</span>
                     </div>
+                  </div>
+                  <div className={styles.containerTextInfo2}>
+                    <FaPhoneAlt size={22} color="#000" />
                     <div className={styles.containerTextInfo2}>
-                      <FaPhoneAlt size={22} color="#000" />
-                      <div className={styles.containerTextInfo2}>
-                        <span className={styles.textProfileLeft}>CONTATO:</span>
-                        <span className={styles.textProfileRight}>-</span>
-                      </div>
+                      <span className={styles.textProfileLeft}>CONTATO:</span>
+                      <span className={styles.textProfileRight}>-</span>
                     </div>
-                    
                   </div>
                 </div>
               </div>
-              ) : (
-                <div className={styles.containerChefeDep2}>
-            <div className={styles.asideChefedep}>
-              <img 
-              src={`${deposito.funcionario_num2.foto_url}`} 
-              className={styles.imgNew} 
-              alt="Funcionário número 2" 
-              />
-              <h2 className={styles.nameDep}>Funcionário número 2</h2>
             </div>
-            <div className={styles.asideRight}>
-              <hr className={styles.hrNew} />
-              <div className={styles.containerInfo2}>
-                <div className={styles.containerTextInfo2}>
-                  <FaUser size={22} color="#000" />
+          ) : (
+            <div className={styles.containerChefeDep2}>
+              <div className={styles.asideChefedep}>
+                <img
+                  src={`${deposito.funcionario_num2.foto_url}`}
+                  className={styles.imgNew}
+                  alt="Funcionário número 2"
+                />
+                <h2 className={styles.nameDep}>Funcionário número 2</h2>
+              </div>
+              <div className={styles.asideRight}>
+                <hr className={styles.hrNew} />
+                <div className={styles.containerInfo2}>
                   <div className={styles.containerTextInfo2}>
-                    <span className={styles.textProfileLeft}>
-                      NOME DE GUERRA:
-                    </span>
-                    <span className={styles.textProfileRight}>
-                      {deposito.funcionario_num2.nome_guerra}
-                    </span>
+                    <FaUser size={22} color="#000" />
+                    <div className={styles.containerTextInfo2}>
+                      <span className={styles.textProfileLeft}>
+                        NOME DE GUERRA:
+                      </span>
+                      <span className={styles.textProfileRight}>
+                        {deposito.funcionario_num2.nome_guerra}
+                      </span>
+                    </div>
                   </div>
-                </div>
-                <div className={styles.containerTextInfo2}>
-                  <GrContactInfo size={22} color="#000" />
                   <div className={styles.containerTextInfo2}>
-                    <span className={styles.textProfileLeft}>
-                      NOME COMPLETO:
-                    </span>
-                    <span className={styles.textProfileRight}>
-                    {deposito.funcionario_num2.nome_completo}
-                    </span>
+                    <GrContactInfo size={22} color="#000" />
+                    <div className={styles.containerTextInfo2}>
+                      <span className={styles.textProfileLeft}>
+                        NOME COMPLETO:
+                      </span>
+                      <span className={styles.textProfileRight}>
+                        {deposito.funcionario_num2.nome_completo}
+                      </span>
+                    </div>
                   </div>
-                </div>
-                <div className={styles.containerTextInfo2}>
-                  <FaIdBadge size={22} color="#000" />
                   <div className={styles.containerTextInfo2}>
-                    <span className={styles.textProfileLeft}>
-                      NÚMERO GERAL:
-                    </span>
-                    <span className={styles.textProfileRight}>
-                      {deposito.funcionario_num2.num_geral}
-                    </span>
+                    <FaIdBadge size={22} color="#000" />
+                    <div className={styles.containerTextInfo2}>
+                      <span className={styles.textProfileLeft}>
+                        NÚMERO GERAL:
+                      </span>
+                      <span className={styles.textProfileRight}>
+                        {deposito.funcionario_num2.num_geral}
+                      </span>
+                    </div>
                   </div>
-                </div>
-                <div className={styles.containerTextInfo2}>
-                  <MdDateRange size={22} color="#000" />
                   <div className={styles.containerTextInfo2}>
-                    <span className={styles.textProfileLeft}>
-                      DATA DE ADMISSÃO:
-                    </span>
-                    <span className={styles.textProfileRight}>
-                      {moment(deposito.funcionario_num2.admissao).format('L')}
-                    </span>
+                    <MdDateRange size={22} color="#000" />
+                    <div className={styles.containerTextInfo2}>
+                      <span className={styles.textProfileLeft}>
+                        DATA DE ADMISSÃO:
+                      </span>
+                      <span className={styles.textProfileRight}>
+                        {moment(deposito.funcionario_num2.admissao).format("L")}
+                      </span>
+                    </div>
                   </div>
-                </div>
-                <div className={styles.containerTextInfo2}>
-                  <FaBirthdayCake size={22} color="#000" />
                   <div className={styles.containerTextInfo2}>
-                    <span className={styles.textProfileLeft}>
-                      DATA DE NASCIMENTO:
-                    </span>
-                    <span className={styles.textProfileRight}>
-                      {moment(deposito.funcionario_num2.data_nascimento).format('L')}
-                    </span>
+                    <FaBirthdayCake size={22} color="#000" />
+                    <div className={styles.containerTextInfo2}>
+                      <span className={styles.textProfileLeft}>
+                        DATA DE NASCIMENTO:
+                      </span>
+                      <span className={styles.textProfileRight}>
+                        {moment(
+                          deposito.funcionario_num2.data_nascimento
+                        ).format("L")}
+                      </span>
+                    </div>
                   </div>
-                </div>
-                <div className={styles.containerTextInfo2}>
-                  <FaPhoneAlt size={22} color="#000" />
                   <div className={styles.containerTextInfo2}>
-                    <span className={styles.textProfileLeft}>CONTATO:</span>
-                    {deposito.funcionario_num2.contatos.corporativo !== null ? (
-                        <span className={styles.textProfileRight}>                                
-                                {"("+ deposito.funcionario_num2.contatos.corporativo.substr(0,2)+ ") " +  deposito.funcionario_num2.contatos.corporativo.substr(2,1) + " " + deposito.funcionario_num2.contatos.corporativo.substr(3,4) + "-" + deposito.funcionario_num2.contatos.corporativo.substr(4,4)}
+                    <FaPhoneAlt size={22} color="#000" />
+                    <div className={styles.containerTextInfo2}>
+                      <span className={styles.textProfileLeft}>CONTATO:</span>
+                      {deposito.funcionario_num2.contatos.corporativo !==
+                      null ? (
+                        <span className={styles.textProfileRight}>
+                          {"(" +
+                            deposito.funcionario_num2.contatos.corporativo.substr(
+                              0,
+                              2
+                            ) +
+                            ") " +
+                            deposito.funcionario_num2.contatos.corporativo.substr(
+                              2,
+                              1
+                            ) +
+                            " " +
+                            deposito.funcionario_num2.contatos.corporativo.substr(
+                              3,
+                              4
+                            ) +
+                            "-" +
+                            deposito.funcionario_num2.contatos.corporativo.substr(
+                              4,
+                              4
+                            )}
                         </span>
                       ) : (
-                        <span className={styles.textProfileRight}>
-                             -
-                    </span>
+                        <span className={styles.textProfileRight}>-</span>
                       )}
-                   
+                    </div>
                   </div>
                 </div>
-               
               </div>
             </div>
-          </div>
-              )}
-          
+          )}
         </div>
 
         <div className={styles.containerSubTitulo}>
@@ -540,42 +558,81 @@ function DepositoDetalhes() {
           </h2>
         </div>
         <hr className={styles.hrBorder} />
+        <div className={styles.containerEquipamentos}>
+          <div className={styles.gridEquipamentos}>
+            {deposito.sistemas.venda_remota === true ? (
+              <div className={styles.cardEquipamento}>
+                <FaCheck
+                  size={60}
+                  color="#02bd02"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>VENDA REMOTA</p>
+                </div>
+              </div>
+            ) : (
+              <div className={styles.cardEquipamento}>
+                <FaWindowClose
+                  size={60}
+                  color="#e01010"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>VENDA REMOTA</p>
+                </div>
+              </div>
+            )}
 
-        <table className={styles.tabela}>
-          <thead>
-            <tr>
-              <th>Venda Remota</th>
-              <th>Control Mobile</th>
-              <th>WMS</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-              {deposito.sistemas.venda_remota === true ? (
-                <FaCheck size={30} color="#02bd02" />
-              ) : (
-                <FaWindowClose size={30} color="#e01010" />
-              )}
-                
-              </td>
-              <td>
-              {deposito.sistemas.control_mobile === true ? (
-                <FaCheck size={30} color="#02bd02" />
-              ) : (
-                <FaWindowClose size={30} color="#e01010" />
-              )}
-              </td>
-              <td>
-              {deposito.sistemas.wms === true ? (
-                <FaCheck size={30} color="#02bd02" />
-              ) : (
-                <FaWindowClose size={30} color="#e01010" />
-              )}
-              </td>
-            </tr>
-          </tbody>
-        </table>
+            {deposito.sistemas.control_mobile === true ? (
+              <div className={styles.cardEquipamento}>
+                <FaCheck
+                  size={60}
+                  color="#02bd02"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>CONTROL MOBILE</p>
+                </div>
+              </div>
+            ) : (
+              <div className={styles.cardEquipamento}>
+                <FaWindowClose
+                  size={60}
+                  color="#e01010"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>CONTROL MOBILE</p>
+                </div>
+              </div>
+            )}
+
+            {deposito.sistemas.wms === true ? (
+              <div className={styles.cardEquipamento}>
+                <FaCheck
+                  size={60}
+                  color="#02bd02"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>WMS</p>
+                </div>
+              </div>
+            ) : (
+              <div className={styles.cardEquipamento}>
+                <FaWindowClose
+                  size={60}
+                  color="#e01010"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>WMS</p>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
 
         <div className={styles.containerSubTitulo}>
           <h2 className={styles.subTitulo}>
@@ -585,12 +642,12 @@ function DepositoDetalhes() {
         </div>
         <hr className={styles.hrBorder} />
 
-         <div className={styles.containerCarousel}>
+        <div className={styles.containerCarousel}>
           <Carousel
             images={images}
             style={{ height: "85vh", width: "100vh" }}
           />
-        </div> 
+        </div>
 
         <div className={styles.containerSubTitulo}>
           <h2 className={styles.subTitulo}>
@@ -599,408 +656,583 @@ function DepositoDetalhes() {
           </h2>
         </div>
         <hr className={styles.hrBorder} />
+        <div className={styles.containerEquipamentos}>
+          <div className={styles.gridEquipamentos}>
+            {deposito.infraestrutura.metodos_seguranca.cftv === true ? (
+              <div className={styles.cardEquipamento}>
+                <FaCheck
+                  size={60}
+                  color="#02bd02"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>CFTV</p>
+                </div>
+              </div>
+            ) : (
+              <div className={styles.cardEquipamento}>
+                <FaWindowClose
+                  size={60}
+                  color="#e01010"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>CFTV</p>
+                </div>
+              </div>
+            )}
 
-        <table className={styles.tabela}>
-          <thead>
-            <tr>
-              <th>CFTV</th>
-              <th>Vigilante</th>
-              <th>Cachorro</th>
-              <th>Cerca elétrica</th>
-              <th>Botão de pânico</th>
-              <th>Alarme</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                  {deposito.infraestrutura.metodos_seguranca.cftv === true ? (
-                    <FaCheck size={30} color="#02bd02" />
-                  ) : (
-                    <FaWindowClose size={30} color="#e01010" />
-                  )}
-              </td>
-              <td>
-              {deposito.infraestrutura.metodos_seguranca.vigilante === true ? (
-                    <FaCheck size={30} color="#02bd02" />
-                  ) : (
-                    <FaWindowClose size={30} color="#e01010" />
-                  )}
-              </td>
-              <td>
-              {deposito.infraestrutura.metodos_seguranca.seg_canina === true ? (
-                    <FaCheck size={30} color="#02bd02" />
-                  ) : (
-                    <FaWindowClose size={30} color="#e01010" />
-                  )}
-              </td>
-              <td>
-              {deposito.infraestrutura.metodos_seguranca.cerca_eletrica === true ? (
-                    <FaCheck size={30} color="#02bd02" />
-                  ) : (
-                    <FaWindowClose size={30} color="#e01010" />
-                  )}
-              </td>
-              <td>
-              {deposito.infraestrutura.metodos_seguranca.botao_panico === true ? (
-                    <FaCheck size={30} color="#02bd02" />
-                  ) : (
-                    <FaWindowClose size={30} color="#e01010" />
-                  )}
-              </td>
-              <td>
-              {deposito.infraestrutura.metodos_seguranca.alarme === true ? (
-                    <FaCheck size={30} color="#02bd02" />
-                  ) : (
-                    <FaWindowClose size={30} color="#e01010" />
-                  )}
-              </td>
-            </tr>
-          </tbody>
-        </table>
+            {deposito.infraestrutura.metodos_seguranca.vigilante === true ? (
+              <div className={styles.cardEquipamento}>
+                <FaCheck
+                  size={60}
+                  color="#02bd02"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>VIGILANTE</p>
+                </div>
+              </div>
+            ) : (
+              <div className={styles.cardEquipamento}>
+                <FaWindowClose
+                  size={60}
+                  color="#e01010"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>VIGILANTE</p>
+                </div>
+              </div>
+            )}
+
+            {deposito.infraestrutura.metodos_seguranca.seg_canina === true ? (
+              <div className={styles.cardEquipamento}>
+                <FaCheck
+                  size={60}
+                  color="#02bd02"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>SEGURANÇA CANINA</p>
+                </div>
+              </div>
+            ) : (
+              <div className={styles.cardEquipamento}>
+                <FaWindowClose
+                  size={60}
+                  color="#e01010"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>SEGURANÇA CANINA</p>
+                </div>
+              </div>
+            )}
+
+            {deposito.infraestrutura.metodos_seguranca.cerca_eletrica ===
+            true ? (
+              <div className={styles.cardEquipamento}>
+                <FaCheck
+                  size={60}
+                  color="#02bd02"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>CERCA ELÉTRICA</p>
+                </div>
+              </div>
+            ) : (
+              <div className={styles.cardEquipamento}>
+                <FaWindowClose
+                  size={60}
+                  color="#e01010"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>CERCA ELÉTRICA</p>
+                </div>
+              </div>
+            )}
+
+            {deposito.infraestrutura.metodos_seguranca.botao_panico === true ? (
+              <div className={styles.cardEquipamento}>
+                <FaCheck
+                  size={60}
+                  color="#02bd02"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>BOTÃO DE PÂNICO</p>
+                </div>
+              </div>
+            ) : (
+              <div className={styles.cardEquipamento}>
+                <FaWindowClose
+                  size={60}
+                  color="#e01010"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>BOTÃO DE PÂNICO</p>
+                </div>
+              </div>
+            )}
+
+            {deposito.infraestrutura.metodos_seguranca.alarme === true ? (
+              <div className={styles.cardEquipamento}>
+                <FaCheck
+                  size={60}
+                  color="#02bd02"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>ALARME</p>
+                </div>
+              </div>
+            ) : (
+              <div className={styles.cardEquipamento}>
+                <FaWindowClose
+                  size={60}
+                  color="#e01010"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>ALARME</p>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
 
         <div className={styles.containerSubTitulo}>
           <h2 className={styles.subTitulo}>
             <FaTools size={40} color="#FFB905" className={styles.iconStyle} />
             <span style={{ "margin-left": "20px" }}>
-                Ferramentas e equipamentos
+              Ferramentas e equipamentos
             </span>
           </h2>
         </div>
         <hr className={styles.hrBorder} />
-            <div className={styles.containerEquipamentos}>
-                    <div className={styles.gridEquipamentos}>
+        <div className={styles.containerEquipamentos}>
+          <div className={styles.gridEquipamentos}>
+            {deposito.infraestrutura.equipamentos.porta_pallet === true ? (
+              <div className={styles.cardEquipamento}>
+                <FaCheck
+                  size={60}
+                  color="#02bd02"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>PORTA PALLET</p>
+                </div>
+              </div>
+            ) : (
+              <div className={styles.cardEquipamento}>
+                <FaWindowClose
+                  size={60}
+                  color="#e01010"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>PORTA PALLET</p>
+                </div>
+              </div>
+            )}
 
-                    {deposito.infraestrutura.equipamentos.porta_pallet === true ? (
-                            <div className={styles.cardEquipamento}>
-                              <FaCheck size={60} color="#02bd02" style={{ "margin-left": "20px" }}/>
-                              <div className={styles.itemEquipamento}>
-                                <p>PORTA PALLET</p>
-                              </div>
-                             </div>
-                          ) : (
-                            <div className={styles.cardEquipamento}>
-                              <FaWindowClose size={60} color="#e01010" style={{ "margin-left": "20px" }}/>
-                              <div className={styles.itemEquipamento}>
-                                <p>PORTA PALLET</p>
-                              </div>
-                          </div>
-                          )}
+            {deposito.infraestrutura.equipamentos.pallet === true ? (
+              <div className={styles.cardEquipamento}>
+                <FaCheck
+                  size={60}
+                  color="#02bd02"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>PALLET</p>
+                </div>
+              </div>
+            ) : (
+              <div className={styles.cardEquipamento}>
+                <FaWindowClose
+                  size={60}
+                  color="#e01010"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>PALLET</p>
+                </div>
+              </div>
+            )}
 
-                            {deposito.infraestrutura.equipamentos.pallet === true ? (
-                            <div className={styles.cardEquipamento}>
-                              <FaCheck size={60} color="#02bd02" style={{ "margin-left": "20px" }}/>
-                              <div className={styles.itemEquipamento}>
-                                <p>PALLET</p>
-                              </div>
-                             </div>
-                          ) : (
-                            <div className={styles.cardEquipamento}>
-                              <FaWindowClose size={60} color="#e01010" style={{ "margin-left": "20px" }}/>
-                              <div className={styles.itemEquipamento}>
-                                <p>PALLET</p>
-                              </div>
-                          </div>
-                          )}
-                          
-                          
-                          {deposito.infraestrutura.equipamentos.rack_movimentacao === true ? (
-                            <div className={styles.cardEquipamento}>
-                              <FaCheck size={60} color="#02bd02" style={{ "margin-left": "20px" }}/>
-                              <div className={styles.itemEquipamento}>
-                                <p>RACK DE MOVIMENTAÇÃO</p>
-                              </div>
-                             </div>
-                          ) : (
-                            <div className={styles.cardEquipamento}>
-                              <FaWindowClose size={60} color="#e01010" style={{ "margin-left": "20px" }}/>
-                              <div className={styles.itemEquipamento}>
-                                <p>RACK DE MOVIMENTAÇÃO</p>
-                              </div>
-                          </div>
-                          )}
+            {deposito.infraestrutura.equipamentos.rack_movimentacao === true ? (
+              <div className={styles.cardEquipamento}>
+                <FaCheck
+                  size={60}
+                  color="#02bd02"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>RACK DE MOVIMENTAÇÃO</p>
+                </div>
+              </div>
+            ) : (
+              <div className={styles.cardEquipamento}>
+                <FaWindowClose
+                  size={60}
+                  color="#e01010"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>RACK DE MOVIMENTAÇÃO</p>
+                </div>
+              </div>
+            )}
 
-                          {deposito.infraestrutura.equipamentos.carrinho_plataforma === true ? (
-                            <div className={styles.cardEquipamento}>
-                              <FaCheck size={60} color="#02bd02" style={{ "margin-left": "20px" }}/>
-                              <div className={styles.itemEquipamento}>
-                                <p>CARRINHO DE PLATAFORMA</p>
-                              </div>
-                             </div>
-                          ) : (
-                            <div className={styles.cardEquipamento}>
-                              <FaWindowClose size={60} color="#e01010" style={{ "margin-left": "20px" }}/>
-                              <div className={styles.itemEquipamento}>
-                                <p>CARRINHO DE PLATAFORMA</p>
-                              </div>
-                          </div>
-                          )}
+            {deposito.infraestrutura.equipamentos.carrinho_plataforma ===
+            true ? (
+              <div className={styles.cardEquipamento}>
+                <FaCheck
+                  size={60}
+                  color="#02bd02"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>CARRINHO DE PLATAFORMA</p>
+                </div>
+              </div>
+            ) : (
+              <div className={styles.cardEquipamento}>
+                <FaWindowClose
+                  size={60}
+                  color="#e01010"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>CARRINHO DE PLATAFORMA</p>
+                </div>
+              </div>
+            )}
 
-                            {deposito.infraestrutura.equipamentos.balanca_digital === true ? (
-                            <div className={styles.cardEquipamento}>
-                              <FaCheck size={60} color="#02bd02" style={{ "margin-left": "20px" }}/>
-                              <div className={styles.itemEquipamento}>
-                                <p>BALANÇA DIGITAL</p>
-                              </div>
-                             </div>
-                          ) : (
-                            <div className={styles.cardEquipamento}>
-                              <FaWindowClose size={60} color="#e01010" style={{ "margin-left": "20px" }}/>
-                              <div className={styles.itemEquipamento}>
-                                <p>BALANÇA DIGITAL</p>
-                              </div>
-                          </div>
-                          )}
+            {deposito.infraestrutura.equipamentos.balanca_digital === true ? (
+              <div className={styles.cardEquipamento}>
+                <FaCheck
+                  size={60}
+                  color="#02bd02"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>BALANÇA DIGITAL</p>
+                </div>
+              </div>
+            ) : (
+              <div className={styles.cardEquipamento}>
+                <FaWindowClose
+                  size={60}
+                  color="#e01010"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>BALANÇA DIGITAL</p>
+                </div>
+              </div>
+            )}
 
-                          {deposito.infraestrutura.equipamentos.balanca === true ? (
-                            <div className={styles.cardEquipamento}>
-                              <FaCheck size={60} color="#02bd02" style={{ "margin-left": "20px" }}/>
-                              <div className={styles.itemEquipamento}>
-                                <p>BALANÇA</p>
-                              </div>
-                             </div>
-                          ) : (
-                            <div className={styles.cardEquipamento}>
-                              <FaWindowClose size={60} color="#e01010" style={{ "margin-left": "20px" }}/>
-                              <div className={styles.itemEquipamento}>
-                                <p>BALANÇA</p>
-                              </div>
-                          </div>
-                          )}
+            {deposito.infraestrutura.equipamentos.balanca === true ? (
+              <div className={styles.cardEquipamento}>
+                <FaCheck
+                  size={60}
+                  color="#02bd02"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>BALANÇA</p>
+                </div>
+              </div>
+            ) : (
+              <div className={styles.cardEquipamento}>
+                <FaWindowClose
+                  size={60}
+                  color="#e01010"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>BALANÇA</p>
+                </div>
+              </div>
+            )}
 
-                          {deposito.infraestrutura.equipamentos.esteira_flexivel === true ? (
-                            <div className={styles.cardEquipamento}>
-                              <FaCheck size={60} color="#02bd02" style={{ "margin-left": "20px" }}/>
-                              <div className={styles.itemEquipamento}>
-                                <p>ESTEIRA FLEXÍVEL</p>
-                              </div>
-                             </div>
-                          ) : (
-                            <div className={styles.cardEquipamento}>
-                              <FaWindowClose size={60} color="#e01010" style={{ "margin-left": "20px" }}/>
-                              <div className={styles.itemEquipamento}>
-                                <p>ESTEIRA FLEXÍVEL</p>
-                              </div>
-                          </div>
-                          )}
+            {deposito.infraestrutura.equipamentos.esteira_flexivel === true ? (
+              <div className={styles.cardEquipamento}>
+                <FaCheck
+                  size={60}
+                  color="#02bd02"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>ESTEIRA FLEXÍVEL</p>
+                </div>
+              </div>
+            ) : (
+              <div className={styles.cardEquipamento}>
+                <FaWindowClose
+                  size={60}
+                  color="#e01010"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>ESTEIRA FLEXÍVEL</p>
+                </div>
+              </div>
+            )}
 
-                          {deposito.infraestrutura.equipamentos.empilhadeira_gas === true ? (
-                            <div className={styles.cardEquipamento}>
-                              <FaCheck size={60} color="#02bd02" style={{ "margin-left": "20px" }}/>
-                              <div className={styles.itemEquipamento}>
-                                <p>EMPILHADEIRA A GÁS</p>
-                              </div>
-                             </div>
-                          ) : (
-                            <div className={styles.cardEquipamento}>
-                              <FaWindowClose size={60} color="#e01010" style={{ "margin-left": "20px" }}/>
-                              <div className={styles.itemEquipamento}>
-                                <p>EMPILHADEIRA A GÁS</p>
-                              </div>
-                          </div>
-                          )}
+            {deposito.infraestrutura.equipamentos.empilhadeira_gas === true ? (
+              <div className={styles.cardEquipamento}>
+                <FaCheck
+                  size={60}
+                  color="#02bd02"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>EMPILHADEIRA A GÁS</p>
+                </div>
+              </div>
+            ) : (
+              <div className={styles.cardEquipamento}>
+                <FaWindowClose
+                  size={60}
+                  color="#e01010"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>EMPILHADEIRA A GÁS</p>
+                </div>
+              </div>
+            )}
 
-                          {deposito.infraestrutura.equipamentos.empilhadeira_eletrica === true ? (
-                            <div className={styles.cardEquipamento}>
-                              <FaCheck size={60} color="#02bd02" style={{ "margin-left": "20px" }}/>
-                              <div className={styles.itemEquipamento}>
-                                <p>EMPILHADEIRA A ELÉTRICA</p>
-                              </div>
-                             </div>
-                          ) : (
-                            <div className={styles.cardEquipamento}>
-                              <FaWindowClose size={60} color="#e01010" style={{ "margin-left": "20px" }}/>
-                              <div className={styles.itemEquipamento}>
-                                <p>EMPILHADEIRA A ELÉTRICA</p>
-                              </div>
-                          </div>
-                          )}
+            {deposito.infraestrutura.equipamentos.empilhadeira_eletrica ===
+            true ? (
+              <div className={styles.cardEquipamento}>
+                <FaCheck
+                  size={60}
+                  color="#02bd02"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>EMPILHADEIRA A ELÉTRICA</p>
+                </div>
+              </div>
+            ) : (
+              <div className={styles.cardEquipamento}>
+                <FaWindowClose
+                  size={60}
+                  color="#e01010"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>EMPILHADEIRA A ELÉTRICA</p>
+                </div>
+              </div>
+            )}
 
-                            {deposito.infraestrutura.equipamentos.transpaleteira_manual === true ? (
-                            <div className={styles.cardEquipamento}>
-                              <FaCheck size={60} color="#02bd02" style={{ "margin-left": "20px" }}/>
-                              <div className={styles.itemEquipamento}>
-                                <p>TRANSPALETEIRA MANUAL</p>
-                              </div>
-                             </div>
-                          ) : (
-                            <div className={styles.cardEquipamento}>
-                              <FaWindowClose size={60} color="#e01010" style={{ "margin-left": "20px" }}/>
-                              <div className={styles.itemEquipamento}>
-                                <p>TRANSPALETEIRA MANUAL</p>
-                              </div>
-                          </div>
-                          )}
+            {deposito.infraestrutura.equipamentos.transpaleteira_manual ===
+            true ? (
+              <div className={styles.cardEquipamento}>
+                <FaCheck
+                  size={60}
+                  color="#02bd02"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>TRANSPALETEIRA MANUAL</p>
+                </div>
+              </div>
+            ) : (
+              <div className={styles.cardEquipamento}>
+                <FaWindowClose
+                  size={60}
+                  color="#e01010"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>TRANSPALETEIRA MANUAL</p>
+                </div>
+              </div>
+            )}
 
-                          {deposito.infraestrutura.equipamentos.transpaleteira_eletrica === true ? (
-                            <div className={styles.cardEquipamento}>
-                              <FaCheck size={60} color="#02bd02" style={{ "margin-left": "20px" }}/>
-                              <div className={styles.itemEquipamento}>
-                                <p>TRANSPALETEIRA ELÉTRICA</p>
-                              </div>
-                             </div>
-                          ) : (
-                            <div className={styles.cardEquipamento}>
-                              <FaWindowClose size={60} color="#e01010" style={{ "margin-left": "20px" }}/>
-                              <div className={styles.itemEquipamento}>
-                                <p>TRANSPALETEIRA ELÉTRICA</p>
-                              </div>
-                          </div>
-                          )}
+            {deposito.infraestrutura.equipamentos.transpaleteira_eletrica ===
+            true ? (
+              <div className={styles.cardEquipamento}>
+                <FaCheck
+                  size={60}
+                  color="#02bd02"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>TRANSPALETEIRA ELÉTRICA</p>
+                </div>
+              </div>
+            ) : (
+              <div className={styles.cardEquipamento}>
+                <FaWindowClose
+                  size={60}
+                  color="#e01010"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>TRANSPALETEIRA ELÉTRICA</p>
+                </div>
+              </div>
+            )}
 
-                            {deposito.infraestrutura.equipamentos.escada_plataforma === true ? (
-                            <div className={styles.cardEquipamento}>
-                              <FaCheck size={60} color="#02bd02" style={{ "margin-left": "20px" }}/>
-                              <div className={styles.itemEquipamento}>
-                                <p>ESCADA DE PLATAFORMA</p>
-                              </div>
-                             </div>
-                          ) : (
-                            <div className={styles.cardEquipamento}>
-                              <FaWindowClose size={60} color="#e01010" style={{ "margin-left": "20px" }}/>
-                              <div className={styles.itemEquipamento}>
-                                <p>ESCADA DE PLATAFORMA</p>
-                              </div>
-                          </div>
-                          )}
+            {deposito.infraestrutura.equipamentos.escada_plataforma === true ? (
+              <div className={styles.cardEquipamento}>
+                <FaCheck
+                  size={60}
+                  color="#02bd02"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>ESCADA DE PLATAFORMA</p>
+                </div>
+              </div>
+            ) : (
+              <div className={styles.cardEquipamento}>
+                <FaWindowClose
+                  size={60}
+                  color="#e01010"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>ESCADA DE PLATAFORMA</p>
+                </div>
+              </div>
+            )}
 
-                          {deposito.infraestrutura.equipamentos.carrinho_armazenagem === true ? (
-                            <div className={styles.cardEquipamento}>
-                              <FaCheck size={60} color="#02bd02" style={{ "margin-left": "20px" }}/>
-                              <div className={styles.itemEquipamento}>
-                                <p>CARRINHO DE ARMAZENAGEM</p>
-                              </div>
-                             </div>
-                          ) : (
-                            <div className={styles.cardEquipamento}>
-                              <FaWindowClose size={60} color="#e01010" style={{ "margin-left": "20px" }}/>
-                              <div className={styles.itemEquipamento}>
-                                <p>CARRINHO DE ARMAZENAGEM</p>
-                              </div>
-                          </div>
-                          )}
+            {deposito.infraestrutura.equipamentos.carrinho_armazenagem ===
+            true ? (
+              <div className={styles.cardEquipamento}>
+                <FaCheck
+                  size={60}
+                  color="#02bd02"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>CARRINHO DE ARMAZENAGEM</p>
+                </div>
+              </div>
+            ) : (
+              <div className={styles.cardEquipamento}>
+                <FaWindowClose
+                  size={60}
+                  color="#e01010"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>CARRINHO DE ARMAZENAGEM</p>
+                </div>
+              </div>
+            )}
 
-                          {deposito.infraestrutura.equipamentos.caixa_azul === true ? (
-                            <div className={styles.cardEquipamento}>
-                              <FaCheck size={60} color="#02bd02" style={{ "margin-left": "20px" }}/>
-                              <div className={styles.itemEquipamento}>
-                                <p>CAIXA AZUL</p>
-                              </div>
-                             </div>
-                          ) : (
-                            <div className={styles.cardEquipamento}>
-                              <FaWindowClose size={60} color="#e01010" style={{ "margin-left": "20px" }}/>
-                              <div className={styles.itemEquipamento}>
-                                <p>CAIXA AZUL</p>
-                              </div>
-                          </div>
-                          )}
+            {deposito.infraestrutura.equipamentos.caixa_azul === true ? (
+              <div className={styles.cardEquipamento}>
+                <FaCheck
+                  size={60}
+                  color="#02bd02"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>CAIXA AZUL</p>
+                </div>
+              </div>
+            ) : (
+              <div className={styles.cardEquipamento}>
+                <FaWindowClose
+                  size={60}
+                  color="#e01010"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>CAIXA AZUL</p>
+                </div>
+              </div>
+            )}
 
-                          {deposito.infraestrutura.equipamentos.movimentador_vidro === true ? (
-                            <div className={styles.cardEquipamento}>
-                              <FaCheck size={60} color="#02bd02" style={{ "margin-left": "20px" }}/>
-                              <div className={styles.itemEquipamento}>
-                                <p>MOVIMENTADOR DE TAMPO/VIDRO</p>
-                              </div>
-                             </div>
-                          ) : (
-                            <div className={styles.cardEquipamento}>
-                              <FaWindowClose size={60} color="#e01010" style={{ "margin-left": "20px" }}/>
-                              <div className={styles.itemEquipamento}>
-                                <p>MOVIMENTADOR DE TAMPO/VIDRO</p>
-                              </div>
-                          </div>
-                          )}
+            {deposito.infraestrutura.equipamentos.movimentador_vidro ===
+            true ? (
+              <div className={styles.cardEquipamento}>
+                <FaCheck
+                  size={60}
+                  color="#02bd02"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>MOVIMENTADOR DE TAMPO/VIDRO</p>
+                </div>
+              </div>
+            ) : (
+              <div className={styles.cardEquipamento}>
+                <FaWindowClose
+                  size={60}
+                  color="#e01010"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>MOVIMENTADOR DE TAMPO/VIDRO</p>
+                </div>
+              </div>
+            )}
 
-                        {deposito.infraestrutura.equipamentos.armazenador_vidro === true ? (
-                            <div className={styles.cardEquipamento}>
-                              <FaCheck size={60} color="#02bd02" style={{ "margin-left": "20px" }}/>
-                              <div className={styles.itemEquipamento}>
-                                <p>ARMAZENADOR DE TAMPO/VIDRO</p>
-                              </div>
-                             </div>
-                          ) : (
-                            <div className={styles.cardEquipamento}>
-                              <FaWindowClose size={60} color="#e01010" style={{ "margin-left": "20px" }}/>
-                              <div className={styles.itemEquipamento}>
-                                <p>ARMAZENADOR DE TAMPO/VIDRO</p>
-                              </div>
-                          </div>
-                          )}
+            {deposito.infraestrutura.equipamentos.armazenador_vidro === true ? (
+              <div className={styles.cardEquipamento}>
+                <FaCheck
+                  size={60}
+                  color="#02bd02"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>ARMAZENADOR DE TAMPO/VIDRO</p>
+                </div>
+              </div>
+            ) : (
+              <div className={styles.cardEquipamento}>
+                <FaWindowClose
+                  size={60}
+                  color="#e01010"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>ARMAZENADOR DE TAMPO/VIDRO</p>
+                </div>
+              </div>
+            )}
 
-                        {deposito.infraestrutura.equipamentos.gaiola_portateis === true ? (
-                            <div className={styles.cardEquipamento}>
-                              <FaCheck size={60} color="#02bd02" style={{ "margin-left": "20px" }}/>
-                              <div className={styles.itemEquipamento}>
-                                <p>GAIOLA DE PORTÁTEIS</p>
-                              </div>
-                             </div>
-                          ) : (
-                            <div className={styles.cardEquipamento}>
-                              <FaWindowClose size={60} color="#e01010" style={{ "margin-left": "20px" }}/>
-                              <div className={styles.itemEquipamento}>
-                                <p>GAIOLA DE PORTÁTEIS</p>
-                              </div>
-                          </div>
-                          )}
+            {deposito.infraestrutura.equipamentos.gaiola_portateis === true ? (
+              <div className={styles.cardEquipamento}>
+                <FaCheck
+                  size={60}
+                  color="#02bd02"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>GAIOLA DE PORTÁTEIS</p>
+                </div>
+              </div>
+            ) : (
+              <div className={styles.cardEquipamento}>
+                <FaWindowClose
+                  size={60}
+                  color="#e01010"
+                  style={{ "margin-left": "20px" }}
+                />
+                <div className={styles.itemEquipamento}>
+                  <p>GAIOLA DE PORTÁTEIS</p>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
 
-
-
-                         
-
-                         
-                       
-                         
-                    </div>
-            </div>
-
-        {/*  <table className={styles.tabela}>
-            <thead>
-                <tr>
-                    <th>Porta Pallet</th>
-                    <th>Pallet</th>
-                    <th>Rack de movimentação</th>
-                    <th>Carrinho plataforma</th>
-                    <th>Balança digital</th>
-                    <th>Balança</th>
-                    <th>Esteira</th>
-                    <th>Empilhadeira a gás</th>
-                    <th>Empilhadeira elétrica</th>
-                    <th>Transpaleteira manual</th>
-                    <th>Transpaleteira elétrica</th>
-                    <th>Escada de plataforma</th>
-                    <th>Carrinho de armazenagem</th>
-                    <th>Caixa azul</th>
-                    <th>Movimentador de vidro</th>
-                    <th>Armazenador de vidro</th>
-                    <th>Gaiola de portáteis</th>
-                    
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><FaCheck size={30} color="#02bd02" /></td>
-                    <td><FaWindowClose size={30} color="#e01010" /></td>
-                    <td><FaWindowClose size={30} color="#e01010" /></td>
-                    <td><FaCheck size={30} color="#02bd02" /></td>
-                    <td><FaWindowClose size={30} color="#e01010" /></td>
-                    <td><FaWindowClose size={30} color="#e01010" /></td>
-                    <td><FaCheck size={30} color="#02bd02" /></td>
-                    <td><FaWindowClose size={30} color="#e01010" /></td>
-                    <td><FaWindowClose size={30} color="#e01010" /></td>
-                    <td><FaCheck size={30} color="#02bd02" /></td>
-                    <td><FaWindowClose size={30} color="#e01010" /></td>
-                    <td><FaWindowClose size={30} color="#e01010" /></td>
-                    <td><FaCheck size={30} color="#02bd02" /></td>
-                    <td><FaWindowClose size={30} color="#e01010" /></td>
-                    <td><FaWindowClose size={30} color="#e01010" /></td>
-                    <td><FaCheck size={30} color="#02bd02" /></td>
-                    <td><FaWindowClose size={30} color="#e01010" /></td>                    
-                </tr>
-                
-            </tbody>
-        </table>
-  */}
+       
 
         <div className={styles.containerSubTitulo}>
           <h2 className={styles.subTitulo}>
@@ -1015,12 +1247,16 @@ function DepositoDetalhes() {
         <hr className={styles.hrBorder} />
 
         <MapContainer
-          center={[`${deposito.dados_geograficos.location.latitude}`, `${deposito.dados_geograficos.location.longitude}`]}
+          center={[
+            `${deposito.dados_geograficos.location.latitude}`,
+            `${deposito.dados_geograficos.location.longitude}`,
+          ]}
           zoom={13}
           style={{
             width: "80%",
             height: "500px",
             margin: "auto",
+            'border-radius': '14px',
             "margin-top": "15px",
           }}
           scrollWheelZoom={false}
@@ -1029,9 +1265,14 @@ function DepositoDetalhes() {
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          <Marker position={[`${deposito.dados_geograficos.location.latitude}`, `${deposito.dados_geograficos.location.longitude}`]}>
+          <Marker
+            position={[
+              `${deposito.dados_geograficos.location.latitude}`,
+              `${deposito.dados_geograficos.location.longitude}`,
+            ]}
+          >
             <Popup>
-              <span>Aqui está o depósito de Oeiras!</span>
+              <span>Aqui está o depósito de {deposito.sigla_dep}!</span>
             </Popup>
           </Marker>
         </MapContainer>
@@ -1050,28 +1291,25 @@ function DepositoDetalhes() {
         </div>
         <hr className={styles.hrBorder} />
 
-        {deposito.organograma.status_organograma === 'VALIDADO' ? (
-                <span className={styles.statusValidacao}>
-             
-                STATUS: <span className={styles.isValidado}>VALIDADO</span>
-              </span>
-              ) : (
-                <span className={styles.statusValidacao}>
-             
-              STATUS: <span className={styles.isNotValidado}>AGUARDANDO</span>
-            </span>
-              )}
-             
-            <span className={styles.lastUpdate}>
-              Última atualização: {moment(deposito.organograma.ultima_atualizacao).format('L')}
-            </span>
+        {deposito.organograma.status_organograma === "VALIDADO" ? (
+          <span className={styles.statusValidacao}>
+            STATUS: <span className={styles.isValidado}>VALIDADO</span>
+          </span>
+        ) : (
+          <span className={styles.statusValidacao}>
+            STATUS: <span className={styles.isNotValidado}>AGUARDANDO</span>
+          </span>
+        )}
+
+        <span className={styles.lastUpdate}>
+          Última atualização:{" "}
+          {moment(deposito.organograma.ultima_atualizacao).format("L")}
+        </span>
         <img
-          
           src={`${deposito.organograma.url_organograma}`}
           className={styles.organogramaEstilo}
           alt="organograma do depósito"
         />
-
       </div>
       <Footer />
     </>

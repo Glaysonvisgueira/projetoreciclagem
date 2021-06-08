@@ -24,7 +24,7 @@
 }
 
 .menuRight{
-  margin: 50px;
+  margin-right: 50px;
 }
 
 .linkText:hover {
@@ -46,9 +46,8 @@
   }
 
   .optionIcon{
-    text-decoration: none !important;
-    color: rgb(39, 39, 39);
     
+    color: rgb(39, 39, 39);    
     margin: 15px;
   }
 
