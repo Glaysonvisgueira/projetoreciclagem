@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Carousel from "react-gallery-carousel";
+import PageProgress from 'react-page-progress'
 
 import { FiArrowLeft, FiUsers } from "react-icons/fi";
 import {
@@ -68,7 +69,7 @@ function DepositoDetalhes() {
   return (
     <>
       <Navbar />
-
+      <PageProgress color={'#FFB905'} height={5}/>
       <div className={styles.containerPage}>
         <div className={styles.containerHeader}>
           <h1 className={styles.depName}>
@@ -1258,6 +1259,7 @@ function DepositoDetalhes() {
             margin: "auto",
             'border-radius': '14px',
             "margin-top": "15px",
+            'zIndex': 0
           }}
           scrollWheelZoom={false}
         >

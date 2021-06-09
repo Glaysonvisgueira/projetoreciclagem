@@ -22,13 +22,14 @@
     display: flex;
     right: 30px;
     width: 60px;
+    
     height: 60px;
     background-color: #FFB905;
     align-items: center;
     justify-content: center;
     border: none;    
     border-radius: 10px;   
-    position: absolute;
+    position: fixed;
     z-index: 5;
 }
 

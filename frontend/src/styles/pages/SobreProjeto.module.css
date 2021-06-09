@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     flex-direction: column;  
 }
 
@@ -41,4 +41,128 @@
    
     
 }
+
+
+.containerSlide{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;  
+}
+
+
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;  
+    flex-direction: column;
+}
+
+.landing{
+    display: flex;   
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.textLanding{
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+}
+
+
+.projetoText{
+    font-size: 75px;
+    font-family: 'Roboto' , sans-serif;
+    font-weight: 100;
+}
+
+.reciclagemText{
+    font-size: 85px;
+    font-family: 'Roboto' , sans-serif;
+    font-weight: 900;
+    color: #FFB905;
+}
+
+.spanTextReciclagem{
+    color: #FFB905;
+    font-weight: bold;
+}
+
+.landingImgView{
+    width: 90vh;
+    height: 60vh;
+    margin-left: 75px;
+}  
+
+.buttonSaibaMais{
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    align-items: center;
+    color: #fff;
+    background-color: #FFB905;
+    border: 0;
+    border-radius: 4px;
+    height: 54px;
+    width: 49%;
+    margin-top: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.buttonSaibaMais:hover{    
+    background-color: #dda108;    
+}
+
+.buttonSaibaMais:active{    
+    background-color: #9e7306;    
+}
+
+.buttonAbout:hover{    
+    background-color: #FFB905;    
+    color: #fff;
+}
+
+.buttonAbout{
+    color: #FFB905;
+    background-color: #fff;
+    border: 1;
+    border-style: solid;
+    border-color: #FFB905;
+    border-radius: 4px;
+    height: 54px;
+    width: 49%;
+    margin-top: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    
+}
+
+.buttonsContainer{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+.spanText{
+    margin-top: 10px;
+    font-size: 18px;
+    color:#858585;
+}
+
+
+
+
+
+
 
