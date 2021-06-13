@@ -23,7 +23,14 @@ https://reactjsexample.com/dead-simple-loading-components-for-react-and-react-na
 function SobreProjeto() {
   return (
           <>
-        
+          <Link to="/">
+            <button
+                type="button"
+                className={styles.backButton}
+              >
+                <FiArrowLeft size={44} color="#000" />
+              </button>
+          </Link>
         <PageProgress color={'#FFB905'} height={5}/>
         <div className={styles.containerPage}>
        

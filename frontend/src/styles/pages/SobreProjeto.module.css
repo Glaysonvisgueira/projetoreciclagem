@@ -160,6 +160,31 @@
     color:#858585;
 }
 
+.backButton{    
+    display: flex;
+    left: 60px;
+    width: 60px;    
+    height: 60px;
+    top: 40px;
+    background-color: #FFB905;
+    align-items: center;
+    justify-content: center;
+    border: none;    
+    border-radius: 10px;   
+    position: fixed;
+    z-index: 5;
+}
+
+.backButton:hover {
+    background-color: #f8bf45;
+    cursor: pointer;
+}
+
+
+.backButton:active {
+    background-color: #e49c02;
+}
+
 
 
 
