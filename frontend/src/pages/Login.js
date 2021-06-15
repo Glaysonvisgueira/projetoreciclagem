@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import styles from "../styles/pages/Login.module.css";
 
@@ -7,17 +7,41 @@ import loginPageImg from '../assets/img/systemlogin.png'
 import { AiOutlineLogin } from "react-icons/ai";
 
 function Login() {
+
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  
+  
+  //console.log(`Email: ${email} Senha: ${password}`)
+  
   return (
 
     <div className={styles.containerPage}>
       <div className={styles.container}>
         <div className={styles.loginCard}>
-          <form className={styles.formContainer}>
-            <input className={styles.inputForm}
+          
+          <form className={styles.formContainer} >
+          
+            <input className={styles.inputForm} 
+              type="text"
+              maxLength="60"             
               placeholder="Digite seu e-mail..."
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              autoCapitalize={false}
+              autoCorrect={false}
+              required={true}
+              spellCheck={false}
             />
             <input className={styles.inputForm}
-              placeholder="Digite sua senha..."
+              type="password"
+              placeholder="Digite sua senha..."              
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+              autoCapitalize={false}
+              autoCorrect={false}
+              required={true}
+              spellCheck={false}
             />
             <button className={styles.button} type="submit">Login&nbsp;<AiOutlineLogin size={34} color="#fff" /></button>
 
