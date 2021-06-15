@@ -21,7 +21,7 @@ function Login() {
         <div className={styles.loginCard}>
           
           <form className={styles.formContainer} >
-          
+            
             <input className={styles.inputForm} 
               type="text"
               maxLength="60"             
@@ -46,8 +46,8 @@ function Login() {
             <button className={styles.button} type="submit">Login&nbsp;<AiOutlineLogin size={34} color="#fff" /></button>
 
             <div className={styles.containerSmallText}>
-              <small>Esqueceu a senha?</small>
-              <small>Solicite o acesso</small>
+              <small className={styles.smallLink}>Esqueceu a senha?</small>
+              <small className={styles.smallLink}>Solicite o acesso</small>
             </div>
           </form>
           <img src={loginPageImg} className={styles.loginPageImg} alt="logística de distribuição" />
