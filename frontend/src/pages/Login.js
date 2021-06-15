@@ -2,6 +2,8 @@ import React from 'react';
 
 import styles from "../styles/pages/Login.module.css";
 
+import loginPageImg from '../assets/img/systemlogin.png'
+
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
 
@@ -9,35 +11,32 @@ function Login() {
   return (
    
       <div className={styles.containerPage}>
-          <Navbar />
-          <div className={styles.loginContainer}>
+         
+          <div className={styles.container}>
          
         <div className={styles.loginCard}>
           
        
-                   <form className="formContainer">
+                   <form className={styles.formContainer}>
                     
-                    <input 
-                      placeholder="Digite seu usuário..."
+                    <input className={styles.inputForm}
+                      placeholder="Digite seu e-mail..."
                     />
                     
-                    <input 
+                    <input className={styles.inputForm}
                       placeholder="Digite sua senha..."
                     />
-                    <button className={styles.button} type="submit">Enviar </button>
-                    <div className={styles.linkLoginContainer}>
-                      <small className={styles.linkLogin}>Esqueceu sua senha?</small>
-                      <small className={styles.linkLogin}>Cadastre-se</small>
-                    </div>
+                    <button className={styles.button} type="submit">Login</button>
+                    
                         
                   </form>
+            <img src={loginPageImg} className={styles.loginPageImg} alt="logística de distribuição" />   
             </div>
                
               
-               
           </div>
-          <Footer />
-                     
+         
+             <Footer />        
           </div>
        
   );

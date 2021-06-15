@@ -8,17 +8,25 @@
   width: 100%;
   height: 100%;  
   margin: auto;
+ 
   
 }
 
 
 
-.loginContainer{ 
+.container{ 
     width: 100%;
     height: 100%;
+    
     display: flex;
     justify-content: center;
-    align-items: center;    
+    align-items: center;   
+    flex-direction: row; 
+}
+
+.loginPageImg{
+  max-width: 600px;
+  max-height: 600px;
 }
 
 .formContainer {
@@ -29,27 +37,36 @@
 }
 
 .loginCard{
-    width: 100%;
-    height: 300px;
-    max-width: 550px;
+    width: 70%;
+    height: 70vh;    
     display: flex;
-    background-color: #fff;
-    justify-content: center;
+   
+    justify-content: space-between;
     align-items: center;
-    border-radius: 6px;
-    flex-direction: column;
+    border-radius: 14px;
+    flex-direction: row;
+    padding-left: 100px;
+    padding-right: 100px;
     
 }
 
-form input {
-    width: 100%;
-    height: 60px;
-    color: #333;
-    border: 1px solid #dcdce6;
-    border-radius: 8px;
-    padding: 0 24px;
-  }
 
+  
+.inputForm{
+  
+  width: 100%;
+  height: 55px;
+  color: #333;
+  border: 1px solid #dcdce6;
+  border-radius: 4px;
+  padding: 0 24px;
+  margin-top: 10px;
+   
+   
+    padding: 0 20px;
+    font-size: 14px;
+    
+}
   
   
   .button:hover {
@@ -67,20 +84,8 @@ form input {
     font: 400 18px Roboto, sans-serif;
   }
   
-  button {
-    cursor: pointer;
-  }
 
   
-.loginContainer form input {
-    margin-top: 10px;
-    border: 1px solid #DDD;
-    border-radius: 4px;
-    height: 34px;
-    padding: 0 20px;
-    font-size: 14px;
-    color: #666;
-}
 
 .loginContainer form input::placeholder {
     color: #999
@@ -94,13 +99,15 @@ form input {
   width: 100%;
   border: 0;
   border-radius: 4px;
-  height: 34px;
+  height: 55px;
   font-size: 16px;
   background: #FFB905;
   font-weight: bold;
   color: #FFF;
   cursor: pointer;
   margin-bottom: 10px;
+  border-radius: 100px;
+  font-size: 20px;
 }
 
 .formContainer{
@@ -109,6 +116,7 @@ form input {
   justify-content: center;
   align-items: center;
 }
+
 
 .textoLabel{
     margin-top: 10px;
