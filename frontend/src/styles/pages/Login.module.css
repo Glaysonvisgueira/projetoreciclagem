@@ -8,8 +8,6 @@
   width: 100%;
   height: 100%;  
   margin: auto;
- 
-  
 }
 
 
@@ -17,7 +15,7 @@
 .container{ 
     width: 100%;
     height: 100%;
-    
+    background-color: rgb(253, 249, 231);
     display: flex;
     justify-content: center;
     align-items: center;   
@@ -31,16 +29,18 @@
 
 .formContainer {
     width: 100%;
-    max-width: 400px;
+    max-width: 450px;
+    
     display: flex;
     flex-direction: column;
+    padding: 25px;
+    border-radius: 14px;
 }
 
 .loginCard{
     width: 70%;
     height: 70vh;    
-    display: flex;
-   
+    display: flex;    
     justify-content: space-between;
     align-items: center;
     border-radius: 14px;
@@ -52,20 +52,33 @@
 
 
   
-.inputForm{
-  
+.inputForm{  
   width: 100%;
   height: 55px;
-  color: #333;
-  border: 1px solid #dcdce6;
+  color: rgb(54, 54, 54);
+  border: none;
   border-radius: 4px;
   padding: 0 24px;
-  margin-top: 10px;
-   
-   
-    padding: 0 20px;
-    font-size: 14px;
-    
+  margin-top: 10px; 
+  background-color: #fff;
+  padding: 0 20px;
+  font-size: 14px; 
+}
+
+
+::placeholder { 
+  color: rgb(65, 65, 65);
+ 
+}
+
+.containerSmallText{
+  display: flex;
+  width: 95%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5px;
+  font-size: 16px;
 }
   
   
@@ -144,5 +157,26 @@ h3{
 }
 
 
+.containerFooter{
+  display: flex;
+  width: 100%;
+  height: 40px;
+  background-color: rgb(253, 249, 231);   
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.textoFooter{
+  font-size: 12px;
+  font-family: 'Roboto' , sans-serif;
+  font-weight: 400;    
+  color: #000;
+  margin-left: 20px;
+}
+
+.inputForm:focus {
+  outline: none !important;
+  border:2px solid #FFB905;  
+}
 
 

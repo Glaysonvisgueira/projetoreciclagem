@@ -25,8 +25,7 @@ function Homepage() {
                 <Link to="/depositos"  className={styles.buttonSaibaMais} type="button">Saiba mais</Link>
                 {/* <button className={styles.buttonAbout} type="button">Sobre a equipe</button> */}
 
-              </div>
-              
+              </div>              
             </div>
             <div>
             <img src={landingImg} className={styles.landingImgView} alt="logística de distribuição" />

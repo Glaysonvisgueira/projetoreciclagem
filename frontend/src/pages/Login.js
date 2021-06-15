@@ -4,41 +4,36 @@ import styles from "../styles/pages/Login.module.css";
 
 import loginPageImg from '../assets/img/systemlogin.png'
 
-import Navbar from "../components/Navbar"
-import Footer from "../components/Footer"
+import { AiOutlineLogin } from "react-icons/ai";
 
 function Login() {
   return (
-   
-      <div className={styles.containerPage}>
-         
-          <div className={styles.container}>
-         
+
+    <div className={styles.containerPage}>
+      <div className={styles.container}>
         <div className={styles.loginCard}>
-          
-       
-                   <form className={styles.formContainer}>
-                    
-                    <input className={styles.inputForm}
-                      placeholder="Digite seu e-mail..."
-                    />
-                    
-                    <input className={styles.inputForm}
-                      placeholder="Digite sua senha..."
-                    />
-                    <button className={styles.button} type="submit">Login</button>
-                    
-                        
-                  </form>
-            <img src={loginPageImg} className={styles.loginPageImg} alt="logística de distribuição" />   
+          <form className={styles.formContainer}>
+            <input className={styles.inputForm}
+              placeholder="Digite seu e-mail..."
+            />
+            <input className={styles.inputForm}
+              placeholder="Digite sua senha..."
+            />
+            <button className={styles.button} type="submit">Login&nbsp;<AiOutlineLogin size={34} color="#fff" /></button>
+
+            <div className={styles.containerSmallText}>
+              <small>Esqueceu a senha?</small>
+              <small>Solicite o acesso</small>
             </div>
-               
-              
-          </div>
-         
-             <Footer />        
-          </div>
-       
+          </form>
+          <img src={loginPageImg} className={styles.loginPageImg} alt="logística de distribuição" />
+        </div>
+      </div>
+      <div className={styles.containerFooter}>
+        <p className={styles.textoFooter}>Versão 0.01a - Setor de padronização de depósitos</p>
+      </div>
+    </div>
+
   );
 }
 
