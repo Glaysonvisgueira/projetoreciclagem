@@ -177,7 +177,9 @@ h3{
 
 .inputForm2:focus {
   outline: none !important;
- border: 2px solid rgb(7, 225, 18);
+  transition: all 0.2s ease-in-out;
+  border: 2px solid rgb(0, 255, 13);
+   
 }
 
 .smallLink:hover{

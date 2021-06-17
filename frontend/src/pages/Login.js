@@ -24,7 +24,7 @@ function Login() {
           
           <form className={styles.formContainer} >
             
-            <input className={emailChecked === 'mail'? styles.inputForm2 : styles.inputForm} 
+            <input className={emailChecked.includes('mail') ? styles.inputForm2 : styles.inputForm} 
               type="text"
               maxLength="60"             
               placeholder="Digite seu e-mail..."
