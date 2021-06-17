@@ -55,7 +55,7 @@ function Login() {
       </div>
       <div className={styles.containerFooter}>
         <p className={styles.textoFooter}>Versão 0.01a - Setor de padronização de depósitos</p>
-      </div>
+      </div> 
     </div>
 
   );
