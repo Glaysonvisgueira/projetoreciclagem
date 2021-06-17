@@ -10,9 +10,11 @@ function Login() {
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [emailChecked, setEmailChecked] = useState();
   
   
-  //console.log(`Email: ${email} Senha: ${password}`)
+  
+  //console.log(`Email: ${emailChecked}`)
   
   return (
 
@@ -22,12 +24,12 @@ function Login() {
           
           <form className={styles.formContainer} >
             
-            <input className={styles.inputForm} 
+            <input className={emailChecked === 'mail'? styles.inputForm2 : styles.inputForm} 
               type="text"
               maxLength="60"             
               placeholder="Digite seu e-mail..."
               value={email}
-              onChange={e => setEmail(e.target.value)}
+              onChange={e => {setEmail(e.target.value); setEmailChecked(e.target.value);}}
               autoCapitalize={false}
               autoCorrect={false}
               required={true}

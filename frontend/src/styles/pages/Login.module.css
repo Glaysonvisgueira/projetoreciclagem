@@ -8,7 +8,7 @@
   width: 100%;
   height: 100%;  
   margin: auto;
-  background-image: linear-gradient(to right, #ffa600, #ffb515, #ffc325, #ffd135, #ffdf45, #ffdf45, #ffdf45, #ffdf45, #ffd135, #ffc325, #ffb515, #ffa600);
+  background-image: linear-gradient(to right, #ffb100, #f5b000, #ecaf00, #e2ad00, #d9ac00, #d6ac00, #d2ac00, #cfac00, #d0ad00, #d2ae00, #d3af00, #d5b000);
 }
 
 
@@ -38,16 +38,16 @@
 }
 
 .loginCard{
-    width: 70%;
+    width: 60%;
     height: 70vh;    
     display: flex;    
     justify-content: space-between;
     align-items: center;
     border-radius: 14px;
     flex-direction: row;
-    padding-left: 100px;
-    padding-right: 100px;
-    background-color :rgba(255, 255, 255, 0.8);
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color :rgba(255, 255, 255, 0.7);
     
     
 }
@@ -56,7 +56,7 @@
   
 .inputForm{  
   width: 100%;
-  height: 55px;
+  height: 45px;
   color: rgb(54, 54, 54);
   border: none;
   border-radius: 4px;
@@ -175,6 +175,11 @@ h3{
    
 }
 
+.inputForm2:focus {
+  outline: none !important;
+ border: 2px solid rgb(7, 225, 18);
+}
+
 .smallLink:hover{
   text-decoration: underline;
   cursor: pointer;
@@ -182,3 +187,15 @@ h3{
 }
 
 
+.inputForm2{
+  width: 100%;
+  height: 45px;
+  color: rgb(54, 54, 54);
+  border: none;
+  border-radius: 4px;
+  padding: 0 24px;
+  margin-top: 10px; 
+  background-color: #fff;
+  padding: 0 20px;
+  font-size: 16px; 
+}
