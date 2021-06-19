@@ -10,7 +10,8 @@ function Login() {
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const [emailChecked, setEmailChecked] = useState();
+  const [emailChecked, setEmailChecked] = useState('');
+  const [passwordChecked, setPasswordChecked] = useState('');
   
   
   
@@ -23,11 +24,13 @@ function Login() {
         <div className={styles.loginCard}>
           
           <form className={styles.formContainer} >
-            
-            <input className={emailChecked.includes('mail') ? styles.inputForm2 : styles.inputForm} 
+            <h1 className={styles.loginHeader}>Login</h1>
+            <p className={styles.subHeader}>Entre com suas credenciais para acessar o sistema</p>
+            <label className={styles.labelLogin}>E-mail</label>
+            <input className={emailChecked.includes('@armazemparaiba.com.br') ? styles.inputForm2 : styles.inputForm} 
               type="text"
               maxLength="60"             
-              placeholder="Digite seu e-mail..."
+              placeholder="e-mail@armazemparaiba.com.br"
               value={email}
               onChange={e => {setEmail(e.target.value); setEmailChecked(e.target.value);}}
               autoCapitalize={false}
@@ -35,15 +38,17 @@ function Login() {
               required={true}
               spellCheck={false}
             />
-            <input className={styles.inputForm}
+            <label className={styles.labelLogin}>Senha</label>
+            <input className={passwordChecked.length >= 6 ? styles.inputFormPasswordChecked : styles.inputForm}
               type="password"
               placeholder="Digite sua senha..."              
               value={password}
-              onChange={e => setPassword(e.target.value)}
+              onChange={e => {setPassword(e.target.value); setPasswordChecked(e.target.value);}}
               autoCapitalize={false}
               autoCorrect={false}
               required={true}
               spellCheck={false}
+              maxLength={6}
             />
             <button className={styles.button} type="submit">Login&nbsp;<AiOutlineLogin size={34} color="#fff" /></button>
 
