@@ -26,11 +26,11 @@ function Login() {
           <form className={styles.formContainer} >
             <h1 className={styles.loginHeader}>Login</h1>
             <p className={styles.subHeader}>Entre com suas credenciais para acessar o sistema</p>
-            <label className={styles.labelLogin}>E-mail</label>
+            {/* <label className={styles.labelLogin}>E-mail</label> */}
             <input className={emailChecked.includes('@armazemparaiba.com.br') ? styles.inputForm2 : styles.inputForm} 
               type="text"
               maxLength="60"             
-              placeholder="e-mail@armazemparaiba.com.br"
+              placeholder="Insira seu e-mail"
               value={email}
               onChange={e => {setEmail(e.target.value); setEmailChecked(e.target.value);}}
               autoCapitalize={false}
@@ -38,10 +38,10 @@ function Login() {
               required={true}
               spellCheck={false}
             />
-            <label className={styles.labelLogin}>Senha</label>
+            {/* <label className={styles.labelLogin}>Senha</label> */}
             <input className={passwordChecked.length >= 6 ? styles.inputFormPasswordChecked : styles.inputForm}
               type="password"
-              placeholder="Digite sua senha..."              
+              placeholder="Insira sua senha..."              
               value={password}
               onChange={e => {setPassword(e.target.value); setPasswordChecked(e.target.value);}}
               autoCapitalize={false}
@@ -57,7 +57,7 @@ function Login() {
               <small className={styles.smallLink}>Solicite o acesso</small>
             </div>
           </form>
-          <img src={loginPageImg} className={styles.loginPageImg} alt="logística de distribuição" />
+          {/* <img src={loginPageImg} className={styles.loginPageImg} alt="logística de distribuição" /> */}
         </div>
       </div>
       <div className={styles.containerFooter}>

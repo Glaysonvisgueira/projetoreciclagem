@@ -8,7 +8,8 @@
   width: 100%;
   height: 100%;  
   margin: auto;
-  background-image: linear-gradient(to right, #ffb100, #f5b000, #ecaf00, #e2ad00, #d9ac00, #d6ac00, #d2ac00, #cfac00, #d0ad00, #d2ae00, #d3af00, #d5b000);
+  background-image: linear-gradient(to bottom, #ffb200, #ffb922, #ffc036, #ffc746, #ffcd55);
+  resize: none;
 }
 
 
@@ -38,16 +39,16 @@
 }
 
 .loginCard{
-    width: 60%;
-    height: 70vh;    
+    width: 30%;
+    height: 40vh;    
     display: flex;    
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     border-radius: 14px;
     flex-direction: row;
     padding-left: 30px;
     padding-right: 30px;
-    background-color :rgba(255, 255, 255, 0.7);
+    background-color :rgba(255, 255, 255);
     
     
 }
@@ -62,9 +63,10 @@
   border-radius: 4px;
   padding: 0 24px;
   margin-top: 10px; 
-  background-color: #fff;
+  background-color: rgb(228, 228, 228);
   padding: 0 20px;
   font-size: 16px; 
+  border-radius: 100px;
 }
 
 
@@ -197,9 +199,10 @@ h3{
   border-radius: 4px;
   padding: 0 24px;
   margin-top: 10px; 
-  background-color: #fff;
+  background-color: rgb(228, 228, 228);
   padding: 0 17px;
   font-size: 16px; 
+  border-radius: 100px;
 }
 
 .inputFormPasswordChecked:focus {
@@ -217,9 +220,10 @@ h3{
   border-radius: 4px;
   padding: 0 24px;
   margin-top: 10px; 
-  background-color: #fff;
+  background-color: rgb(228, 228, 228);
   padding: 0 17px;
   font-size: 16px; 
+  border-radius: 100px;
 }
 
 .labelLogin{
